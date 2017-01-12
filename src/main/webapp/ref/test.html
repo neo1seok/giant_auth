@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+<html>
+<head>
+<script type="text/javascript">
+function LoadPage(){
+    document.getElementById('content').src = "c2.html";
+}
+
+function leaveChange() {
+    document.getElementById("message").innerHTML = "Having a Baby!!";
+    var frm = document.input;
+    
+	frm.prd_name.value =frm.prd_number.value;
+}
+
+</script>
+
+  <style type="text/css">
+      a{text-decoration:none; color:#000000;}         
+         a:hover{color:#ff0000;}   
+           
+  ul{
+    list-style-type: none;
+   padding-right: 20px;
+   padding-left: 20px;
+  }
+
+  li {
+   display: inline;
+  }
+    </style>
+<title></title>
+</head>
+<frameset cols="30%,70%">
+	<frame src="menu.html" name="left" id="left" />
+	<frame src="c1.html" name="content" id="content" />
+	
+</frameset>
+
+</html>

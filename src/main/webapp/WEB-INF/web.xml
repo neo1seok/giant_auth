@@ -1,0 +1,75 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+
+<web-app>
+	<display-name>Archetype Created Web Application</display-name>
+	
+	
+	<servlet>
+		<servlet-name>NFCServlet</servlet-name>
+		<display-name>NFCServlet</display-name>
+		<description></description>
+		<servlet-class>giant_auth.NFC.NFCServlet</servlet-class>
+		<init-param>
+
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<servlet-name>authServlet</servlet-name>
+		<display-name>authServlet</display-name>
+		<description></description>
+		<servlet-class>giant_auth.auth.authServlet</servlet-class>
+		<init-param>
+
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<servlet-name>Admin</servlet-name>
+		<display-name>Admin</display-name>
+		<description></description>
+		<servlet-class>giant_auth.Admin.AdminServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>CommSublet</servlet-name>
+		<display-name>CommSublet</display-name>
+		<description></description>
+		<servlet-class>giant_auth.comm.CommSublet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>LoginServlet</servlet-name>
+		<display-name>LoginServlet</display-name>
+		<description></description>
+		<servlet-class>giant_auth.Admin.LoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>NFCServlet</servlet-name>
+		<url-pattern>/NFC</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Admin</servlet-name>
+		<url-pattern>/Admin</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CommSublet</servlet-name>
+		<url-pattern>/CommSublet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>LoginServlet</servlet-name>
+		<url-pattern>/LoginServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>authServlet</servlet-name>
+		<url-pattern>/auth</url-pattern>
+	</servlet-mapping>
+
+</web-app>
+
+	
+

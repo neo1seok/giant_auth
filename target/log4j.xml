@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<appender name="Console" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d] %-5p %C{1}.%M(%F:%L) - %m%n" />
+		</layout>
+	</appender>
+
+
+	<!-- 1. sb_all.log appender : sb_all -->
+	<appender name="manager_root" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="encoding" value="UTF-8" />
+		<param name="DatePattern" value="'.'yyyyMMdd" />
+		<param name="File" value="./logs/LSC.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d] %-5p (%F:%L) %m%n" />
+		</layout>
+	</appender>
+
+	<category name="giant2Auth" additivity="true">
+		
+		<priority value="debug" />
+		<appender-ref ref="Console" />
+		<appender-ref ref="manager_root" />
+	</category>
+
+	<root>
+		<priority value="debug" />
+		<appender-ref ref="Console" />
+		<appender-ref ref="manager_root" />
+
+		<!-- <appender-ref ref="Console" /> -->
+	</root>
+
+</log4j:configuration>
