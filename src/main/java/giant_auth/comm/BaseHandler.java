@@ -84,8 +84,8 @@ public class BaseHandler<T> {
 		this.sndProto =new Protocol(); 
 		sndProto.cmd = rcvProto.cmd;
 		
-		sndProto.mapvValue.clear();
-		sndProto.mapvValue.put("Result","OK");
+		sndProto.params.clear();
+		sndProto.params.put("Result","OK");
 		
 		
 		mapInvoke.get(input.cmd).run();

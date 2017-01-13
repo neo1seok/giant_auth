@@ -44,7 +44,7 @@ public class authServlet extends HttpServlet {
         out.close();
     }
     
-    void doNFCAuth(HttpServletRequest request, HttpServletResponse response) throws Exception{
+    void doAuth(HttpServletRequest request, HttpServletResponse response) throws Exception{
     	String ipAddress =  request.getRemoteAddr();
     	int port = request.getRemotePort();
     	
@@ -70,38 +70,49 @@ public class authServlet extends HttpServlet {
 		
 		
 		
-		String cmd = request.getParameter("cmd");
-		String jsonbase64 = request.getParameter("jsonbase64");
+		//String cmd = request.getParameter("cmd");
+		String json = request.getParameter("json");
 		String type = request.getParameter("type");
-
-		if( cmd == null){
-			out.println("<h1>NFC AUTH TEST</h1>");
-			out.println("NO JSON PARAM!!!!");
-			
-			printGreeting(response);
-			return;
+		String debug = request.getParameter("debug");
+		
+		if(json == null){
+			json = "";
 		}
-		if(type != null && type.equals("debug")){
+		if(type == null){
+			type = "";
+		}
+		if(debug == null){
+			debug = "";
+		}
+//
+//		if( cmd == null){
+//			out.println("<h1>NFC AUTH TEST</h1>");
+//			out.println("NO JSON PARAM!!!!");
+//			
+//			printGreeting(response);
+//			return;
+//		}
+		if(debug != null && type.equals("true")){
 			
 			isDebug = true;
 			nfcAuthHandler.SetDebug(isDebug);
 			
 		}
-		if(cmd.equals("CMDTEST_COMPRESS") || cmd.equals("CMDTEST")){
-			Protocol protocol = new Protocol();
-			
-			resjson = protocol.toJsonString() ;
-			
-			if(cmd.equals("CMDTEST_COMPRESS")) resjson = Util.compressURL(resjson); 
-			out.println(resjson);
-			
-			return;
-			
-		}
+//		if(cmd.equals("CMDTEST_COMPRESS") || cmd.equals("CMDTEST")){
+//			Protocol protocol = new Protocol();
+//			
+//			resjson = protocol.toJsonString() ;
+//			
+//			if(cmd.equals("CMDTEST_COMPRESS")) resjson = Util.compressURL(resjson); 
+//			out.println(resjson);
+//			
+//			return;
+//			
+//		}
 
-		String jsonParam = "";
+		//String jsonParam = "";
 
-		if(jsonbase64 == null ){
+		if(json == null ){
 			out.println("<h1>NFC AUTH TEST</h1>");
 			out.println("NO JSON PARAM!!!!");
 			
@@ -109,23 +120,20 @@ public class authServlet extends HttpServlet {
 			return;
 		}
 		
-		System.out.println(cmd);
+		//System.out.println(cmd);
 		
-		if(cmd.equals("CMDBYJSON")){
-			resjson = nfcAuthHandler.doRunByCompressed(jsonbase64);
-		}
-		else if(cmd.equals("CMDBYJSON_ROW")){
-			resjson = nfcAuthHandler.doRunByJson(jsonbase64);
-			
-						
+		if( type.equals("compressed")){
+			resjson = nfcAuthHandler.doRunByCompressed(json);
+								
 		}
 		else{
-			out.println("<h1>NFC AUTH TEST</h1>");
-			out.println("<h2>NO COMMAND</h2>");
+			resjson = nfcAuthHandler.doRunByJson(json);
+//			out.println("<h1>NFC AUTH TEST</h1>");
+//			out.println("<h2>NO COMMAND</h2>");
 			
 		}
 		
-		System.out.println(jsonbase64);
+		System.out.println(json);
 		
 		out.print(resjson);
     }
@@ -139,7 +147,7 @@ public class authServlet extends HttpServlet {
 		
 		try {
 			System.out.println("doGet");
-			doNFCAuth(request, response);
+			doAuth(request, response);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -155,7 +163,7 @@ public class authServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		try {
 			System.out.println("doPost");
-			doNFCAuth(request, response);
+			doAuth(request, response);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

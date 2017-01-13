@@ -12,7 +12,7 @@ import java.util.Map;
 public class Protocol {
     public String cmd = "TEST";
 
-    public Map<String,String> mapvValue = new LinkedHashMap<String,String>();
+    public Map<String,String> params = new LinkedHashMap<String,String>();
     public String crc16 = "";
     public  Protocol(){
         //mapvValue.put("PGH","181818");
@@ -22,7 +22,7 @@ public class Protocol {
     public void Clrear() {
         cmd = "";
         crc16 = "";
-        mapvValue.clear();
+        params.clear();
     }
     public String toJsonString(){
         Gson gson = new Gson();

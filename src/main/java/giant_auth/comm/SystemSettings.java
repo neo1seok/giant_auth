@@ -45,10 +45,10 @@ public class SystemSettings {
 		} else {
 			throw new FileNotFoundException("property file '" + propFileName + "' not found in the classpath");
 		}
-		System.out.println("dbname:"+dbname);
-		System.out.println("address:"+address);
-		System.out.println("id:"+id);
-		System.out.println("passwd:"+passwd);
+//		System.out.println("dbname:"+dbname);
+//		System.out.println("address:"+address);
+//		System.out.println("id:"+id);
+//		System.out.println("passwd:"+passwd);
 		
 	// get the property value and print it out
 		dbname = prop.getProperty("dbname");
@@ -56,10 +56,10 @@ public class SystemSettings {
 		id = prop.getProperty("id");
 		passwd = prop.getProperty("passwd");
 		
-		System.out.println("dbname:"+dbname);
-		System.out.println("address:"+address);
-		System.out.println("id:"+id);
-		System.out.println("passwd:"+passwd);
+//		System.out.println("dbname:"+dbname);
+//		System.out.println("address:"+address);
+//		System.out.println("id:"+id);
+//		System.out.println("passwd:"+passwd);
 		
 		NLoger.clog("dbname:"+dbname);
 		NLoger.clog("address:"+address);
