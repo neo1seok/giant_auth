@@ -1,6 +1,5 @@
 package giant_auth.auth;
 
-import giant_auth.comm.CMD;
 import giant_auth.comm.Util;
 
 import java.sql.SQLException;

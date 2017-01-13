@@ -112,7 +112,7 @@ public class authServlet extends HttpServlet {
 
 		//String jsonParam = "";
 
-		if(json == null ){
+		if(json.isEmpty() ){
 			out.println("<h1>NFC AUTH TEST</h1>");
 			out.println("NO JSON PARAM!!!!");
 			

@@ -1,6 +1,8 @@
 package giant_auth.comm;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.Map;
 
 import com.neolib.db.DefDbHanlingMySQL;
 import com.neolib.db.DefDbTableHandling;
@@ -38,6 +40,8 @@ public class GiantDbHanlingMySQL extends DefDbHanlingMySQL<TABLE_NAMES>
 
 
 	}
+	
+	
 
 
 }

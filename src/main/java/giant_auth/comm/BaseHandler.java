@@ -94,6 +94,16 @@ public class BaseHandler<T> {
 	
 		return this.sndProto; 
 	}
+	protected String getLatestMasterKey() throws SQLException {
+		//idbHandling.Query("SELECT seq, msk_uid, key_value, version, updt_date, reg_date, comment FROM masterkey order by version desc limit 1;");
+		Map<String, Object> mapRow = getLatestMasterKeyRowMap();
+		return (String) mapRow.get("msk_uid");
+	}
 	
+	protected Map<String, Object> getLatestMasterKeyRowMap() throws SQLException {
+		//idbHandling.Query("SELECT seq, msk_uid, key_value, version, updt_date, reg_date, comment FROM masterkey order by version desc limit 1;");
+		Map<String, Object> mapRow = itableMasterKeyHandler.selectSingleWhere("msk_uid, key_value, version", "order by version desc limit 1");
+		return mapRow;
+	}
 
 }

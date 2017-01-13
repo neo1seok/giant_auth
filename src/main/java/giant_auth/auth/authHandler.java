@@ -1,8 +1,6 @@
 package giant_auth.auth;
 
 import giant_auth.comm.BaseHandler;
-import giant_auth.comm.CMD;
-import giant_auth.comm.ERROR;
 import giant_auth.comm.GiantDbHanlingMySQL;
 import giant_auth.comm.IInvoke;
 import giant_auth.comm.Protocol;
@@ -38,7 +36,7 @@ import com.neolib.db.DefDbTableHandling;
 import com.neolib.db.IDbHanling;
 import com.neolib.db.IDbTableHandling;
 
-public class authHandler extends BaseHandler<CMD> implements iauthHandler {
+public class authHandler extends BaseHandler<AUTH_CMD> implements iauthHandler {
 
 //	interface IInvoke {
 //		void run() throws Exception;
@@ -83,7 +81,7 @@ public class authHandler extends BaseHandler<CMD> implements iauthHandler {
 		NLoger.isSystemConsole = true;
 		
 
-		mapInvoke.put(CMD.REQ_START_SESSION, new IInvoke() {
+		mapInvoke.put(AUTH_CMD.REQ_START_SESSION, new IInvoke() {
 			public void run() throws SQLException {
 				device_msk_uid = "";
 				sn = rcvProto.params.get("sn");
@@ -96,7 +94,7 @@ public class authHandler extends BaseHandler<CMD> implements iauthHandler {
 				Map<String, Object> rowChp = itableChipHandler.selectSingle("sn", sn);
 				if(rowChp == null){
 					sndProto.params.put("result", RESULT.FAIL.toString());
-					sndProto.params.put("error", ERROR.NO_SN.toString());
+					sndProto.params.put("error", AUTH_ERROR.NO_SN.toString());
 					return ;
 				}
 				int slotno = (int) rowChp.get("slot_no");
@@ -107,7 +105,7 @@ public class authHandler extends BaseHandler<CMD> implements iauthHandler {
 				
 				if(msk_uid == null||msk_uid.isEmpty() ){
 					sndProto.params.put("result", RESULT.FAIL.toString());
-					sndProto.params.put("error", ERROR.NO_MASTERKEY.toString());
+					sndProto.params.put("error", AUTH_ERROR.NO_MASTERKEY.toString());
 					return ;
 				}
 				if(masterkey_ver != null){
@@ -148,13 +146,13 @@ public class authHandler extends BaseHandler<CMD> implements iauthHandler {
 		});
 	
 
-		mapInvoke.put(CMD.AUTHENTICATION, new IInvoke() {
+		mapInvoke.put(AUTH_CMD.AUTHENTICATION, new IInvoke() {
 
 
 
 			public void run() throws SQLException, NoSuchAlgorithmException {
 				UpdateDataFromSession();
-				
+				//NLoger.clog("AUTHENTICATION");
 				mac = rcvProto.params.get("mac");
 				
 				sndProto.params.put("update", "");
@@ -167,13 +165,10 @@ public class authHandler extends BaseHandler<CMD> implements iauthHandler {
 		
 				String masterKey = rowMakterKey.get("key_value").toString();
 				derivedkey = Util.DeriveKey(masterKey,sectorID,sn);
-				System.out.println("masterKey:");
-				System.out.println(masterKey);
+				//System.out.println("masterKey:");
+				//System.out.println(masterKey);
 				
-				System.out.println("derivedkey:");
-				
-				System.out.println(derivedkey);
-				
+							
 
 				String calcmac = Util.CalcMAC(derivedkey, challenge, sectorID,sn);
 				
@@ -188,7 +183,7 @@ public class authHandler extends BaseHandler<CMD> implements iauthHandler {
 				String update = "";
 				if (!calcmac.equals(mac))		{
 					sndProto.params.put("result", RESULT.FAIL.toString());
-					sndProto.params.put("error", ERROR.NOT_MATCH_MAC.toString());
+					sndProto.params.put("error", AUTH_ERROR.NOT_MATCH_MAC.toString());
 					return;
 				}
 				
@@ -205,16 +200,20 @@ public class authHandler extends BaseHandler<CMD> implements iauthHandler {
 
 		});
 
-		mapInvoke.put(CMD.REQ_HOSTCHALLENGE, new IInvoke() {
+		mapInvoke.put(AUTH_CMD.REQ_HOSTCHALLENGE, new IInvoke() {
 
 			public void run() throws SQLException {
 				UpdateDataFromSession();
+				hostchallenge = Util.getRand(20);
 				
-				
+				mapArg.clear();
+				mapArg.put("hostchallenge", hostchallenge);
+				itableSessionHandler.Update(ssn_uid, mapArg);
+				NLoger.clog("hostchallenge:{0}",hostchallenge);
 				sndProto.params.put("hostchallenge", hostchallenge);
 			}
 		});
-		mapInvoke.put(CMD.REQ_UPDATEINFO, new IInvoke() {
+		mapInvoke.put(AUTH_CMD.REQ_UPDATEINFO, new IInvoke() {
 
 			public void run() throws SQLException, NoSuchAlgorithmException {
 				UpdateDataFromSession();
@@ -251,6 +250,10 @@ public class authHandler extends BaseHandler<CMD> implements iauthHandler {
 		
 				
 				String mac_write = Util.CalcMAC4WriteCode(keyEnc, newderivedkey,sectorID, sn);
+				
+				NLoger.clog("hostchallenge:{0}",hostchallenge);
+				NLoger.clog("mac_write:{0}",mac_write);
+				
 		
 				
 				if(isDebug){
@@ -297,7 +300,7 @@ public class authHandler extends BaseHandler<CMD> implements iauthHandler {
 		
 			}
 		});
-		mapInvoke.put(CMD.NOTY_UPDATERESULT, new IInvoke() {
+		mapInvoke.put(AUTH_CMD.NOTY_UPDATERESULT, new IInvoke() {
 
 			public void run() throws SQLException {
 				UpdateDataFromSession();
@@ -318,7 +321,7 @@ public class authHandler extends BaseHandler<CMD> implements iauthHandler {
 				
 			}
 		});
-		mapInvoke.put(CMD.REQ_APP_KEY, new IInvoke() {
+		mapInvoke.put(AUTH_CMD.REQ_APP_KEY, new IInvoke() {
 
 			public void run() throws SQLException, NoSuchAlgorithmException {
 				UpdateDataFromSession();
@@ -361,7 +364,7 @@ public class authHandler extends BaseHandler<CMD> implements iauthHandler {
 			}
 		});
 		
-		mapInvoke.put(CMD.NOTY_APPKEYRESULT, new IInvoke() {
+		mapInvoke.put(AUTH_CMD.NOTY_APPKEYRESULT, new IInvoke() {
 
 			public void run() throws SQLException {
 				System.out.println("NOTY_APPKEYRESULT:");
@@ -395,11 +398,11 @@ public class authHandler extends BaseHandler<CMD> implements iauthHandler {
 		idbHandling.open();
 
 	}
-	String getLatestMasterKey() throws SQLException {
-		//idbHandling.Query("SELECT seq, msk_uid, key_value, version, updt_date, reg_date, comment FROM masterkey order by version desc limit 1;");
-		Map<String, Object> mapRow = itableMasterKeyHandler.selectSingleWhere("msk_uid, key_value, version", "order by version desc limit 1");
-		return (String) mapRow.get("msk_uid");
-	}
+//	String getLatestMasterKey() throws SQLException {
+//		//idbHandling.Query("SELECT seq, msk_uid, key_value, version, updt_date, reg_date, comment FROM masterkey order by version desc limit 1;");
+//		Map<String, Object> mapRow = itableMasterKeyHandler.selectSingleWhere("msk_uid, key_value, version", "order by version desc limit 1");
+//		return (String) mapRow.get("msk_uid");
+//	}
 	Map<String, Object> GetUID(RefParam<String> ssn_uid) throws SQLException {
 
 		ssn_uid.value = rcvProto.params.get("uid");
@@ -439,7 +442,7 @@ public class authHandler extends BaseHandler<CMD> implements iauthHandler {
 
 		rcvProto = Protocol.fromJsonString(json);
 
-		CMD cmd = CMD.valueOf(rcvProto.cmd);
+		AUTH_CMD cmd = AUTH_CMD.valueOf(rcvProto.cmd);
 		sndProto = new Protocol();
 
 		sndProto.cmd = rcvProto.cmd;
@@ -550,7 +553,7 @@ public class authHandler extends BaseHandler<CMD> implements iauthHandler {
 
 	}
 
-	public static Protocol SnRTest(iauthHandler iHandler,CMD cmd,Map<String,String> map) throws Exception {
+	public static Protocol SnRTest(iauthHandler iHandler,AUTH_CMD cmd,Map<String,String> map) throws Exception {
 		
 		Protocol protool = new Protocol();
 		protool.cmd = cmd.toString();

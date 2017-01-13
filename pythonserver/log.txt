@@ -1,0 +1,2 @@
+2017-01-13 14:00:05,345 - tcp_giant_auth - DEBUG - HandleServer __init__
+2017-01-13 14:00:05,348 - tcp_giant_auth - DEBUG - waiting

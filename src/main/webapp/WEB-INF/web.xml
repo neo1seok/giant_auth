@@ -53,7 +53,7 @@
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>Admin</servlet-name>
-		<url-pattern>/Admin</url-pattern>
+		<url-pattern>/admin</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>CommSublet</servlet-name>

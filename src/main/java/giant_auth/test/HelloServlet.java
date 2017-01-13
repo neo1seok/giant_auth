@@ -1,6 +1,7 @@
 package giant_auth.test;
 
 
+import giant_auth.auth.AUTH_CMD;
 import giant_auth.comm.*;
 
 import java.sql.*;
@@ -19,7 +20,7 @@ import org.apache.tomcat.util.codec.binary.Base64;
 
 public class HelloServlet extends HttpServlet {
 
-	Map<CMD,Runnable> map = new LinkedHashMap<CMD,Runnable>();
+	Map<AUTH_CMD,Runnable> map = new LinkedHashMap<AUTH_CMD,Runnable>();
 	// JDBC driver name and database URL
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
 	static final String DB_URL = "jdbc:mysql://localhost:3306/giant2";
