@@ -1,0 +1,9 @@
+package giant_auth.Admin;
+
+public enum ADMIN_CMD {
+	INSERT_CHIP,
+	LIST_CHIP,
+	MODIFY_MASTERKEY_CHIP,
+	INSERT_MASTERKEY,
+	LIST_MASTERKEY
+}

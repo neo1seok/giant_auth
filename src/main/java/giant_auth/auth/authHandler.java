@@ -85,7 +85,7 @@ public class authHandler extends BaseHandler<AUTH_CMD> implements iauthHandler {
 			public void run() throws SQLException {
 				device_msk_uid = "";
 				sn = rcvProto.params.get("sn");
-				String masterkey_ver = rcvProto.params.get("masterkey_ver");
+				String key_uid = rcvProto.params.get("key_uid");
 				
 				sndProto.params.put("challenge", Util.ZeroHexStr(32));
 				sndProto.params.put("uid", "");
@@ -97,7 +97,7 @@ public class authHandler extends BaseHandler<AUTH_CMD> implements iauthHandler {
 					sndProto.params.put("error", AUTH_ERROR.NO_SN.toString());
 					return ;
 				}
-				int slotno = (int) rowChp.get("slot_no");
+				//int slotno = (int) rowChp.get("slot_no");
 				msk_uid = (String) rowChp.get("msk_uid");
 				chp_uid = (String) rowChp.get("chp_uid");
 				
@@ -108,8 +108,8 @@ public class authHandler extends BaseHandler<AUTH_CMD> implements iauthHandler {
 					sndProto.params.put("error", AUTH_ERROR.NO_MASTERKEY.toString());
 					return ;
 				}
-				if(masterkey_ver != null){
-					Map<String, Object> rowMasterKey = itableMasterKeyHandler.selectSingleWhere("msk_uid", "where version={0}", masterkey_ver);
+				if(key_uid != null){
+					Map<String, Object> rowMasterKey = itableMasterKeyHandler.selectSingle("msk_"+key_uid);
 					device_msk_uid = rowMasterKey.get("msk_uid").toString();
 				}
 				
