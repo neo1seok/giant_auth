@@ -54,8 +54,9 @@ public class AdminHandler extends BaseHandler<String>   {
 				
 				
 				System.out.println("CMD INSERT_CHIP");
-				
-				Map<String,Object> mapchip = itableChipHandler.selectSingle("sn", rcvProto.params.get("sn"));
+				String sn = rcvProto.params.get("sn");
+						
+				Map<String,Object> mapchip = itableChipHandler.selectSingle("sn",sn );
 				
 				if(mapchip != null ){
 					sndProto.params.put("Result",RESULT.FAIL.toString());
@@ -63,7 +64,7 @@ public class AdminHandler extends BaseHandler<String>   {
 					return ;
 				}
 				
-				String sn = rcvProto.params.get("sn");
+				//String sn = rcvProto.params.get("sn");
 				String msk_uid = getLatestMasterKey() ;
 				
 			

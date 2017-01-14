@@ -68,6 +68,8 @@ public class authHandler extends BaseHandler<AUTH_CMD> implements iauthHandler {
 	private boolean isDebug;
 
 	protected String device_msk_uid;
+
+	private List<Map<String, Object>> listValidKeyList;
 	
 //	String Util.getRand(int size){
 //		byte[] buff = new byte[size];
@@ -151,6 +153,7 @@ public class authHandler extends BaseHandler<AUTH_CMD> implements iauthHandler {
 
 
 			public void run() throws SQLException, NoSuchAlgorithmException {
+				String update = "";
 				UpdateDataFromSession();
 				//NLoger.clog("AUTHENTICATION");
 				mac = rcvProto.params.get("mac");
@@ -160,37 +163,48 @@ public class authHandler extends BaseHandler<AUTH_CMD> implements iauthHandler {
 				
 						
 				
-				Map<String, Object> rowMakterKey = itableMasterKeyHandler.selectSingle(msk_uid);
+//				Map<String, Object> rowMakterKey = itableMasterKeyHandler.selectSingle(msk_uid);
+//				String masterKey = rowMakterKey.get("key_value").toString();
 				
-		
-				String masterKey = rowMakterKey.get("key_value").toString();
-				derivedkey = Util.DeriveKey(masterKey,sectorID,sn);
-				//System.out.println("masterKey:");
-				//System.out.println(masterKey);
+				String valid_msk_uid = FindValidMac(mac,msk_uid,sectorID,sn);
 				
-							
-
-				String calcmac = Util.CalcMAC(derivedkey, challenge, sectorID,sn);
-				
-				NLoger.clog("calcmac:{0}\nmac:{1}", calcmac,mac);
-				lastError = "NOT_MATCH_MAC";
-				
-				if(isDebug){
-					sndProto.params.put("derivedkey", derivedkey);
-					sndProto.params.put("calcmac", calcmac);
-					sndProto.params.put("msk_uid", msk_uid);
-				}
-				String update = "";
-				if (!calcmac.equals(mac))		{
+				if(valid_msk_uid == null){
 					sndProto.params.put("result", RESULT.FAIL.toString());
 					sndProto.params.put("error", AUTH_ERROR.NOT_MATCH_MAC.toString());
-					return;
+					return ;
+
+				}
+//				derivedkey = Util.DeriveKey(masterKey,sectorID,sn);
+//				//System.out.println("masterKey:");
+//				//System.out.println(masterKey);
+//				
+//							
+//
+//				String calcmac = Util.CalcMAC(derivedkey, challenge, sectorID,sn);
+//				
+//				NLoger.clog("calcmac:{0}\nmac:{1}", calcmac,mac);
+//				lastError = "NOT_MATCH_MAC";
+//				
+//	
+//				String update = "";
+//				if (!calcmac.equals(mac))		{
+//					sndProto.params.put("result", RESULT.FAIL.toString());
+//					sndProto.params.put("error", AUTH_ERROR.NOT_MATCH_MAC.toString());
+//					return;
+//				}
+				
+				if(valid_msk_uid != msk_uid){
+					NLoger.clog("MAY NOT UPDATED DB BEFORE");
+					mapArg.clear();
+					mapArg.put("msk_uid", valid_msk_uid);
+					itableChipHandler.Update(chp_uid, mapArg);
+					
 				}
 				
 			
 				
 				
-				if ( !msk_uid.equals(latest_msk_uid)){
+				if ( !valid_msk_uid.equals(latest_msk_uid)){
 					update = "OK";
 					sndProto.params.put("update", "OK");
 				}
@@ -378,7 +392,38 @@ public class authHandler extends BaseHandler<AUTH_CMD> implements iauthHandler {
 	}
 
 
+	String FindValidMac(String mac,String msk_uid,String sectorID, String SN) throws NoSuchAlgorithmException, SQLException{
+		listValidKeyList = idbHandling.Query(String.format("SELECT msk_uid, key_value  FROM giant_auth.masterkey where seq >= (SELECT seq FROM giant_auth.masterkey where msk_uid = '%s') order by seq asc limit 3",msk_uid));
+		for ( Map<String, Object> maprow :listValidKeyList){
+			
+			String masterKey = maprow.get("key_value").toString();
+			msk_uid = maprow.get("msk_uid").toString();
+			
+			String derivedkey = Util.DeriveKey(masterKey,sectorID,sn);
+			
+			String calcmac = Util.CalcMAC(derivedkey, challenge, sectorID,sn);
+			NLoger.clog("calcmac:{0}\nmac:{1}", calcmac,mac);
+			
+			if(isDebug){
+				NLoger.clog("derivedkey:{0}", derivedkey);
+				NLoger.clog("calcmac:{0}", calcmac);
+			}
+			
+			String update = "";
+			if (calcmac.equals(mac))		{
+				return msk_uid;
+			}
+			
+		}
+		
+		//System.out.println("masterKey:");
+		//System.out.println(masterKey);
 
+	
+		
+	
+		return null;
+	}
 	
 
 	Map<String, Object> GetSnFromID(RefParam<String> chp_uid)
@@ -431,6 +476,8 @@ public class authHandler extends BaseHandler<AUTH_CMD> implements iauthHandler {
 		sn = rowChp.get("sn").toString();
 		
 		msk_uid = rowChp.get("msk_uid").toString();
+		
+		
 		
 		
 		
