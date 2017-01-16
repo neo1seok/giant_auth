@@ -198,6 +198,7 @@ public class AdminHandler extends BaseHandler<String>   {
 						
 						sversion = latest_mapMasterKey.get("version").toString();
 						int version = Integer.parseInt(sversion);
+						System.out.println(version);
 						sversion = Integer.toString(version+1);
 					}
 		

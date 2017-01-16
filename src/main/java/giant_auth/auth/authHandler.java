@@ -389,20 +389,58 @@ public class authHandler extends BaseHandler<AUTH_CMD> implements iauthHandler {
 				
 			}
 		});
+		mapInvoke.put(AUTH_CMD.REQ_END_SESSION, new IInvoke() {
+
+			public void run() throws SQLException {
+				System.out.println("REQ_END_SESSION:");
+				ssn_uid = rcvProto.params.get("uid");
+				
+				mapArg.clear();
+				mapArg.put("comment", "SESSION_END");
+			
+				itableSessionHandler.Update(ssn_uid, mapArg);
+				
+				sndProto.params.put("result", "OK");
+				
+				
+			}
+		});
+		
 	}
 
 
 	String FindValidMac(String mac,String msk_uid,String sectorID, String SN) throws NoSuchAlgorithmException, SQLException{
+		listValidKeyList = idbHandling.Query(String.format("SELECT msk_uid, key_value  FROM giant_auth.masterkey ",msk_uid));
+		NLoger.clog("FindValidMac");
+		NLoger.clog("challenge;{0}",challenge);
+		NLoger.clog("mac:{0}",mac);
+		NLoger.clog("msk_uid:{0}",msk_uid);
+		String ret_msk_uid = null;
+		for ( Map<String, Object> maprow :listValidKeyList){
+		
+			  
+			String masterKey = maprow.get("key_value").toString();
+			ret_msk_uid = maprow.get("msk_uid").toString();
+			String derivedkey = Util.DeriveKey(masterKey,sectorID,sn);
+			String calcmac = Util.CalcMAC(derivedkey, challenge, sectorID,sn);
+			NLoger.clog("msk_uid:{0},calcmac:{1}",ret_msk_uid,calcmac);
+//			continue;
+//			if (calcmac.equals(mac))		{
+//				return msk_uid;
+//			}
+			
+		}
 		listValidKeyList = idbHandling.Query(String.format("SELECT msk_uid, key_value  FROM giant_auth.masterkey where seq >= (SELECT seq FROM giant_auth.masterkey where msk_uid = '%s') order by seq asc limit 3",msk_uid));
 		for ( Map<String, Object> maprow :listValidKeyList){
 			
 			String masterKey = maprow.get("key_value").toString();
-			msk_uid = maprow.get("msk_uid").toString();
+			ret_msk_uid = maprow.get("msk_uid").toString();
 			
 			String derivedkey = Util.DeriveKey(masterKey,sectorID,sn);
 			
 			String calcmac = Util.CalcMAC(derivedkey, challenge, sectorID,sn);
-			NLoger.clog("calcmac:{0}\nmac:{1}", calcmac,mac);
+			NLoger.clog("msk_uid:{0},calcmac:{1}",ret_msk_uid,calcmac);
+			//NLoger.clog("calcmac:{0}\nmac:{1}", calcmac,mac);
 			
 			if(isDebug){
 				NLoger.clog("derivedkey:{0}", derivedkey);
@@ -411,7 +449,7 @@ public class authHandler extends BaseHandler<AUTH_CMD> implements iauthHandler {
 			
 			String update = "";
 			if (calcmac.equals(mac))		{
-				return msk_uid;
+				return ret_msk_uid;
 			}
 			
 		}
