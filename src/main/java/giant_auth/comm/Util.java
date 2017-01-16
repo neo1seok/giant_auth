@@ -106,8 +106,8 @@ public class Util {
 	}
 
 	public static String SHA256(String hexdata) throws NoSuchAlgorithmException {
-		System.out.println("shainput");
-		System.out.println(hexdata);
+		//System.out.println("shainput");
+		//System.out.println(hexdata);
 		MessageDigest sh = MessageDigest.getInstance("SHA-256");
 		byte [] input = NeoHexString.HexStrToByteArray(hexdata);
 
@@ -138,7 +138,7 @@ public class Util {
 		return NeoHexString.ByteArrayToHexStr(newCode);
 	}
 	public static String DeriveKey(String MasterKey, String sectorID, String SN){
-		System.out.println("DeriveKey");
+		//System.out.println("DeriveKey");
 		// TODO Auto-generated method stub
 		if (SN.length() != 9 * 2)
 			return "";
@@ -151,7 +151,7 @@ public class Util {
 											// 1);//"EE";
 		
 		
-		shaInput = MasterKey + "1C" + "04" + sectorID+SN8 + SN01 + ZeroHexStr(48)+ SN;
+		shaInput = MasterKey + "1C" + "04" + sectorID+SN8 + SN01 + ZeroHexStr(25)+ SN+ZeroHexStr(23);
 		//String shaInput = MasterKey + "1C" + "04" + p2+SN8 + SN01 + ZeroHexStr(25)+ "128218005836200463B2244ABDF0D470F1395EBB2BAD94E35DCFDE6DD3DCD001";
 		try {
 			return SHA256(shaInput).toUpperCase();
@@ -166,7 +166,7 @@ public class Util {
 	public static String CalcMAC(String key, String strChallenge, String sectorID,String SN)
 			throws NoSuchAlgorithmException {
 		// TODO Auto-generated method stub
-		System.out.println("CalcMAC");
+		//System.out.println("CalcMAC");
 		if (SN.length() != 9 * 2)
 			return "";
 
@@ -183,10 +183,10 @@ public class Util {
 
 		String Zero11 = "0000000000000000000000";
 		
-		NLoger.clog("{0}\n{1}","key",key);
-		NLoger.clog("{0}\n{1}","strChallenge",strChallenge);
-		NLoger.clog("{0}\n{1}","sectorID",sectorID);
-		NLoger.clog("{0}\n{1}","SN",SN);
+		//NLoger.clog("{0}\n{1}","key",key);
+		//NLoger.clog("{0}\n{1}","strChallenge",strChallenge);
+		//NLoger.clog("{0}\n{1}","sectorID",sectorID);
+		//NLoger.clog("{0}\n{1}","SN",SN);
 		
 		
 		shaInput = key + strChallenge + "0840"+sectorID + Zero11 + SN8 + SN47+ SN01 + SN23;

@@ -7,6 +7,7 @@ import socket
 import http.client
 import logging
 import threading
+import errno
 from logging import handlers
 
 # create a socket object
@@ -186,6 +187,15 @@ class HandleClient:
 
 		return b''
 
+	def ReqEndSession(self):
+		self.logger.debug('ReqEndSession')
+
+
+		mapa = {"uid": self.uid}
+		self.cmdname = "REQ_END_SESSION"
+		self.mapSrv = self.reqGet(mapa)
+
+		return b''
 
 	def doProc(self,buff):
 		self.bresult = b'\x00'
@@ -197,12 +207,15 @@ class HandleClient:
 			resdata = processer(data)
 		except IOError as e:
 			self.logger.error("I/O error({0}): {1}".format(e.errno, e.strerror))
+			self.logger.error("Unexpected error:", sys.exc_info()[0])
 			return b''
 		except ValueError:
 			self.logger.error("Could not convert data to an integer.")
+			self.logger.error("Unexpected error:", sys.exc_info()[0])
 			return b''
 		except Exception as ext:
 			self.logger.error("doProc:%s", ext)
+			self.logger.error("Unexpected error:", sys.exc_info()[0])
 			return b''
 		except:
 			self.logger.error("Unexpected error:", sys.exc_info()[0])
@@ -243,9 +256,17 @@ class HandleClient:
 				time.sleep(0.1)
 				self.clientsocket.send(sndbuff)
 				time.sleep(0.1)
-			except Exception as ext:
-				self.logger.error("while")
+			except socket.error as  e:
+				if e.errno == errno.ECONNRESET:
+					# Handle disconnection -- close & reopen socket etc.
+					self.logger.debug("DISCONNECTED")
+					break
 				raise
+
+			except Exception as ext:
+				self.logger.debug("RunClient Exception")
+				self.logger.error(ext)
+				#raise
 				break
 
 		self.conn.close()
@@ -280,19 +301,53 @@ class HandleClient:
 class HandleServer:
 	def __init__(self):
 		# conn = http.client.HTTPConnection('localhost:8080')
-		self.handler = handlers.TimedRotatingFileHandler(filename="log.txt", when='D')
-		self.logger = self.createLogger("tcp_giant_auth", self.handler)
+		#self.handler = handlers.TimedRotatingFileHandler(filename="log.txt", when='D')
+		handler ,ch = self.createHandler("log.txt")
+		self.logger = self.createLogger("tcp_giant_auth")
+		#self.logger2 = self.createLogger("tcp_giant_auth2")
+		self.addHandler(self.logger,handler ,ch )
+		#self.addHandler(self.logger2, handler ,ch )
 		self.logger.debug("%s __init__", self.__class__.__name__)
 
 	# self.conn = http.client.HTTPConnection('localhost:8080')
+	def createHandler(self,filename):
+		handler = handlers.TimedRotatingFileHandler(filename=filename, when='D')
+		ch = logging.StreamHandler()
+		ch.setLevel(logging.DEBUG)
 
+		# create formatter
+		formatter = logging.Formatter('%(relativeCreated)6d %(threadName)s %(asctime)s - %(name)s - %(funcName)s(%(lineno)d) %(levelname)s - %(message)s')
 
-	def createLogger(self, loggename, handler):
+		# add formatter to ch
+		ch.setFormatter(formatter)
+		handler.setFormatter(formatter)
+
+		return  handler,ch
+
+	def addHandler(self,logger,handler ,ch):
+		# handler = handlers.TimedRotatingFileHandler(filename=filename, when='D')
+		# ch = logging.StreamHandler()
+		# ch.setLevel(logging.DEBUG)
+		#
+		# # create formatter
+		# formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+		#
+		# # add formatter to ch
+		# ch.setFormatter(formatter)
+		# handler.setFormatter(formatter)
+
+		logger.addHandler(ch)
+		logger.addHandler(handler)
+		logger.setLevel(logging.DEBUG)
+
+	def createLogger(self, loggename):
 		# handler = handlers.TimedRotatingFileHandler(filename=loggename + ".txt", when='D')
-		self.loggename = loggename
+		#self.loggename = loggename
 		# create logger
-		self.logger = logging.getLogger(loggename)
-		self.logger.setLevel(logging.DEBUG)
+		logger = logging.getLogger(loggename)
+		#self.logger.setLevel(logging.DEBUG)
+
+		return logger
 
 		# create console handler and set level to debug
 		ch = logging.StreamHandler()
@@ -308,12 +363,28 @@ class HandleServer:
 		self.logger.addHandler(ch)
 		self.logger.addHandler(handler)
 		return self.logger
-	def worker(self,clientsocket, addr,idx):
 
-		handleClient = HandleClient(clientsocket,self.logger)
-		handleClient.RunClient();
+	def setLogger(self,loggename):
+		self.loggename = loggename
+		# create logger
+		self.logger = logging.getLogger(loggename)
+		self.logger.setLevel(logging.DEBUG)
+
+
+	def worker(self,clientsocket, addr,idx):
+		self.logger.debug("START CLIENT HANDLER")
+		try:
+			handleClient = HandleClient(clientsocket,self.logger)
+			handleClient.RunClient();
+
+		except Exception as e:
+			self.logger.error(e)
+			self.logger.error(sys.exc_info()[0])
+
+		self.threads[idx]
 		del (self.threads[idx])
-		self.clientsocket.close()
+		clientsocket.close()
+		self.logger.debug("END CLIENT HANDLER")
 		#self.threads.remove(t)
 
 
@@ -331,21 +402,27 @@ class HandleServer:
 		host = '0.0.0.0'
 		port = 5510
 		# bind to the port
-		serversocket.bind((host, port))
-		# queue up to 5 requests
-		serversocket.listen(50)
+		try:
+			serversocket.bind((host, port))
+			# queue up to 5 requests
+			serversocket.listen(50)
 
-		while True:
-			# establish a connection
-			self.logger.debug('waiting')
-			self.clientsocket, addr = serversocket.accept()
-			#handle = HandleClient()
-			self.logger.debug("Got a connection from %s , thread num:%d" % (str(addr),len(self.threads)+1))
-			t = threading.Thread(target=self.worker,args= (self.clientsocket, addr,idx))
-			self.logger.debug(t)
-			self.threads[idx]= t
-			t.start()
-			idx += 1
+			while True:
+				# establish a connection
+				self.logger.debug('LISTENING to CLIENT')
+				self.clientsocket, addr = serversocket.accept()
+				#handle = HandleClient()
+				self.logger.debug("Got a connection from %s , thread num:%d" % (str(addr),len(self.threads)+1))
+				t = threading.Thread(target=self.worker,args= (self.clientsocket, addr,idx))
+
+				self.logger.debug(t)
+				self.threads[idx]= t
+				t.start()
+				idx += 1
+		except Exception as e:
+			self.logger.error(e)
+			self.logger.error(sys.exc_info()[0])
+
 
 #HandleClient().Test()
 #HandleClient().RunServer()
