@@ -44,12 +44,11 @@
 			<groupId>neo1seok.pe</groupId>
 			<artifactId>neoLib</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-			<scope>compile</scope>
 		</dependency>
 
 
 	</dependencies>
 	<build>
-		<finalName>giant2Auth</finalName>
+		<finalName>giant_auth</finalName>
 	</build>
 </project>

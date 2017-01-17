@@ -24,7 +24,7 @@ import com.neolib.db.IDbHanling;
 /**
  * Servlet implementation class AdminServlet
  */
-public class AdminServlet extends HttpServlet {
+public class adminServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	
@@ -34,7 +34,7 @@ public class AdminServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminServlet() {
+    public adminServlet() {
         super();
         
         System.out.println("AdminServlet");;
@@ -78,7 +78,7 @@ public class AdminServlet extends HttpServlet {
 		out.println("<a href=\"javascript:history.back()\">Go Back</a>");
 	}
 	protected String Process(HttpServletRequest request, HttpServletResponse response) throws Exception{
-		AdminHandler adminHanlder = new AdminHandler();
+		adminHandler adminHanlder = new adminHandler();
 		adminHanlder.Open();
 		PrintWriter out = response.getWriter();
 		

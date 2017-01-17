@@ -189,8 +189,6 @@ class HandleClient:
 
 	def ReqEndSession(self):
 		self.logger.debug('ReqEndSession')
-
-
 		mapa = {"uid": self.uid}
 		self.cmdname = "REQ_END_SESSION"
 		self.mapSrv = self.reqGet(mapa)
@@ -300,13 +298,10 @@ class HandleClient:
 
 class HandleServer:
 	def __init__(self):
-		# conn = http.client.HTTPConnection('localhost:8080')
-		#self.handler = handlers.TimedRotatingFileHandler(filename="log.txt", when='D')
 		handler ,ch = self.createHandler("log.txt")
 		self.logger = self.createLogger("tcp_giant_auth")
-		#self.logger2 = self.createLogger("tcp_giant_auth2")
+
 		self.addHandler(self.logger,handler ,ch )
-		#self.addHandler(self.logger2, handler ,ch )
 		self.logger.debug("%s __init__", self.__class__.__name__)
 
 	# self.conn = http.client.HTTPConnection('localhost:8080')
@@ -325,44 +320,17 @@ class HandleServer:
 		return  handler,ch
 
 	def addHandler(self,logger,handler ,ch):
-		# handler = handlers.TimedRotatingFileHandler(filename=filename, when='D')
-		# ch = logging.StreamHandler()
-		# ch.setLevel(logging.DEBUG)
-		#
-		# # create formatter
-		# formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-		#
-		# # add formatter to ch
-		# ch.setFormatter(formatter)
-		# handler.setFormatter(formatter)
+
 
 		logger.addHandler(ch)
 		logger.addHandler(handler)
 		logger.setLevel(logging.DEBUG)
 
 	def createLogger(self, loggename):
-		# handler = handlers.TimedRotatingFileHandler(filename=loggename + ".txt", when='D')
-		#self.loggename = loggename
-		# create logger
 		logger = logging.getLogger(loggename)
-		#self.logger.setLevel(logging.DEBUG)
-
 		return logger
 
-		# create console handler and set level to debug
-		ch = logging.StreamHandler()
-		ch.setLevel(logging.DEBUG)
 
-		# create formatter
-		formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-
-		# add formatter to ch
-		ch.setFormatter(formatter)
-		handler.setFormatter(formatter)
-		# add ch to logger
-		self.logger.addHandler(ch)
-		self.logger.addHandler(handler)
-		return self.logger
 
 	def setLogger(self,loggename):
 		self.loggename = loggename
@@ -373,19 +341,20 @@ class HandleServer:
 
 	def worker(self,clientsocket, addr,idx):
 		self.logger.debug("START CLIENT HANDLER")
+		handleClient = HandleClient(clientsocket, self.logger)
 		try:
-			handleClient = HandleClient(clientsocket,self.logger)
+
 			handleClient.RunClient();
 
 		except Exception as e:
 			self.logger.error(e)
 			self.logger.error(sys.exc_info()[0])
-
+		handleClient.ReqEndSession();
 		self.threads[idx]
 		del (self.threads[idx])
 		clientsocket.close()
 		self.logger.debug("END CLIENT HANDLER")
-		#self.threads.remove(t)
+
 
 
 

@@ -33,7 +33,7 @@
 		<servlet-name>Admin</servlet-name>
 		<display-name>Admin</display-name>
 		<description></description>
-		<servlet-class>giant_auth.Admin.AdminServlet</servlet-class>
+		<servlet-class>giant_auth.Admin.adminServlet</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>CommSublet</servlet-name>

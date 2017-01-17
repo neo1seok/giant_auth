@@ -43,12 +43,6 @@ public class CommPageInfo {
 		super();
 		System.out.println("CommPageInfo");
 		
-		mapTitle.put("updateproduct.jsp","제품 입력");
-		mapTitle.put("updatechip.jsp","칩 정보 입력");
-		mapTitle.put("modifyproduct.jsp","제품 정보 수정");
-		
-		
-		
 		
 		mapKeyType.put("chip_key","칩 개별 인증");
 		mapKeyType.put("mstr_key","마스터키사용");

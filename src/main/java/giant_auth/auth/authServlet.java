@@ -30,21 +30,21 @@ public class authServlet extends HttpServlet {
     }
     boolean isDebug = false;
     
-    private static final String KALIMAH2 = "\u0644\u064e\u0622 \u0625\u0650\u0644\u0670\u0647\u064e \u0625\u0650\u0644\u0651\u064e\u0627 \u0627\u0644\u0644\u0647\u064f \u0645\u064f\u062d\u064e\u0645\u0651\u064e\u062f\u064c \u0631\u0651\u064e\u0633\u064f\u0648\u0652\u0644\u064f \u0627\u0644\u0644\u0647\u0650";
-    private static final String KALIMAH = "Å×½ºÆ®";
+//    private static final String KALIMAH2 = "\u0644\u064e\u0622 \u0625\u0650\u0644\u0670\u0647\u064e \u0625\u0650\u0644\u0651\u064e\u0627 \u0627\u0644\u0644\u0647\u064f \u0645\u064f\u062d\u064e\u0645\u0651\u064e\u062f\u064c \u0631\u0651\u064e\u0633\u064f\u0648\u0652\u0644\u064f \u0627\u0644\u0644\u0647\u0650";
+//    private static final String KALIMAH = "Å×½ºÆ®";
 
-    protected void printGreeting (HttpServletResponse res) throws IOException {
-    	res.setContentType("text/html;charset=utf-8"); //ÇÑ±Û±úÁü¹æÁö
-        res.setCharacterEncoding( "utf-8" );
-        PrintWriter out = res.getWriter();
-        
-        
-          
-        out.write( KALIMAH );
-        out.close();
-    }
+//    protected void printGreeting (HttpServletResponse res) throws IOException {
+//    	res.setContentType("text/html;charset=utf-8"); //ÇÑ±Û±úÁü¹æÁö
+//        res.setCharacterEncoding( "utf-8" );
+//        PrintWriter out = res.getWriter();
+//        
+//        
+//          
+//        //out.write( KALIMAH );
+//        out.close();
+//    }
     
-    void doAuth(HttpServletRequest request, HttpServletResponse response) throws Exception{
+    synchronized void doAuth(HttpServletRequest request, HttpServletResponse response) throws Exception{
     	String ipAddress =  request.getRemoteAddr();
     	int port = request.getRemotePort();
     	
@@ -84,57 +84,26 @@ public class authServlet extends HttpServlet {
 		if(debug == null){
 			debug = "";
 		}
-//
-//		if( cmd == null){
-//			out.println("<h1>NFC AUTH TEST</h1>");
-//			out.println("NO JSON PARAM!!!!");
-//			
-//			printGreeting(response);
-//			return;
-//		}
 		if(debug != null && type.equals("true")){
 			
 			isDebug = true;
-			nfcAuthHandler.SetDebug(isDebug);
+			nfcAuthHandler.setDebug(isDebug);
 			
 		}
-//		if(cmd.equals("CMDTEST_COMPRESS") || cmd.equals("CMDTEST")){
-//			Protocol protocol = new Protocol();
-//			
-//			resjson = protocol.toJsonString() ;
-//			
-//			if(cmd.equals("CMDTEST_COMPRESS")) resjson = Util.compressURL(resjson); 
-//			out.println(resjson);
-//			
-//			return;
-//			
-//		}
-
-		//String jsonParam = "";
 
 		if(json.isEmpty() ){
 			out.println("<h1>NFC AUTH TEST</h1>");
 			out.println("NO JSON PARAM!!!!");
 			
-			printGreeting(response);
+			//#printGreeting(response);
 			return;
 		}
+	
+		resjson = nfcAuthHandler.doRunByJson(json);
 		
-		//System.out.println(cmd);
-		
-		if( type.equals("compressed")){
-			resjson = nfcAuthHandler.doRunByCompressed(json);
-								
-		}
-		else{
-			resjson = nfcAuthHandler.doRunByJson(json);
-//			out.println("<h1>NFC AUTH TEST</h1>");
-//			out.println("<h2>NO COMMAND</h2>");
-			
-		}
 		
 		System.out.println(json);
-		
+		nfcAuthHandler.endRun();
 		out.print(resjson);
     }
 

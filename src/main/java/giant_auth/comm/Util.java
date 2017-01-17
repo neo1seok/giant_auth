@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.CharBuffer;
@@ -306,9 +307,10 @@ String SN8 = HexStrSubStr(SN, 8, 1);// SN.Substring(2 * 8, 2 *
 	}
  
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws UnsupportedEncodingException {
 		// TODO Auto-generated method stub
 		
+		System.out.println(NeoHexString.HexStringToText("313131"));
 		shortTobyte((short)15,ByteOrder.LITTLE_ENDIAN);
 		
 		System.exit(0);
@@ -324,6 +326,7 @@ String SN8 = HexStrSubStr(SN, 8, 1);// SN.Substring(2 * 8, 2 *
 		String refdfasfsf = "H4sIAHqgbFcC_x2MMQ-CMBBG_wq52aG96xXqVtpewgBGjK7EoJsYI9GF8N-lTt_Le8m3wHR9fS_Xx-cO-2KB1odtQSlk8R5rVtaL6JqdmDImUWhKJG2FWGNpMEZTYWXJkZPgyLJhFYOBXQGn7v-kkVh5z4SaSudSyu3cxBzn-TlUBtbNjO9R2-xyHqdbxj4dh3DopOlbWH8vnpamqgAAAA==";
 
 		try {
+			
 			System.out.println(refstr);
 			System.out.println(NeoHexString.TextToHexString(refstr));
 			Protocol sadfsadf0 = Protocol.fromJsonString(refstr);

@@ -10,9 +10,9 @@ public interface iauthHandler {
 	
 	void InitRun() throws Exception;
 	String doRunByJson(String json) throws Exception;
-	String doRunByCompressed(String compressedJsonBase64) throws Exception;
 	void endRun() throws Exception;
 	void setAddress(String ipAddress, int port);
+	void setDebug(boolean isDebug);
 	
 
 }

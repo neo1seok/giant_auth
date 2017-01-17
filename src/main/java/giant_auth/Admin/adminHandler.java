@@ -1,11 +1,10 @@
 package giant_auth.Admin;
 
-import giant_auth.comm.AES_Secure;
+
 import giant_auth.comm.BaseHandler;
 import giant_auth.comm.IInvoke;
 import giant_auth.comm.Protocol;
 import giant_auth.comm.RESULT;
-import giant_auth.comm.SecureInfo;
 import giant_auth.comm.TABLE_NAMES;
 import giant_auth.comm.Util;
 
@@ -26,28 +25,19 @@ import com.neolib.Util.NLoger;
 import com.neolib.Util.NeoHexString;
 import com.neolib.db.IDbTableHandling;
 
-public class AdminHandler extends BaseHandler<String>   {
+public class adminHandler extends BaseHandler<String>   {
 	
 	
-	 private static final Logger logger = Logger.getLogger(AdminHandler.class.getName());
+	 private static final Logger logger = Logger.getLogger(adminHandler.class.getName());
 		
 	List<Map<String, Object>> productInfo;
 
-	private AES_Secure aesSecure;
+	//private AES_Secure aesSecure;
 	
 	
-	public AdminHandler() {
+	public adminHandler() {
 		super();
 		
-		aesSecure = new AES_Secure(SecureInfo.dbCryptoKey);
-
-		// TODO Auto-generated constructor stub
-		/*
-		String prd_name = request.getParameter("prd_name");
-		String sn = request.getParameter("sn");
-		String prod_info = request.getParameter("prod_info");
-		String prd_url = request.getParameter("prd_url");
-		 * */
 		
 		mapInvoke.put(ADMIN_CMD.INSERT_CHIP.toString(), new IInvoke() {
 			public void run() throws SQLException, NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {
@@ -269,7 +259,7 @@ public class AdminHandler extends BaseHandler<String>   {
 	
 	public static void main(String[] args) {
 		
-		AdminHandler adminHandler = new AdminHandler();
+		adminHandler adminHandler = new adminHandler();
 		adminHandler.Open();
 		//String w = adminHandler.queryProuductInfo();
 		adminHandler.Close();
