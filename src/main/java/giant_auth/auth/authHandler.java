@@ -42,13 +42,19 @@ import com.neolib.db.IDbTableHandling;
 * @FileName : authHandler.java
 * @Project : giant_auth
 * @Date : 2017. 1. 17.
-* @ÀÛ¼ºÀÚ : neo1seok
-* @ÇÁ·Î±×·¥ ¼³¸í :
+* @author : neo1seok
+* @í”„ë¡œê·¸ë¨ ì„¤ëª… :
 * This class is Handler that create sessions ,do authentication,make encrypted msg.
 * Usually needed data is saved mysql db.
 * authSublet use this class when be requested by clients(pos/get by http protocol) 
 * mapInvoke is map object have main processor by mapping.
-* At mapInvoke, key is command string,value is process 
+* At mapInvoke, key is command ,value is process 
+* 
+* ì´ í´ë˜ìŠ¤ëŠ” ì„¸ì…˜ì„ ìƒì„±,ì¸ì¦ì„ ì‹¤í–‰,ë©”ì‹œì§€ë¥¼ ì•”í˜¸í™” í•˜ëŠ” í•¸ë“¤ëŸ¬ ì´ë‹¤.
+* ë³´í†µ í•„ìš”í•œ ë°ì´í„°ëŠ” my sql db ì— ì €ì¥ëœë‹¤.
+* í´ë¼ì´ì–¸íŠ¸ì˜ ìš”ì²­ì´ ìˆì„ ë•Œ authSubletì´ ì´ í´ë˜ìŠ¤ë¥¼ ì´ìš©í•œë‹¤.
+* mapInvokeëŠ” map ì˜¤ë¸Œì íŠ¸ ì´ê³  , ê° í”„ë¡œì„¸ì„œë¡œ ë§¤í•‘ëœë‹¤.
+*  mapInvoke ì—ì„œ í‚¤ëŠ” ì»¤ë§¨ë“œì´ê³ ,ê°’ì€ ê° í”„ë¡œì„¸ì„œ ì´ë‹¤. 
  */
 public class authHandler extends BaseHandler<AUTH_CMD> implements iauthHandler {
 
@@ -98,6 +104,9 @@ public class authHandler extends BaseHandler<AUTH_CMD> implements iauthHandler {
 		mapInvoke.put(AUTH_CMD.REQ_APP_KEY, invokeReqAppKey);
 		mapInvoke.put(AUTH_CMD.NOTY_APPKEYRESULT, invokeNotyAppkeyresult);
 		mapInvoke.put(AUTH_CMD.REQ_END_SESSION, invokeReqEndSession);
+		// neo1seok 2017.01.17 : mapInvoke ì— í”„ë¡œì„¸ì„œë¥¼ ë§¤í•‘í•œë‹¤.
+		//neo1seok 2017.01.17 :Maps the processor to mapInvoke.
+
 
 	
 	}
@@ -106,26 +115,40 @@ public class authHandler extends BaseHandler<AUTH_CMD> implements iauthHandler {
 	
 	/**
 	* @Name : invokeReqStartSessionIInvoke
-	* @ÀÛ¼ºÀÏ : 2017. 1. 17.
-	* @ÀÛ¼ºÀÚ : neo1seok
-	* @¼³¸í :
-	* REQ_START_SESSION ¿¡ ´ëÇÑ ¸í·ÉÀ» ½ÇÇà ÇÏ´Â ÇÔ¼ö
-	* session À» ½ÃÀÛ ÇÏ°í challenge °ªÀ» ¸®ÅÏ ÇÏ´Â ÇÁ·Î¼¼½º
-	* snÀ» Àü´Ş ¹Ş¾Æ¼­ db¿¡¼­ masterkey¿¡ ´ëÇÑ Á¤º¸¸¦ ¾ò¾î¿À°í,
-	* db¿¡ ¼¼¼Ç Á¤º¸¸¦ »ı¼º ÇÑ ÈÄ ÇÊ¿äÇÑ °ªÀ» ÀúÀå ÇÑ´Ù. 
+	* @date : 2017. 1. 17.
+	* @author : neo1seok
+	* @explain :
+	* REQ_START_SESSION ì— ëŒ€í•œ ëª…ë ¹ì„ ì‹¤í–‰ í•˜ëŠ” í”„ë¡œì„¸ìŠ¤
+	* session ì„ ì‹œì‘ í•˜ê³  challenge ê°’ì„ ë¦¬í„´í•œë‹¤.
+	* snì„ ì „ë‹¬ ë°›ì•„ì„œ dbì—ì„œ masterkeyì— ëŒ€í•œ ì •ë³´ë¥¼ ì–»ì–´ì˜¤ê³ ,
+	* dbì— ì„¸ì…˜ ì •ë³´ë¥¼ ìƒì„± í•œ í›„ í•„ìš”í•œ ê°’ì„ ì €ì¥ í•œë‹¤. 
+	* 
+	* 
+	* Process that execute commands for REQ_START_SESSION
+	*  starts session and returns a challenge value
+	* Sn to get information about masterkey in db,
+	* Create the session information in db and store the required value.
+	* 
 	*/
 	IInvoke invokeReqStartSession = new IInvoke() {
 		public void run() throws Exception {
 			device_msk_uid = "";
 			sn = rcvProto.params.get("sn");
-			String key_uid = rcvProto.params.get("key_uid");
+			// neo1seok 2017.01.17 :ìš”ì²­ê°’ìœ¼ë¡œ ë¶€í„° snì„ ì–»ì–´ì˜¨ë‹¤. 
+			// Retrieves sn from the request value.			
+
+			//
 			
 			sndProto.params.put("challenge", Util.ZeroHexStr(32));
 			sndProto.params.put("uid", "");
-			
-			
+			// neo1seok 2017.01.17 : ì‘ë‹µ ê°’ì´ ì¡´ì¬ í•´ì•¼ í•˜ê¸° ë•Œë¬¸ì— ì„¤ì •í•¨
+			//Set because response value must exist.
+
+
 			Map<String, Object> rowChp = itableChipHandler.selectSingle("sn", sn);
-			if(rowChp == null){
+			if(rowChp == null)// neo1seok 2017.01.17 :sn ì´ ì—†ëŠ” ê²½ìš° 
+				//If there is no sn
+			{
 				sndProto.params.put("result", RESULT.FAIL.toString());
 				sndProto.params.put("error", AUTH_ERROR.NO_SN.toString());
 				return ;
@@ -136,33 +159,34 @@ public class authHandler extends BaseHandler<AUTH_CMD> implements iauthHandler {
 			
 			
 			
-			if(msk_uid == null||msk_uid.isEmpty() ){
+			if(msk_uid == null||msk_uid.isEmpty() )// neo1seok 2017.01.17 : master Keyê°€ ì„¤ì • ì•ˆëœ ê²½ìš°  
+				//If Master Key is not set
+			{
 				sndProto.params.put("result", RESULT.FAIL.toString());
 				sndProto.params.put("error", AUTH_ERROR.NO_MASTERKEY.toString());
 				return ;
 			}
-			if(key_uid != null){
-				Map<String, Object> rowMasterKey = itableMasterKeyHandler.selectSingle("msk_"+key_uid);
-				device_msk_uid = rowMasterKey.get("msk_uid").toString();
-			}
 			
 			
 			
 			
-			latest_msk_uid = getLatestMasterKey();
-			challenge = Util.getRand(32);
-			hostchallenge = Util.getRand(20);
+			latest_msk_uid = getLatestMasterKey();// neo1seok 2017.01.17 : ìµœì‹  ë§ˆìŠ¤í„° í‚¤ë¥¼ êµ¬í•œë‹¤.
+			//Obtain the latest master key.
+
+			
+			challenge = Util.getRand(32);// neo1seok 2017.01.17 :challenge ê°’ ìƒì„± 
+			//Generate challenge value
+			hostchallenge = Util.ZeroHexStr(20);//Util.getRand(20);
+			
 			mapArg.clear();
-			
-			
 			mapArg.put("chp_uid", chp_uid);
 			mapArg.put("challenge", challenge);
 			mapArg.put("hostchallenge", hostchallenge);
 			mapArg.put("msk_uid", device_msk_uid);
 			mapArg.put("latest_msk_uid", latest_msk_uid);
 			mapArg.put("comment", "SESSION_START");
-			//mapArg.put("sn", sn);
-			
+			 
+		
 			Log("TEST");
 			
 			for(Entry<String, String> tmp : mapArg.entrySet()){
@@ -170,48 +194,73 @@ public class authHandler extends BaseHandler<AUTH_CMD> implements iauthHandler {
 			}
 
 			int cfmseq = itableSessionHandler.Insert(mapArg);
+			// neo1seok 2017.01.17 :ì„¸ì…˜ ì •ë³´ë¥¼ dbì— ì…ë ¥ í•œë‹¤.
+			//Insert session information in db.
+			
 			Map<String, Object> dataRowSession = itableSessionHandler.selectSingle(cfmseq);
 			ssn_uid = dataRowSession.get("ssn_uid").toString();
 			
 			sndProto.params.put("challenge", challenge);
 			sndProto.params.put("uid", ssn_uid);
+			// neo1seok 2017.01.17 : challenge ê°’ê³¼ ì„¸ì…˜ uid ë¥¼ ë¦¬í„´ê°’ìœ¼ë¡œ ì„¤ì •
+			//Set the challenge value and the session uid as return values
+
 		}
 	};
 	
 
 	/**
 	* @Name : invokeAuthenticationIInvoke
-	* @ÀÛ¼ºÀÏ : 2017. 1. 17.
-	* @ÀÛ¼ºÀÚ : neo1seok
-	* @¼³¸í :
-	* AUTHENTICATION ¿¡ ´ëÇÑ ¸í·ÉÀ» ½ÇÇàÇÏ´Â ÇÁ·Î¼¼½º
-	* Àü´Ş ¹ŞÀº mac °ª°ú 
-	* ÀúÀåµÈ session Á¤º¸¿¡¼­ ¹ŞÀº  challenge°ª sn°ªÀ» ¹ÙÅÁÀ¸·Î mac°ªÀ» ºñ±³ÇÏ°í 
-	* Àü´Ş¹ŞÀº mac°ªÀ» ºñ±³ÇÏ´Â ¹æ½ÄÀ¸·Î ÀÎÁõÀ» ÇÑ´Ù.  
-	* ÀÎÁõ ÇÑÈÄ ÃÖ½Å ¾÷µ¥ÀÌÆ®µÈ ¸¶½ºÅÍ Å°°¡ Á¸ÀçÇÒ °æ¿ì Update ¸¦ OK·Î ¼³Á¤ÇÏ¿© 
-	* ¾÷µ¥ÀÌÆ®¸¦ ÇÑ´Ù.
+	* @date : 2017. 1. 17.
+	* @author : neo1seok
+	* @explain :
+	* 
+	* AUTHENTICATION ì— ëŒ€í•œ ëª…ë ¹ì„ ì‹¤í–‰í•˜ëŠ” í”„ë¡œì„¸ìŠ¤
+	* ì „ë‹¬ ë°›ì€ mac ê°’ê³¼ 
+	* ì €ì¥ëœ session ì •ë³´ì—ì„œ ë°›ì€  challengeê°’ snê°’ì„ ë°”íƒ•ìœ¼ë¡œ macê°’ì„ ë¹„êµí•˜ê³  
+	* ì „ë‹¬ë°›ì€ macê°’ì„ ë¹„êµí•˜ëŠ” ë°©ì‹ìœ¼ë¡œ ì¸ì¦ì„ í•œë‹¤.  
+	* ì¸ì¦ í•œí›„ ìµœì‹  ì—…ë°ì´íŠ¸ëœ ë§ˆìŠ¤í„° í‚¤ê°€ ì¡´ì¬í•  ê²½ìš° Update ë¥¼ OKë¡œ ì„¤ì •í•˜ì—¬ 
+	* ì—…ë°ì´íŠ¸ë¥¼ í•œë‹¤.
+	* 
+	* 
+	* Process for excute commands for AUTHENTICATION
+	* The value of mac delivered
+	* Compare the mac values â€‹â€‹based on the challenge value sn value received from the stored session information
+	* Authentication is performed by comparing the mac values â€‹â€‹received.
+	* If the latest updated master key exists after authentication, set Update to OK
+	* Update.
 	*/
 	IInvoke invokeAuthentication = new IInvoke() {
 
 		public void run() throws Exception {
 			String update = "";
-			UpdateDataFromSession();
-			//NLoger.clog("AUTHENTICATION");
-			mac = rcvProto.params.get("mac");
+			UpdateDataFromSession();// neo1seok 2017.01.17 :ì„¸ì…˜uidë¡œë¶€í„° í•„ìš”í•œ ê°’ì„ í•„ë“œì— ì—…ë°ì´íŠ¸ 
+			//Update required fields from session uid to field
 			
-			sndProto.params.put("update", "");
+			mac = rcvProto.params.get("mac");		// neo1seok 2017.01.17 :ìš”ì²­ìœ¼ë¡œ ë¶€í„° macê°’ì„ ê°€ì ¸ì˜¨ë‹¤. 
+			//Get the mac value from the request.
+			
+			sndProto.params.put("update", "");// neo1seok 2017.01.17 : ì‘ë‹µ ê°’ì„ ì„¤ì •í•œë‹¤. 
+			//Set the response value.
+
 			
 			
-			String valid_msk_uid = FindValidMac(mac,msk_uid,sectorID,sn);
+			String valid_msk_uid = FindValidMac(mac,msk_uid,sectorID,sn);// neo1seok 2017.01.17 : mac ê°’ìœ¼ë¡œ dbë‚´ì—ì„œ ê³„ì‚°í•´ì„œ  ë§ˆìŠ¤í„°í‚¤ë¥¼ ì‘ë‹µí•œë‹¤.
+			//Computes in db as a mac value and responds to the master key.
+
 			
-			if(valid_msk_uid == null){
+			if(valid_msk_uid == null)// neo1seok 2017.01.17 : ë§¥ê°’ì„ ëª»ì°¾ì•˜ì„ ë•Œ  
+				//When the mac value is not found
+			{
 				sndProto.params.put("result", RESULT.FAIL.toString());
 				sndProto.params.put("error", AUTH_ERROR.NOT_MATCH_MAC.toString());
 				return ;
 
 			}
 			
-			if(valid_msk_uid != msk_uid){
+			if(valid_msk_uid != msk_uid)// neo1seok 2017.01.17 :dbì— ì í˜€ ìˆëŠ” ê°’ê³¼ ì‹¤ì œ ì¹©ì— ë“¤ì–´ ìˆëŠ” ê°’ì´ ë‹¤ë¥¼ ë•Œ
+				// When the value written in db differs from the value contained in the actual chip
+			{
 				NLoger.clog("MAY NOT UPDATED DB BEFORE");
 				mapArg.clear();
 				mapArg.put("msk_uid", valid_msk_uid);
@@ -222,7 +271,9 @@ public class authHandler extends BaseHandler<AUTH_CMD> implements iauthHandler {
 		
 			
 			
-			if ( !valid_msk_uid.equals(latest_msk_uid)){
+			if ( !valid_msk_uid.equals(latest_msk_uid))// neo1seok 2017.01.17 :Update ê°€ í•„ìš”í•œ ê²½ìš°  
+				//	If you need an update
+			{
 				update = "OK";
 				sndProto.params.put("update", "OK");
 			}
@@ -232,70 +283,85 @@ public class authHandler extends BaseHandler<AUTH_CMD> implements iauthHandler {
 	
 	/**
 	* @Name : invokeReqHostchallengeIInvoke
-	* @ÀÛ¼ºÀÏ : 2017. 1. 17.
-	* @ÀÛ¼ºÀÚ : neo1seok
-	* @¼³¸í :
-	* REQ_HOSTCHALLENGE ¿¡ ´ëÇÑ ¸í·ÉÀ» ½ÇÇàÇÏ´Â ÇÁ·Î¼¼½º
-	* hostchallenge °ªÀ» ¸®ÅÏÇÑ´Ù.	* 
+	* @date : 2017. 1. 17.
+	* @author : neo1seok
+	* @explain :
+	* REQ_HOSTCHALLENGE ì— ëŒ€í•œ ëª…ë ¹ì„ ì‹¤í–‰í•˜ëŠ” í”„ë¡œì„¸ìŠ¤
+	* hostchallenge ê°’ì„ ë¦¬í„´í•œë‹¤.	*
+	* 
+	*  
+	* The process that executes the command for REQ_HOSTCHALLENGE
+	* Returns hostchallenge value. 
 	*/
 	private IInvoke invokeReqHostchallenge = new IInvoke() {
 		public void run() throws Exception {
-			UpdateDataFromSession();
-			hostchallenge = Util.getRand(20);
+			UpdateDataFromSession();// neo1seok 2017.01.17 :ì„¸ì…˜uidë¡œë¶€í„° í•„ìš”í•œ ê°’ì„ í•„ë“œì— ì—…ë°ì´íŠ¸
+			//Update required fields from session uid to field
+			hostchallenge = Util.getRand(20);// neo1seok 2017.01.17 : hostchallenge ê°’ì„ ìƒì„± í•œë‹¤.
+			//Create a hostchallenge value.
+
 			
 			mapArg.clear();
 			mapArg.put("hostchallenge", hostchallenge);
-			itableSessionHandler.Update(ssn_uid, mapArg);
+			itableSessionHandler.Update(ssn_uid, mapArg);// neo1seok 2017.01.17 :dbì¤‘ ì„¸ì…˜ì— ì ëŠ”ë‹¤. 
+			//	Write to the session in db.
+
+			
 			NLoger.clog("hostchallenge:{0}",hostchallenge);
-			sndProto.params.put("hostchallenge", hostchallenge);
+			sndProto.params.put("hostchallenge", hostchallenge);// neo1seok 2017.01.17 :ì‘ë‹µ ê°’ì— ì„¤ì •í•œë‹¤. 
+			//	Set to the response value.
+
 		}
 	};
 	
 	/**
 	* @Name : invokeReqUpdateinfoIInvoke
-	* @ÀÛ¼ºÀÏ : 2017. 1. 17.
-	* @ÀÛ¼ºÀÚ : neo1seok
-	* @¼³¸í :
-	* REQ_UPDATEINFO ¿¡ ´ëÇÑ ¸í·ÉÀ» ½ÇÇàÇÏ´Â ÇÁ·Î¼¼½º
-	* »õ·Î¿î ¸¶½ºÅÍ Å°¸¦ µğ¹ÙÀÌ½º¿¡ ÀÔ·ÂÇÏ±â À§ÇÑ WRITE CODE¿Í
-	* MACÀ» ¸®ÅÏ ÇÏ´Â ÇÁ·Î¼¼½º
+	* @date : 2017. 1. 17.
+	* @author : neo1seok
+	* @explain :
+	* REQ_UPDATEINFO ì— ëŒ€í•œ ëª…ë ¹ì„ ì‹¤í–‰í•˜ëŠ” í”„ë¡œì„¸ìŠ¤
+	* ìƒˆë¡œìš´ ë§ˆìŠ¤í„° í‚¤ë¥¼ ë””ë°”ì´ìŠ¤ì— ì…ë ¥í•˜ê¸° ìœ„í•œ WRITE CODEì™€
+	* MACì„ ë¦¬í„´ í•˜ëŠ” í”„ë¡œì„¸ìŠ¤
+	* 
+	* The process that executes the command for REQ_UPDATEINFO
+	* Process to return WRITE CODE and MAC to input new master key to device
 	*/
 	IInvoke invokeReqUpdateinfo = new IInvoke() {
 		public void run() throws Exception {
-			UpdateDataFromSession();
+			UpdateDataFromSession();// neo1seok 2017.01.17 :ì„¸ì…˜uidë¡œë¶€í„° í•„ìš”í•œ ê°’ì„ í•„ë“œì— ì—…ë°ì´íŠ¸
+			//Update required fields from session uid to field
 			
-			String gen_nonce= rcvProto.params.get("gen_nonce");
+			String gen_nonce= rcvProto.params.get("gen_nonce");// neo1seok 2017.01.17 :gen_nonce ë¥¼ ë°›ëŠ”ë‹¤.
+			//Receive gen_nonce.
+
 			
 			
 			Map<String, Object> rowMakterKey = itableMasterKeyHandler.selectSingle(msk_uid);
-			String masterKey = rowMakterKey.get("key_value").toString();
-			
-			derivedkey = Util.DeriveKey(masterKey,sectorID,sn);
-
-			
+			String masterKey = rowMakterKey.get("key_value").toString();// neo1seok 2017.01.17 :dbë¡œë¶€í„° ë§ˆìŠ¤í„° í‚¤ë¥¼ ì–»ì–´ì˜¨ë‹¤. 
+			//	Retrieves the master key from db
+			derivedkey = Util.DeriveKey(masterKey,sectorID,sn);// neo1seok 2017.01.17 :dbì— ì €ì¥ëœ ì¹©ì˜ ë§ˆìŠ¤í„° í‚¤ì— ëŒ€í•œ derived keyf êµ¬í•œë‹¤.
+			//Get the derived key for the master key of the chip stored in db.
 			
 			
 			Map<String, Object> rowNeMasterKey = itableMasterKeyHandler.selectSingle(latest_msk_uid);
-		
-			
-			
 			String version = rowNeMasterKey.get("version").toString();
 			String newmasterKey = (String) rowNeMasterKey.get("key_value");
-			String newderivedkey = Util.DeriveKey(newmasterKey,sectorID,sn);
+			String newderivedkey = Util.DeriveKey(newmasterKey,sectorID,sn);// neo1seok 2017.01.17 : ìµœì‹  ë“±ë¡ëœ ë§ˆìŠ¤í„°í‚¤ì˜ derived keyë¥¼ êµ¬í•œë‹¤.
+			//Get the derived key of the most recently registered master key.
+
 			
 			
 			String rand4Code = Util.Rand4Code(gen_nonce, hostchallenge);
-			
-	
 			String keyEnc = Util.KeyEnc(derivedkey, rand4Code, sectorID, sn);
-			
+			String write_code = Util.Encryptyon(newderivedkey,keyEnc);// neo1seok 2017.01.17 : ìƒˆ derived í‚¤ë¥¼ ì•”í˜¸í™” í•œë‹¤.
+			//Encrypt the new derived key.
 
 			
-			String write_code = Util.Encryptyon(newderivedkey,keyEnc);
-			
 	
 			
-			String mac_write = Util.CalcMAC4WriteCode(keyEnc, newderivedkey,sectorID, sn);
+			String mac_write = Util.CalcMAC4WriteCode(keyEnc, newderivedkey,sectorID, sn);// neo1seok 2017.01.17 : derived í‚¤ì— ëŒ€í•œ macê°’ì„ êµ¬í•œë‹¤.
+			//Obtain the mac value for the derived key.
+
 			
 			NLoger.clog("hostchallenge:{0}",hostchallenge);
 			NLoger.clog("mac_write:{0}",mac_write);
@@ -329,31 +395,40 @@ public class authHandler extends BaseHandler<AUTH_CMD> implements iauthHandler {
 				System.out.println("mac_write:");
 				System.out.println(mac_write);
 				
-				sndProto.params.put("gen_nonce", gen_nonce);
-				sndProto.params.put("newderivedkey", newderivedkey);
-				sndProto.params.put("hostchallenge", hostchallenge);
-				sndProto.params.put("rand4Code", rand4Code);
-				sndProto.params.put("keyEnc", keyEnc);
-				sndProto.params.put("derivedkey", derivedkey);
+//				sndProto.params.put("gen_nonce", gen_nonce);
+//				sndProto.params.put("newderivedkey", newderivedkey);
+//				sndProto.params.put("hostchallenge", hostchallenge);
+//				sndProto.params.put("rand4Code", rand4Code);
+//				sndProto.params.put("keyEnc", keyEnc);
+//				sndProto.params.put("derivedkey", derivedkey);
 			}
 			
 			sndProto.params.put("write_code", write_code);
 			sndProto.params.put("mac", mac_write);
-			sndProto.params.put("masterkey_ver", version);
+			//sndProto.params.put("masterkey_ver", version);
+			// neo1seok 2017.01.17 :ì‘ë‹µê°’ì—  write_code,mac ì„ ì ëŠ”ë‹¤.
+			//Write write_code, mac in the response value.
+
 		}
 	};
 	/**
 	* @Name : invokeNotyUpdateresultIInvoke
-	* @ÀÛ¼ºÀÏ : 2017. 1. 17.
-	* @ÀÛ¼ºÀÚ : neo1seok
-	* @º¯°æÀÌ·Â :
-	* @¼³¸í :
-	* NOTY_UPDATERESULT ¿¡ ´ëÇÑ ¸í·ÉÀ» ½ÇÇàÇÏ´Â ÇÁ·Î¼¼½º
-	* db ³»¿ëÁß chip  Á¤º¸¿¡¼­ »õ·Î ¾÷µ¥ÀÌÆ® µÈ ¸¶½ºÅÍ Å°ÀÇ °ªÀ» ÀúÀå ÇÑ´Ù.
+	* @date : 2017. 1. 17.
+	* @author : neo1seok
+
+	* @explain :
+	* NOTY_UPDATERESULT ì— ëŒ€í•œ ëª…ë ¹ì„ ì‹¤í–‰í•˜ëŠ” í”„ë¡œì„¸ìŠ¤
+	* db ë‚´ìš©ì¤‘ chip  ì •ë³´ì—ì„œ ìƒˆë¡œ ì—…ë°ì´íŠ¸ ëœ ë§ˆìŠ¤í„° í‚¤ì˜ ê°’ì„ ì €ì¥ í•œë‹¤.
+	* 
+	* * The process that executes the command for NOTY_UPDATERESULT
+* The value of the newly updated master key is saved from the chip information in the db contents.
+	* 
+	* 
 	*/
 	IInvoke invokeNotyUpdateresult = new IInvoke() {
 		public void run() throws Exception {
-			UpdateDataFromSession();
+			UpdateDataFromSession();// neo1seok 2017.01.17 :ì„¸ì…˜uidë¡œë¶€í„° í•„ìš”í•œ ê°’ì„ í•„ë“œì— ì—…ë°ì´íŠ¸
+			//Update required fields from session uid to field
 			String result= rcvProto.params.get("result");
 			
 			
@@ -367,6 +442,9 @@ public class authHandler extends BaseHandler<AUTH_CMD> implements iauthHandler {
 			mapArg.clear();
 			mapArg.put("msk_uid", latest_msk_uid);
 			itableChipHandler.Update(chp_uid, mapArg);
+			// neo1seok 2017.01.17 :í´ë¼ì´ì–¸íŠ¸ê°€ ìƒˆ í‚¤ë“±ë¡ì´  ì„±ê³µ í–ˆì„ ê²½ìš° dbë¥¼ ì—…ë°ì´íŠ¸ í•œë‹¤.
+			//If the client successfully registers the new key, update the db.
+
 			//itableSessionHandler.Update(ssn_uid, mapArg);
 		}
 	};
@@ -374,50 +452,70 @@ public class authHandler extends BaseHandler<AUTH_CMD> implements iauthHandler {
 	
 	/**
 	* @Name : invokeReqAppKeyIInvoke
-	* @ÀÛ¼ºÀÏ : 2017. 1. 17.
-	* @ÀÛ¼ºÀÚ : neo1seok
-	* @º¯°æÀÌ·Â :
-	* @¼³¸í :
-	* REQ_APP_KEY ¿¡ ´ëÇÑ ¸í·ÉÀ» ½ÇÇàÇÏ´Â ÇÁ·Î¼¼½º
-	* ´Ù¸¥ app key¸¦ »ı¼ºÇÏ°í ¾ÏÈ£È­ ÇØ¼­ ÀÀ´ä ÇÏ´Â ÇÁ·Î¼¼½º
+	* @date : 2017. 1. 17.
+	* @author : neo1seok
+
+	* @explain :
+	* REQ_APP_KEY ì— ëŒ€í•œ ëª…ë ¹ì„ ì‹¤í–‰í•˜ëŠ” í”„ë¡œì„¸ìŠ¤
+	* ë‹¤ë¥¸ app keyë¥¼ ìƒì„±í•˜ê³  ì•”í˜¸í™” í•´ì„œ ì‘ë‹µ í•˜ëŠ” í”„ë¡œì„¸ìŠ¤
+	* 
+	* 
+* The process that executes the command for REQ_APP_KEY
+* Process of generating and encrypting another app key
+	* 
 	*/
 	IInvoke invokeReqAppKey = new IInvoke() {
 		public void run() throws Exception {
-			UpdateDataFromSession();
-			String appid= rcvProto.params.get("appid");
-			String appKey = Util.getRand(16);
+			UpdateDataFromSession();// neo1seok 2017.01.17 :ì„¸ì…˜uidë¡œë¶€í„° í•„ìš”í•œ ê°’ì„ í•„ë“œì— ì—…ë°ì´íŠ¸
+			//Update required fields from session uid to field
+			
+			String app_id= rcvProto.params.get("app_id");// neo1seok 2017.01.17 : appidë¥¼ ìš”ì²­ ê°’ì„ ë°›ëŠ”ë‹¤.
+			//Appid receives the request value.
+			String appKey = Util.getRand(16);//eo1seok 2017.01.17 :  clientìš© app keyë¥¼ ìƒì„± í•œë‹¤.
+			//Create an app key for the client.
+			
 			Map<String, Object> rowMakterKey = itableMasterKeyHandler.selectSingle(msk_uid);
 			String masterKey = rowMakterKey.get("key_value").toString();
-			derivedkey = Util.DeriveKey(masterKey,sectorID,sn);
+			derivedkey = Util.DeriveKey(masterKey,sectorID,sn);// neo1seok 2017.01.17 :ë§ˆìŠ¤í„°í‚¤ì˜ derived keyë¥¼ êµ¬í•œë‹¤.
+			//Get the derived key of the master key.
 
-			String IV = Util.getRand(8);
-			
+
+			String IV = Util.getRand(8);// neo1seok 2017.01.17 :IVë¥¼ ìƒì„± í•œë‹¤. 
+			//Create IV
+		
 			String KeyEnc = Util.KeyEnc4DataTransfer(derivedkey, IV, Util.ZeroHexStr(8), "0000", sn);
 			String KeyEncshaInput =Util.shaInput; 
 			
 			String painInfo = appKey+Util.ZeroHexStr(16);
-			String Cipher =Util.Encryptyon(painInfo, KeyEnc);
+			String Cipher =Util.Encryptyon(painInfo, KeyEnc);// neo1seok 2017.01.17 : appKeyë¥¼ ì•”í˜¸í™” í•œë‹¤. 
+			//Encrypt the appKey.
+
 			
-			String H = Util.CalcH(appid, IV, Cipher);
+			String H = Util.CalcH(app_id, IV, Cipher);
 			String HshaInput =Util.shaInput;
 			
-			String mac = Util.CalcMAC4DataTransfer(derivedkey, H, sectorID, sn);
+			String mac = Util.CalcMAC4DataTransfer(derivedkey, H, sectorID, sn);// neo1seok 2017.01.17 : derived key ì— ëŒ€í•œ macê°’ì„ êµ¬í•œë‹¤.
+			//	Get the mac value for the derived key.
+			
 			String macshaInput =Util.shaInput;
 			
 			
-			sndProto.params.put("app_id", appid);
+			sndProto.params.put("app_id", app_id);
 			sndProto.params.put("IV", IV);
 			sndProto.params.put("Cipher", Cipher);
 			sndProto.params.put("mac", mac);
+			// neo1seok 2017.01.17 :ì‘ë‹µ ê°’ìœ¼ë¡œ app_id,IV,Cipher ,macì„ ì„¤ì •í•œë‹¤. 
+			//Set app_id, IV, Cipher, mac as response values.
+
 			
 			if(isDebug){
-				sndProto.params.put("derivedkey", derivedkey);
-				sndProto.params.put("KeyEnc", KeyEnc);
-				sndProto.params.put("KeyEncshaInput", KeyEncshaInput);
-				sndProto.params.put("painInfo", painInfo);
-				sndProto.params.put("H", H);
-				sndProto.params.put("HshaInput", HshaInput);
-				sndProto.params.put("macshaInput", macshaInput);
+//				sndProto.params.put("derivedkey", derivedkey);
+//				sndProto.params.put("KeyEnc", KeyEnc);
+//				sndProto.params.put("KeyEncshaInput", KeyEncshaInput);
+//				sndProto.params.put("painInfo", painInfo);
+//				sndProto.params.put("H", H);
+//				sndProto.params.put("HshaInput", HshaInput);
+//				sndProto.params.put("macshaInput", macshaInput);
 			}
 			
 		}
@@ -425,17 +523,19 @@ public class authHandler extends BaseHandler<AUTH_CMD> implements iauthHandler {
 	
 	/**
 	* @Name : invokeNotyAppkeyresultIInvoke
-	* @ÀÛ¼ºÀÏ : 2017. 1. 17.
-	* @ÀÛ¼ºÀÚ : neo1seok
-	* @º¯°æÀÌ·Â :
-	* @¼³¸í :
-	* NOTY_APPKEYRESULT ¿¡ ´ëÇÑ ¸í·ÉÀ» ½ÇÇàÇÏ´Â ÇÁ·Î¼¼½º
-	* app key Ã³¸®°¡ ¿Ï·á µÇ¾ú´Ù´Â ÇÁ·Î¼¼½º 
+	* @date : 2017. 1. 17.
+	* @author : neo1seok
+
+	* @explain :
+	* NOTY_APPKEYRESULT ì— ëŒ€í•œ ëª…ë ¹ì„ ì‹¤í–‰í•˜ëŠ” í”„ë¡œì„¸ìŠ¤
+	* app key ì²˜ë¦¬ê°€ ì™„ë£Œ ë˜ì—ˆë‹¤ëŠ” í”„ë¡œì„¸ìŠ¤ 
 	*/
 	IInvoke invokeNotyAppkeyresult = new IInvoke() {
 		public void run() throws Exception {
 			//System.out.println("NOTY_APPKEYRESULT:");
-			UpdateDataFromSession();
+			UpdateDataFromSession();// neo1seok 2017.01.17 : ì„¸ì…˜uidë¡œë¶€í„° í•„ìš”í•œ ê°’ì„ í•„ë“œì— ì—…ë°ì´íŠ¸
+			//Update required fields from session uid to field
+			
 			String result= rcvProto.params.get("result");
 			sndProto.params.put("result", "OK");
 			
@@ -444,13 +544,18 @@ public class authHandler extends BaseHandler<AUTH_CMD> implements iauthHandler {
 	
 	/**
 	* @Name : invokeReqEndSessionIInvoke
-	* @ÀÛ¼ºÀÏ : 2017. 1. 17.
-	* @ÀÛ¼ºÀÚ : neo1seok
-	* @º¯°æÀÌ·Â :
-	* @¼³¸í :
-	* REQ_END_SESSION ¿¡ ´ëÇÑ ¸í·ÉÀ» ½ÇÇàÇÏ´Â ÇÁ·Î¼¼½º
-	* ÃÖÁ¾ ¼¼¼ÇÀÌ ³¡³µÀ» °æ¿ì 
-	* db¿¡¼­ ¼¼¼Ç °ü·Ã Á¤º¸¸¦ ¾÷µ¥ÀÌÆ® ÇÏ°Å³ª Áö¿î´Ù.
+	* @date : 2017. 1. 17.
+	* @author : neo1seok
+
+	* @explain :
+	* REQ_END_SESSION ì— ëŒ€í•œ ëª…ë ¹ì„ ì‹¤í–‰í•˜ëŠ” í”„ë¡œì„¸ìŠ¤
+	* ìµœì¢… ì„¸ì…˜ì´ ëë‚¬ì„ ê²½ìš° 
+	* dbì—ì„œ ì„¸ì…˜ ê´€ë ¨ ì •ë³´ë¥¼ ì—…ë°ì´íŠ¸ í•˜ê±°ë‚˜ ì§€ìš´ë‹¤.
+	* 
+	* The process that executes the command for * REQ_END_SESSION
+* When the final session is over
+* Db updates or clears session-related information.
+	* 
 	*/
 	IInvoke invokeReqEndSession = new IInvoke() {
 		public void run() throws Exception {
@@ -459,11 +564,19 @@ public class authHandler extends BaseHandler<AUTH_CMD> implements iauthHandler {
 			
 			mapArg.clear();
 			mapArg.put("comment", "SESSION_END");
-		
-			itableSessionHandler.Update(ssn_uid, mapArg);
-			idbHandling.Excute("DELETE FROM giant_auth.session where updt_date < DATE_SUB(now(),    INTERVAL '1' WEEK);");
-			idbHandling.Excute("DELETE FROM giant_auth.session where updt_date < DATE_SUB(now(),    INTERVAL '3' HOUR) and comment = 'SESSION_END';");
+			// neo1seok 2017.01.17 :ì„¸ì…˜ì´ ì¢…ë£Œë˜ì—ˆì„ë•Œ dbì—  SESSION_ENDê°’ì„ ì €ì¥í•œë‹¤.
+			//SESSION_END value is stored in db when session ends.
 			
+			itableSessionHandler.Update(ssn_uid, mapArg);
+			
+			
+			idbHandling.Excute("DELETE FROM giant_auth.session where updt_date < DATE_SUB(now(),    INTERVAL '1' WEEK);");
+			// neo1seok 2017.01.17 :ì¼ì£¼ì¼ì „ ì €ì¥ëœ ì„¸ì…˜ ì •ë³´ë¥¼ dbì—ì„œ ì§€ìš´ë‹¤. 
+			//Delete session information from the db  that was saved a week ago.
+			
+			idbHandling.Excute("DELETE FROM giant_auth.session where updt_date < DATE_SUB(now(),    INTERVAL '3' HOUR) and comment = 'SESSION_END';");
+			// neo1seok 2017.01.17 : ì„¸ì‹œê°„ ì „ì— ì €ì¥ë˜ì—ˆê³   SESSION_END ê°’ì´ ì„¤ì •ëœ í•„ë“œ ì •ë³´ë¥¼  ì§€ìš´ë‹¤. 
+			//Delete field information that was saved three hours ago and has a SESSION_END value set.
 			sndProto.params.put("result", "OK");
 			
 			
@@ -476,13 +589,17 @@ public class authHandler extends BaseHandler<AUTH_CMD> implements iauthHandler {
 		
 	/**
 	* @Name : FindValidMac
-	* @ÀÛ¼ºÀÏ : 2017. 1. 17.
-	* @ÀÛ¼ºÀÚ : neo1seok
-	* @º¯°æÀÌ·Â :
-	* @¼³¸í :
-	* Àü´Ş ¹ŞÀº macÀ¸·Î db¿¡¼­ ¾ò¾î¿Í¼­ °è»êµÈ macÀ» ºñ±³ÇÏ¿©
-	* À¯È¿ÇÑ °ªÀ» ¸®ÅÏÇÏ´Â ÇÔ¼ö
-	* db¿¡ ÀúÀåµÈ chipÁ¤º¸Áß ¸¶½ºÅÍ Å°ÀÇ Á¤º¸¿Í 2°³ ÀÌÈÄÀÇ °ªÀ» ¹üÀ§·Î °è»êÇÑ´Ù.
+	* @date : 2017. 1. 17.
+	* @author : neo1seok
+
+	* @explain :
+	* ì „ë‹¬ ë°›ì€ macìœ¼ë¡œ dbì—ì„œ ì–»ì–´ì™€ì„œ ê³„ì‚°ëœ macì„ ë¹„êµí•˜ì—¬
+	* ìœ íš¨í•œ ê°’ì„ ë¦¬í„´í•˜ëŠ” í•¨ìˆ˜
+	* dbì— ì €ì¥ëœ chipì •ë³´ì¤‘ ë§ˆìŠ¤í„° í‚¤ì˜ ì •ë³´ì™€ 2ê°œ ì´í›„ì˜ ê°’ì„ ë²”ìœ„ë¡œ ê³„ì‚°í•œë‹¤.
+	* 
+	* Functions that Compares the calculated mac obtained from db with the transferred mac
+	* and return valid values
+	* Calculate the information of the master key among the chip information stored in db and the values â€‹â€‹after two values.
 	*  
 	*/
 	
@@ -535,11 +652,16 @@ public class authHandler extends BaseHandler<AUTH_CMD> implements iauthHandler {
 
 	/**
 	* @Name : InitRun
-	* @ÀÛ¼ºÀÏ : 2017. 1. 17.
-	* @ÀÛ¼ºÀÚ : neo1seok
-	* @º¯°æÀÌ·Â :
-	* @¼³¸í :
-	* ¼­ºí·¿¿¡¼­ ½ÇÁ¦ ÇÁ·Î¼¼¼­ ½ÃÀÛ ½Ã È£ÃâÇÏ´Â ÇÔ¼ö
+	* @date : 2017. 1. 17.
+	* @author : neo1seok
+
+	* @explain :
+	* ì„œë¸”ë ›ì—ì„œ ì‹¤ì œ í”„ë¡œì„¸ì„œ ì‹œì‘ ì‹œ í˜¸ì¶œí•˜ëŠ” í•¨ìˆ˜
+	* dbë¥¼ Opení•œë‹¤.
+	* 
+	* Functions that are called by the servlet when the actual processor is started
+	* Open db.
+	* 
 	*/
 	@Override
 	public void InitRun() throws Exception {
@@ -547,18 +669,42 @@ public class authHandler extends BaseHandler<AUTH_CMD> implements iauthHandler {
 
 	}
 	
-	
+	/**
+	* @Name : endRun
+	* @date : 2017. 1. 17.
+	* @author : neo1seok
+
+	* @explain :
+	* í”„ë¡œì„¸ìŠ¤ê°€ ëë‚˜ëŠ” ì‹œì ì— í˜¸ì¶œ ë˜ëŠ” í•¨ìˆ˜
+	* dbë¥¼ Close í•œë‹¤.
+	* 
+	* Function called at the end of the process
+	*Close db.
+	* 
+	*/
+	@Override
+	public void endRun() throws Exception {
+		// TODO Auto-generated method stub
+		idbHandling.close();
+
+	}
 	
 	/**
 	* @Name : UpdateDataFromSession
-	* @ÀÛ¼ºÀÏ : 2017. 1. 17.
-	* @ÀÛ¼ºÀÚ : neo1seok
-	* @º¯°æÀÌ·Â :
-	* @¼³¸í :
-	* ¼¼¼Ç uid¸¦ ±¸ÇÑÈÄ 
-	* ¼¼¼Ç uid¸¦ ÅëÇØ  db¿¡¼­ ÇÊ¿äÇÑ Á¤º¸¸¦ ¾ò¾î
-	* °¢ fields °ªµé¿¡°Ô ¼¼ÆÃÇØÁÖ´Â ÇÔ¼ö 
+	* @date : 2017. 1. 17.
+	* @author : neo1seok
+
+	* @explain :
+	* ì„¸ì…˜ uidë¥¼ êµ¬í•œí›„ 
+	* ì„¸ì…˜ uidë¥¼ í†µí•´  dbì—ì„œ í•„ìš”í•œ ì •ë³´ë¥¼ ì–»ì–´
+	* ê° fields ê°’ë“¤ì—ê²Œ ì„¸íŒ…í•´ì£¼ëŠ” í•¨ìˆ˜
+	* 
+	* A function that sets each field value
+	* After obtaining the session uid
+    *  
+	*  
 	*/
+	
 	
 	
 	void UpdateDataFromSession() throws SQLException{
@@ -570,12 +716,16 @@ public class authHandler extends BaseHandler<AUTH_CMD> implements iauthHandler {
 	}
 	/**
 	* @Name : UpdateData
-	* @ÀÛ¼ºÀÏ : 2017. 1. 17.
-	* @ÀÛ¼ºÀÚ : neo1seok
-	* @º¯°æÀÌ·Â :
-	* @¼³¸í :
-	* ¼¼¼Ç uid¸¦ ÅëÇØ  db¿¡¼­ ÇÊ¿äÇÑ Á¤º¸¸¦ ¾ò¾î
-	* °¢ fields °ªµé¿¡°Ô ¼¼ÆÃÇØÁÖ´Â ÇÔ¼ö 
+	* @date : 2017. 1. 17.
+	* @author : neo1seok
+
+	* @explain :
+	* ì„¸ì…˜ uidë¥¼ í†µí•´  dbì—ì„œ í•„ìš”í•œ ì •ë³´ë¥¼ ì–»ì–´
+	* ê° fields ê°’ë“¤ì—ê²Œ ì„¸íŒ…í•´ì£¼ëŠ” í•¨ìˆ˜
+	*  
+	* A function that sets each field value 
+	* Get the necessary information from the db through the session uid
+
 	*/
 	
 	
@@ -600,11 +750,14 @@ public class authHandler extends BaseHandler<AUTH_CMD> implements iauthHandler {
 	
 	/**
 	* @Name : doRunByJson
-	* @ÀÛ¼ºÀÏ : 2017. 1. 17.
-	* @ÀÛ¼ºÀÚ : neo1seok
-	* @º¯°æÀÌ·Â :
-	* @¼³¸í :
-	* json°ªÀ» ÆÄ½Ì ÇØ¼­ ½ÇÁ¦ ÇÁ·Î¼¼½º¸¦ ±¸µ¿ ½ÃÅ°´Â ÇÔ¼ö
+	* @date : 2017. 1. 17.
+	* @author : neo1seok
+
+	* @explain :
+	* jsonê°’ì„ íŒŒì‹± í•´ì„œ ì‹¤ì œ í”„ë¡œì„¸ìŠ¤ë¥¼ êµ¬ë™ ì‹œí‚¤ëŠ” í•¨ìˆ˜
+	* 
+	* Function to parse the json value to drive the actual process
+	* 
 	*/
 	@Override
 	public String doRunByJson(String json) throws Exception {
@@ -634,29 +787,18 @@ public class authHandler extends BaseHandler<AUTH_CMD> implements iauthHandler {
 
 	
 
-	/**
-	* @Name : endRun
-	* @ÀÛ¼ºÀÏ : 2017. 1. 17.
-	* @ÀÛ¼ºÀÚ : neo1seok
-	* @º¯°æÀÌ·Â :
-	* @¼³¸í :
-	* ÇÁ·Î¼¼½º°¡ ³¡³ª´Â ½ÃÁ¡¿¡ È£Ãâ µÇ´Â ÇÔ¼ö
-	* db¸¦ Close ÇÑ´Ù.
-	*/
-	@Override
-	public void endRun() throws Exception {
-		// TODO Auto-generated method stub
-		idbHandling.close();
-
-	}
+	
 
 	/**
 	* @Name : SetDebug
-	* @ÀÛ¼ºÀÏ : 2017. 1. 17.
-	* @ÀÛ¼ºÀÚ : neo1seok
-	* @º¯°æÀÌ·Â :
-	* @¼³¸í :
-	* µğ¹ö±ë ¿©ºÎ¸¦ ¼³Á¤ÇÏ´Â ÇÔ¼ö
+	* @date : 2017. 1. 17.
+	* @author : neo1seok
+
+	* @explain :
+	* ë””ë²„ê¹… ì—¬ë¶€ë¥¼ ì„¤ì •í•˜ëŠ” í•¨ìˆ˜
+	* 
+	* Functions to set whether to debug
+	* 
 	*/
 	@Override
 	public void setDebug(boolean isDebug) {

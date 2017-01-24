@@ -61,8 +61,8 @@ public class SystemSettings {
 //		System.out.println("id:"+id);
 //		System.out.println("passwd:"+passwd);
 		
-		NLoger.clog("dbname:"+dbname);
-		NLoger.clog("address:"+address);
+//		NLoger.clog("dbname:"+dbname);
+//		NLoger.clog("address:"+address);
 	}
 	
 	public static void main(String[] args) throws IOException {

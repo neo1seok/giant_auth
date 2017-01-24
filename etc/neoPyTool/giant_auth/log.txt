@@ -20014,3 +20014,785 @@
 4283631 Thread-12 2017-01-17 15:52:43,923 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
 4283631 Thread-12 2017-01-17 15:52:43,923 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_END_SESSION","params":{"result":"OK","error":""},"crc16":""}
 4283631 Thread-12 2017-01-17 15:52:43,923 - tcp_giant_auth - worker(356) DEBUG - END CLIENT HANDLER
+5253223 MainThread 2017-01-17 16:08:53,516 - tcp_giant_auth - RunServer(384) DEBUG - Got a connection from ('127.0.0.1', 9387) , thread num:1
+5253224 MainThread 2017-01-17 16:08:53,517 - tcp_giant_auth - RunServer(387) DEBUG - <Thread(Thread-21, initial)>
+5253225 Thread-21 2017-01-17 16:08:53,518 - tcp_giant_auth - worker(343) DEBUG - START CLIENT HANDLER
+5253225 MainThread 2017-01-17 16:08:53,518 - tcp_giant_auth - RunServer(381) DEBUG - LISTENING to CLIENT
+5253225 Thread-21 2017-01-17 16:08:53,518 - tcp_giant_auth - RunClient(245) DEBUG - 02000A104C47150000000000470340
+5253225 MainThread 2017-01-17 16:08:53,518 - tcp_giant_auth - RunServer(384) DEBUG - Got a connection from ('127.0.0.1', 9388) , thread num:2
+5253225 MainThread 2017-01-17 16:08:53,518 - tcp_giant_auth - RunServer(387) DEBUG - <Thread(Thread-22, initial)>
+5253226 Thread-21 2017-01-17 16:08:53,519 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',16,b'\x03',b'@',
+5253226 Thread-21 2017-01-17 16:08:53,519 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:4C4715000000000047
+5253226 Thread-21 2017-01-17 16:08:53,519 - tcp_giant_auth - ReqStartSession(114) DEBUG - ReqStartSession
+5253226 Thread-21 2017-01-17 16:08:53,519 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_START_SESSION","params":{"sn":"4C4715000000000047"}}
+5253227 Thread-22 2017-01-17 16:08:53,520 - tcp_giant_auth - worker(343) DEBUG - START CLIENT HANDLER
+5253227 MainThread 2017-01-17 16:08:53,520 - tcp_giant_auth - RunServer(381) DEBUG - LISTENING to CLIENT
+5253227 MainThread 2017-01-17 16:08:53,520 - tcp_giant_auth - RunServer(384) DEBUG - Got a connection from ('127.0.0.1', 9389) , thread num:3
+5253227 MainThread 2017-01-17 16:08:53,520 - tcp_giant_auth - RunServer(387) DEBUG - <Thread(Thread-23, initial)>
+5253228 Thread-22 2017-01-17 16:08:53,521 - tcp_giant_auth - RunClient(245) DEBUG - 02000A104C47150000000000470340
+5253228 Thread-22 2017-01-17 16:08:53,521 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',16,b'\x03',b'@',
+5253229 Thread-22 2017-01-17 16:08:53,522 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:4C4715000000000047
+5253229 Thread-22 2017-01-17 16:08:53,522 - tcp_giant_auth - ReqStartSession(114) DEBUG - ReqStartSession
+5253229 Thread-22 2017-01-17 16:08:53,522 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_START_SESSION","params":{"sn":"4C4715000000000047"}}
+5253229 Thread-23 2017-01-17 16:08:53,522 - tcp_giant_auth - worker(343) DEBUG - START CLIENT HANDLER
+5253230 MainThread 2017-01-17 16:08:53,523 - tcp_giant_auth - RunServer(381) DEBUG - LISTENING to CLIENT
+5253230 Thread-23 2017-01-17 16:08:53,523 - tcp_giant_auth - RunClient(245) DEBUG - 02000A104C47150000000000470340
+5253230 MainThread 2017-01-17 16:08:53,523 - tcp_giant_auth - RunServer(384) DEBUG - Got a connection from ('127.0.0.1', 9390) , thread num:4
+5253230 MainThread 2017-01-17 16:08:53,523 - tcp_giant_auth - RunServer(387) DEBUG - <Thread(Thread-24, initial)>
+5253231 Thread-23 2017-01-17 16:08:53,524 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',16,b'\x03',b'@',
+5253231 Thread-24 2017-01-17 16:08:53,524 - tcp_giant_auth - worker(343) DEBUG - START CLIENT HANDLER
+5253231 Thread-24 2017-01-17 16:08:53,524 - tcp_giant_auth - RunClient(245) DEBUG - 02000A104C47150000000000470340
+5253231 MainThread 2017-01-17 16:08:53,524 - tcp_giant_auth - RunServer(381) DEBUG - LISTENING to CLIENT
+5253232 MainThread 2017-01-17 16:08:53,525 - tcp_giant_auth - RunServer(384) DEBUG - Got a connection from ('127.0.0.1', 9391) , thread num:5
+5253232 MainThread 2017-01-17 16:08:53,525 - tcp_giant_auth - RunServer(387) DEBUG - <Thread(Thread-25, initial)>
+5253231 Thread-23 2017-01-17 16:08:53,524 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:4C4715000000000047
+5253232 Thread-23 2017-01-17 16:08:53,525 - tcp_giant_auth - ReqStartSession(114) DEBUG - ReqStartSession
+5253232 Thread-24 2017-01-17 16:08:53,525 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',16,b'\x03',b'@',
+5253233 Thread-23 2017-01-17 16:08:53,526 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_START_SESSION","params":{"sn":"4C4715000000000047"}}
+5253233 Thread-25 2017-01-17 16:08:53,526 - tcp_giant_auth - worker(343) DEBUG - START CLIENT HANDLER
+5253233 MainThread 2017-01-17 16:08:53,526 - tcp_giant_auth - RunServer(381) DEBUG - LISTENING to CLIENT
+5253233 Thread-24 2017-01-17 16:08:53,526 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:4C4715000000000047
+5253233 MainThread 2017-01-17 16:08:53,526 - tcp_giant_auth - RunServer(384) DEBUG - Got a connection from ('127.0.0.1', 9392) , thread num:6
+5253234 Thread-24 2017-01-17 16:08:53,527 - tcp_giant_auth - ReqStartSession(114) DEBUG - ReqStartSession
+5253233 Thread-25 2017-01-17 16:08:53,526 - tcp_giant_auth - RunClient(245) DEBUG - 02000A104C47150000000000470340
+5253234 MainThread 2017-01-17 16:08:53,527 - tcp_giant_auth - RunServer(387) DEBUG - <Thread(Thread-26, initial)>
+5253234 Thread-24 2017-01-17 16:08:53,527 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_START_SESSION","params":{"sn":"4C4715000000000047"}}
+5253237 Thread-25 2017-01-17 16:08:53,530 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',16,b'\x03',b'@',
+5253237 Thread-26 2017-01-17 16:08:53,530 - tcp_giant_auth - worker(343) DEBUG - START CLIENT HANDLER
+5253237 MainThread 2017-01-17 16:08:53,530 - tcp_giant_auth - RunServer(381) DEBUG - LISTENING to CLIENT
+5253237 Thread-25 2017-01-17 16:08:53,530 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:4C4715000000000047
+5253238 MainThread 2017-01-17 16:08:53,531 - tcp_giant_auth - RunServer(384) DEBUG - Got a connection from ('127.0.0.1', 9393) , thread num:7
+5253239 MainThread 2017-01-17 16:08:53,532 - tcp_giant_auth - RunServer(387) DEBUG - <Thread(Thread-27, initial)>
+5253239 Thread-25 2017-01-17 16:08:53,532 - tcp_giant_auth - ReqStartSession(114) DEBUG - ReqStartSession
+5253240 Thread-25 2017-01-17 16:08:53,533 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_START_SESSION","params":{"sn":"4C4715000000000047"}}
+5253239 Thread-27 2017-01-17 16:08:53,532 - tcp_giant_auth - worker(343) DEBUG - START CLIENT HANDLER
+5253240 MainThread 2017-01-17 16:08:53,533 - tcp_giant_auth - RunServer(381) DEBUG - LISTENING to CLIENT
+5253238 Thread-26 2017-01-17 16:08:53,531 - tcp_giant_auth - RunClient(245) DEBUG - 02000A104C47150000000000470340
+5253241 MainThread 2017-01-17 16:08:53,534 - tcp_giant_auth - RunServer(384) DEBUG - Got a connection from ('127.0.0.1', 9394) , thread num:8
+5253241 Thread-27 2017-01-17 16:08:53,534 - tcp_giant_auth - RunClient(245) DEBUG - 02000A104C47150000000000470340
+5253241 MainThread 2017-01-17 16:08:53,534 - tcp_giant_auth - RunServer(387) DEBUG - <Thread(Thread-28, initial)>
+5253241 Thread-26 2017-01-17 16:08:53,534 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',16,b'\x03',b'@',
+5253242 MainThread 2017-01-17 16:08:53,535 - tcp_giant_auth - RunServer(381) DEBUG - LISTENING to CLIENT
+5253242 Thread-28 2017-01-17 16:08:53,535 - tcp_giant_auth - worker(343) DEBUG - START CLIENT HANDLER
+5253243 Thread-28 2017-01-17 16:08:53,536 - tcp_giant_auth - RunClient(245) DEBUG - 02000A104C47150000000000470340
+5253243 Thread-28 2017-01-17 16:08:53,536 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',16,b'\x03',b'@',
+5253243 MainThread 2017-01-17 16:08:53,536 - tcp_giant_auth - RunServer(384) DEBUG - Got a connection from ('127.0.0.1', 9396) , thread num:9
+5253242 Thread-26 2017-01-17 16:08:53,535 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:4C4715000000000047
+5253242 Thread-27 2017-01-17 16:08:53,535 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',16,b'\x03',b'@',
+5253243 Thread-28 2017-01-17 16:08:53,536 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:4C4715000000000047
+5253243 MainThread 2017-01-17 16:08:53,536 - tcp_giant_auth - RunServer(387) DEBUG - <Thread(Thread-29, initial)>
+5253243 Thread-26 2017-01-17 16:08:53,536 - tcp_giant_auth - ReqStartSession(114) DEBUG - ReqStartSession
+5253244 Thread-28 2017-01-17 16:08:53,537 - tcp_giant_auth - ReqStartSession(114) DEBUG - ReqStartSession
+5253244 Thread-27 2017-01-17 16:08:53,537 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:4C4715000000000047
+5253246 Thread-27 2017-01-17 16:08:53,539 - tcp_giant_auth - ReqStartSession(114) DEBUG - ReqStartSession
+5253245 MainThread 2017-01-17 16:08:53,538 - tcp_giant_auth - RunServer(381) DEBUG - LISTENING to CLIENT
+5253246 Thread-27 2017-01-17 16:08:53,539 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_START_SESSION","params":{"sn":"4C4715000000000047"}}
+5253246 Thread-28 2017-01-17 16:08:53,539 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_START_SESSION","params":{"sn":"4C4715000000000047"}}
+5253245 Thread-29 2017-01-17 16:08:53,538 - tcp_giant_auth - worker(343) DEBUG - START CLIENT HANDLER
+5253245 Thread-26 2017-01-17 16:08:53,538 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_START_SESSION","params":{"sn":"4C4715000000000047"}}
+5253247 Thread-29 2017-01-17 16:08:53,540 - tcp_giant_auth - RunClient(245) DEBUG - 02000A104C47150000000000470340
+5253247 Thread-29 2017-01-17 16:08:53,540 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',16,b'\x03',b'@',
+5253248 Thread-29 2017-01-17 16:08:53,541 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:4C4715000000000047
+5253248 Thread-29 2017-01-17 16:08:53,541 - tcp_giant_auth - ReqStartSession(114) DEBUG - ReqStartSession
+5253248 Thread-29 2017-01-17 16:08:53,541 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_START_SESSION","params":{"sn":"4C4715000000000047"}}
+5253317 MainThread 2017-01-17 16:08:53,610 - tcp_giant_auth - RunServer(384) DEBUG - Got a connection from ('127.0.0.1', 9405) , thread num:10
+5253317 MainThread 2017-01-17 16:08:53,610 - tcp_giant_auth - RunServer(387) DEBUG - <Thread(Thread-30, initial)>
+5253317 Thread-30 2017-01-17 16:08:53,610 - tcp_giant_auth - worker(343) DEBUG - START CLIENT HANDLER
+5253318 MainThread 2017-01-17 16:08:53,611 - tcp_giant_auth - RunServer(381) DEBUG - LISTENING to CLIENT
+5253318 Thread-30 2017-01-17 16:08:53,611 - tcp_giant_auth - RunClient(245) DEBUG - 02000A104C47150000000000470340
+5253318 Thread-30 2017-01-17 16:08:53,611 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',16,b'\x03',b'@',
+5253318 Thread-30 2017-01-17 16:08:53,611 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:4C4715000000000047
+5253318 Thread-30 2017-01-17 16:08:53,611 - tcp_giant_auth - ReqStartSession(114) DEBUG - ReqStartSession
+5253319 Thread-30 2017-01-17 16:08:53,612 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_START_SESSION","params":{"sn":"4C4715000000000047"}}
+5253629 Thread-23 2017-01-17 16:08:53,922 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+5253630 Thread-23 2017-01-17 16:08:53,923 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_START_SESSION","params":{"result":"OK","error":"","challenge":"0254D12155B74E3850FF76A938CC5DF78B2F2006D7AB117487354EE70FA1E8FC","uid":"ssn_714"},"crc16":""}
+5253630 Thread-23 2017-01-17 16:08:53,923 - tcp_giant_auth - RunClient(252) DEBUG - 02002210000254D12155B74E3850FF76A938CC5DF78B2F2006D7AB117487354EE70FA1E8FC0317
+5253640 Thread-30 2017-01-17 16:08:53,933 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+5253640 Thread-30 2017-01-17 16:08:53,933 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_START_SESSION","params":{"result":"OK","error":"","challenge":"85CCD54D277E0F05BBBB187BC845F6FE3D105B0F9329894100216EE1A4D8B30B","uid":"ssn_715"},"crc16":""}
+5253641 Thread-30 2017-01-17 16:08:53,934 - tcp_giant_auth - RunClient(252) DEBUG - 020022100085CCD54D277E0F05BBBB187BC845F6FE3D105B0F9329894100216EE1A4D8B30B0334
+5253652 Thread-26 2017-01-17 16:08:53,945 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+5253652 Thread-26 2017-01-17 16:08:53,945 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_START_SESSION","params":{"result":"OK","error":"","challenge":"FA62A33A589DB86BA3D99B33F4C6EA66CD6C3517C539A961E27B03A7514979A1","uid":"ssn_716"},"crc16":""}
+5253652 Thread-26 2017-01-17 16:08:53,945 - tcp_giant_auth - RunClient(252) DEBUG - 0200221000FA62A33A589DB86BA3D99B33F4C6EA66CD6C3517C539A961E27B03A7514979A10300
+5253663 Thread-29 2017-01-17 16:08:53,956 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+5253664 Thread-29 2017-01-17 16:08:53,957 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_START_SESSION","params":{"result":"OK","error":"","challenge":"E29CAAE54932A46F556D9CEC8F70BF583B829529672EE9E6EE3D6988A3C6B853","uid":"ssn_717"},"crc16":""}
+5253664 Thread-29 2017-01-17 16:08:53,957 - tcp_giant_auth - RunClient(252) DEBUG - 0200221000E29CAAE54932A46F556D9CEC8F70BF583B829529672EE9E6EE3D6988A3C6B853031F
+5253673 Thread-28 2017-01-17 16:08:53,966 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+5253673 Thread-28 2017-01-17 16:08:53,966 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_START_SESSION","params":{"result":"OK","error":"","challenge":"0EF58002851453375EC2CDEF49EB3A4C2DCC244738FBE3097B7D18C1CA1C2B95","uid":"ssn_718"},"crc16":""}
+5253674 Thread-28 2017-01-17 16:08:53,967 - tcp_giant_auth - RunClient(252) DEBUG - 02002210000EF58002851453375EC2CDEF49EB3A4C2DCC244738FBE3097B7D18C1CA1C2B9503CB
+5253683 Thread-27 2017-01-17 16:08:53,976 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+5253683 Thread-27 2017-01-17 16:08:53,976 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_START_SESSION","params":{"result":"OK","error":"","challenge":"2D7B785C00899B69FEC59DC76165FDFC90D38FC2A43703490BE6F74968363AAF","uid":"ssn_719"},"crc16":""}
+5253683 Thread-27 2017-01-17 16:08:53,976 - tcp_giant_auth - RunClient(252) DEBUG - 02002210002D7B785C00899B69FEC59DC76165FDFC90D38FC2A43703490BE6F74968363AAF0313
+5253692 Thread-25 2017-01-17 16:08:53,985 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+5253692 Thread-25 2017-01-17 16:08:53,985 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_START_SESSION","params":{"result":"OK","error":"","challenge":"C1338412ECAEC640921CE5E4B032019544452FB79AF9E03789FB0F044F962871","uid":"ssn_720"},"crc16":""}
+5253693 Thread-25 2017-01-17 16:08:53,986 - tcp_giant_auth - RunClient(252) DEBUG - 0200221000C1338412ECAEC640921CE5E4B032019544452FB79AF9E03789FB0F044F96287103DC
+5253705 Thread-22 2017-01-17 16:08:53,998 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+5253705 Thread-22 2017-01-17 16:08:53,998 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_START_SESSION","params":{"result":"OK","error":"","challenge":"C45AA10C216DFA5CA2A19A6B9B71D314816CF5FFA7D7C1F9D3E7D09CD79393AB","uid":"ssn_721"},"crc16":""}
+5253705 Thread-22 2017-01-17 16:08:53,998 - tcp_giant_auth - RunClient(252) DEBUG - 0200221000C45AA10C216DFA5CA2A19A6B9B71D314816CF5FFA7D7C1F9D3E7D09CD79393AB039C
+5253714 Thread-21 2017-01-17 16:08:54,007 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+5253714 Thread-21 2017-01-17 16:08:54,007 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_START_SESSION","params":{"result":"OK","error":"","challenge":"E5659E28FB49CA568DCB0FD038B246D8DB4A5B268AC8B785C98F09283D66722C","uid":"ssn_722"},"crc16":""}
+5253715 Thread-21 2017-01-17 16:08:54,008 - tcp_giant_auth - RunClient(252) DEBUG - 0200221000E5659E28FB49CA568DCB0FD038B246D8DB4A5B268AC8B785C98F09283D66722C035A
+5253724 Thread-24 2017-01-17 16:08:54,017 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+5253724 Thread-24 2017-01-17 16:08:54,017 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_START_SESSION","params":{"result":"OK","error":"","challenge":"5CD490266EC88DE882B56A67CA3B5B867BA50457557AEB866DC7B88CF53EDD06","uid":"ssn_723"},"crc16":""}
+5253725 Thread-24 2017-01-17 16:08:54,018 - tcp_giant_auth - RunClient(252) DEBUG - 02002210005CD490266EC88DE882B56A67CA3B5B867BA50457557AEB866DC7B88CF53EDD06039B
+5253830 Thread-23 2017-01-17 16:08:54,123 - tcp_giant_auth - RunClient(245) DEBUG - 0200211114A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E50385
+5253830 Thread-23 2017-01-17 16:08:54,123 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',17,b'\x03',b'\x85',
+5253830 Thread-23 2017-01-17 16:08:54,123 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5
+5253830 Thread-23 2017-01-17 16:08:54,123 - tcp_giant_auth - Authentication(127) DEBUG - Authentication
+5253831 Thread-23 2017-01-17 16:08:54,124 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"AUTHENTICATION","params":{"uid":"ssn_714","mac":"14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5"}}
+5253841 Thread-30 2017-01-17 16:08:54,134 - tcp_giant_auth - RunClient(245) DEBUG - 0200211114A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E50385
+5253843 Thread-30 2017-01-17 16:08:54,136 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',17,b'\x03',b'\x85',
+5253843 Thread-30 2017-01-17 16:08:54,136 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5
+5253844 Thread-30 2017-01-17 16:08:54,137 - tcp_giant_auth - Authentication(127) DEBUG - Authentication
+5253844 Thread-30 2017-01-17 16:08:54,137 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"AUTHENTICATION","params":{"uid":"ssn_715","mac":"14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5"}}
+5253852 Thread-26 2017-01-17 16:08:54,145 - tcp_giant_auth - RunClient(245) DEBUG - 0200211114A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E50385
+5253852 Thread-26 2017-01-17 16:08:54,145 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',17,b'\x03',b'\x85',
+5253852 Thread-26 2017-01-17 16:08:54,145 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5
+5253853 Thread-26 2017-01-17 16:08:54,146 - tcp_giant_auth - Authentication(127) DEBUG - Authentication
+5253853 Thread-26 2017-01-17 16:08:54,146 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"AUTHENTICATION","params":{"uid":"ssn_716","mac":"14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5"}}
+5253854 Thread-23 2017-01-17 16:08:54,147 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+5253854 Thread-23 2017-01-17 16:08:54,147 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"AUTHENTICATION","params":{"result":"FAIL","error":"NOT_MATCH_MAC","update":""},"crc16":""}
+5253855 Thread-23 2017-01-17 16:08:54,148 - tcp_giant_auth - RunClient(252) DEBUG - 02000311F10003E0
+5253864 Thread-29 2017-01-17 16:08:54,157 - tcp_giant_auth - RunClient(245) DEBUG - 0200211114A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E50385
+5253864 Thread-29 2017-01-17 16:08:54,157 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',17,b'\x03',b'\x85',
+5253864 Thread-29 2017-01-17 16:08:54,157 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5
+5253864 Thread-29 2017-01-17 16:08:54,157 - tcp_giant_auth - Authentication(127) DEBUG - Authentication
+5253865 Thread-29 2017-01-17 16:08:54,158 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"AUTHENTICATION","params":{"uid":"ssn_717","mac":"14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5"}}
+5253872 Thread-30 2017-01-17 16:08:54,165 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+5253872 Thread-30 2017-01-17 16:08:54,165 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"AUTHENTICATION","params":{"result":"FAIL","error":"NOT_MATCH_MAC","update":""},"crc16":""}
+5253872 Thread-30 2017-01-17 16:08:54,165 - tcp_giant_auth - RunClient(252) DEBUG - 02000311F10003E0
+5253874 Thread-28 2017-01-17 16:08:54,167 - tcp_giant_auth - RunClient(245) DEBUG - 0200211114A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E50385
+5253874 Thread-28 2017-01-17 16:08:54,167 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',17,b'\x03',b'\x85',
+5253874 Thread-28 2017-01-17 16:08:54,167 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5
+5253874 Thread-28 2017-01-17 16:08:54,167 - tcp_giant_auth - Authentication(127) DEBUG - Authentication
+5253875 Thread-28 2017-01-17 16:08:54,168 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"AUTHENTICATION","params":{"uid":"ssn_718","mac":"14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5"}}
+5253883 Thread-27 2017-01-17 16:08:54,176 - tcp_giant_auth - RunClient(245) DEBUG - 0200211114A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E50385
+5253883 Thread-27 2017-01-17 16:08:54,176 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',17,b'\x03',b'\x85',
+5253883 Thread-27 2017-01-17 16:08:54,176 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5
+5253883 Thread-27 2017-01-17 16:08:54,176 - tcp_giant_auth - Authentication(127) DEBUG - Authentication
+5253884 Thread-27 2017-01-17 16:08:54,177 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"AUTHENTICATION","params":{"uid":"ssn_719","mac":"14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5"}}
+5253891 Thread-29 2017-01-17 16:08:54,184 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+5253891 Thread-29 2017-01-17 16:08:54,184 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"AUTHENTICATION","params":{"result":"FAIL","error":"NOT_MATCH_MAC","update":""},"crc16":""}
+5253892 Thread-29 2017-01-17 16:08:54,185 - tcp_giant_auth - RunClient(252) DEBUG - 02000311F10003E0
+5253893 Thread-25 2017-01-17 16:08:54,186 - tcp_giant_auth - RunClient(245) DEBUG - 0200211114A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E50385
+5253893 Thread-25 2017-01-17 16:08:54,186 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',17,b'\x03',b'\x85',
+5253894 Thread-25 2017-01-17 16:08:54,187 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5
+5253894 Thread-25 2017-01-17 16:08:54,187 - tcp_giant_auth - Authentication(127) DEBUG - Authentication
+5253894 Thread-25 2017-01-17 16:08:54,187 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"AUTHENTICATION","params":{"uid":"ssn_720","mac":"14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5"}}
+5253909 Thread-22 2017-01-17 16:08:54,202 - tcp_giant_auth - RunClient(245) DEBUG - 0200211114A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E50385
+5253910 Thread-22 2017-01-17 16:08:54,203 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',17,b'\x03',b'\x85',
+5253910 Thread-22 2017-01-17 16:08:54,203 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5
+5253910 Thread-22 2017-01-17 16:08:54,203 - tcp_giant_auth - Authentication(127) DEBUG - Authentication
+5253910 Thread-22 2017-01-17 16:08:54,203 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"AUTHENTICATION","params":{"uid":"ssn_721","mac":"14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5"}}
+5253916 Thread-21 2017-01-17 16:08:54,209 - tcp_giant_auth - RunClient(245) DEBUG - 0200211114A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E50385
+5253916 Thread-26 2017-01-17 16:08:54,209 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+5253917 Thread-21 2017-01-17 16:08:54,210 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',17,b'\x03',b'\x85',
+5253917 Thread-26 2017-01-17 16:08:54,210 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"AUTHENTICATION","params":{"result":"FAIL","error":"NOT_MATCH_MAC","update":""},"crc16":""}
+5253917 Thread-21 2017-01-17 16:08:54,210 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5
+5253918 Thread-26 2017-01-17 16:08:54,211 - tcp_giant_auth - RunClient(252) DEBUG - 02000311F10003E0
+5253918 Thread-21 2017-01-17 16:08:54,211 - tcp_giant_auth - Authentication(127) DEBUG - Authentication
+5253918 Thread-21 2017-01-17 16:08:54,211 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"AUTHENTICATION","params":{"uid":"ssn_722","mac":"14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5"}}
+5253925 Thread-24 2017-01-17 16:08:54,218 - tcp_giant_auth - RunClient(245) DEBUG - 0200211114A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E50385
+5253925 Thread-24 2017-01-17 16:08:54,218 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',17,b'\x03',b'\x85',
+5253925 Thread-24 2017-01-17 16:08:54,218 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5
+5253925 Thread-24 2017-01-17 16:08:54,218 - tcp_giant_auth - Authentication(127) DEBUG - Authentication
+5253926 Thread-24 2017-01-17 16:08:54,219 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"AUTHENTICATION","params":{"uid":"ssn_723","mac":"14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5"}}
+5253927 Thread-25 2017-01-17 16:08:54,220 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+5253927 Thread-25 2017-01-17 16:08:54,220 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"AUTHENTICATION","params":{"result":"FAIL","error":"NOT_MATCH_MAC","update":""},"crc16":""}
+5253928 Thread-25 2017-01-17 16:08:54,221 - tcp_giant_auth - RunClient(252) DEBUG - 02000311F10003E0
+5253967 Thread-27 2017-01-17 16:08:54,260 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+5253967 Thread-27 2017-01-17 16:08:54,260 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"AUTHENTICATION","params":{"result":"FAIL","error":"NOT_MATCH_MAC","update":""},"crc16":""}
+5253967 Thread-27 2017-01-17 16:08:54,260 - tcp_giant_auth - RunClient(252) DEBUG - 02000311F10003E0
+5253983 Thread-28 2017-01-17 16:08:54,276 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+5253983 Thread-28 2017-01-17 16:08:54,276 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"AUTHENTICATION","params":{"result":"FAIL","error":"NOT_MATCH_MAC","update":""},"crc16":""}
+5253984 Thread-28 2017-01-17 16:08:54,277 - tcp_giant_auth - RunClient(252) DEBUG - 02000311F10003E0
+5254010 Thread-24 2017-01-17 16:08:54,303 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+5254010 Thread-24 2017-01-17 16:08:54,303 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"AUTHENTICATION","params":{"result":"FAIL","error":"NOT_MATCH_MAC","update":""},"crc16":""}
+5254011 Thread-24 2017-01-17 16:08:54,304 - tcp_giant_auth - RunClient(252) DEBUG - 02000311F10003E0
+5254029 Thread-21 2017-01-17 16:08:54,322 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+5254030 Thread-21 2017-01-17 16:08:54,323 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"AUTHENTICATION","params":{"result":"FAIL","error":"NOT_MATCH_MAC","update":""},"crc16":""}
+5254030 Thread-21 2017-01-17 16:08:54,323 - tcp_giant_auth - RunClient(252) DEBUG - 02000311F10003E0
+5254049 Thread-22 2017-01-17 16:08:54,342 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+5254049 Thread-22 2017-01-17 16:08:54,342 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"AUTHENTICATION","params":{"result":"FAIL","error":"NOT_MATCH_MAC","update":""},"crc16":""}
+5254049 Thread-22 2017-01-17 16:08:54,342 - tcp_giant_auth - RunClient(252) DEBUG - 02000311F10003E0
+5254055 Thread-23 2017-01-17 16:08:54,348 - tcp_giant_auth - RunClient(245) DEBUG - 
+5254055 Thread-23 2017-01-17 16:08:54,348 - tcp_giant_auth - ReqEndSession(191) DEBUG - ReqEndSession
+5254056 Thread-23 2017-01-17 16:08:54,349 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_END_SESSION","params":{"uid":"ssn_714"}}
+5254068 Thread-23 2017-01-17 16:08:54,361 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+5254069 Thread-23 2017-01-17 16:08:54,362 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_END_SESSION","params":{"result":"OK","error":""},"crc16":""}
+5254069 Thread-23 2017-01-17 16:08:54,362 - tcp_giant_auth - worker(356) DEBUG - END CLIENT HANDLER
+5254072 Thread-30 2017-01-17 16:08:54,365 - tcp_giant_auth - RunClient(245) DEBUG - 
+5254072 Thread-30 2017-01-17 16:08:54,365 - tcp_giant_auth - ReqEndSession(191) DEBUG - ReqEndSession
+5254072 Thread-30 2017-01-17 16:08:54,365 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_END_SESSION","params":{"uid":"ssn_715"}}
+5254084 Thread-30 2017-01-17 16:08:54,377 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+5254084 Thread-30 2017-01-17 16:08:54,377 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_END_SESSION","params":{"result":"OK","error":""},"crc16":""}
+5254085 Thread-30 2017-01-17 16:08:54,378 - tcp_giant_auth - worker(356) DEBUG - END CLIENT HANDLER
+5254092 Thread-29 2017-01-17 16:08:54,385 - tcp_giant_auth - RunClient(245) DEBUG - 
+5254092 Thread-29 2017-01-17 16:08:54,385 - tcp_giant_auth - ReqEndSession(191) DEBUG - ReqEndSession
+5254092 Thread-29 2017-01-17 16:08:54,385 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_END_SESSION","params":{"uid":"ssn_717"}}
+5254105 Thread-29 2017-01-17 16:08:54,398 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+5254105 Thread-29 2017-01-17 16:08:54,398 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_END_SESSION","params":{"result":"OK","error":""},"crc16":""}
+5254106 Thread-29 2017-01-17 16:08:54,399 - tcp_giant_auth - worker(356) DEBUG - END CLIENT HANDLER
+5254118 Thread-26 2017-01-17 16:08:54,411 - tcp_giant_auth - RunClient(245) DEBUG - 
+5254118 Thread-26 2017-01-17 16:08:54,411 - tcp_giant_auth - ReqEndSession(191) DEBUG - ReqEndSession
+5254118 Thread-26 2017-01-17 16:08:54,411 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_END_SESSION","params":{"uid":"ssn_716"}}
+5254128 Thread-25 2017-01-17 16:08:54,421 - tcp_giant_auth - RunClient(245) DEBUG - 
+5254128 Thread-25 2017-01-17 16:08:54,421 - tcp_giant_auth - ReqEndSession(191) DEBUG - ReqEndSession
+5254128 Thread-25 2017-01-17 16:08:54,421 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_END_SESSION","params":{"uid":"ssn_720"}}
+5254132 Thread-26 2017-01-17 16:08:54,425 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+5254132 Thread-26 2017-01-17 16:08:54,425 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_END_SESSION","params":{"result":"OK","error":""},"crc16":""}
+5254133 Thread-26 2017-01-17 16:08:54,426 - tcp_giant_auth - worker(356) DEBUG - END CLIENT HANDLER
+5254141 Thread-25 2017-01-17 16:08:54,434 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+5254141 Thread-25 2017-01-17 16:08:54,434 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_END_SESSION","params":{"result":"OK","error":""},"crc16":""}
+5254142 Thread-25 2017-01-17 16:08:54,435 - tcp_giant_auth - worker(356) DEBUG - END CLIENT HANDLER
+5254168 Thread-27 2017-01-17 16:08:54,461 - tcp_giant_auth - RunClient(245) DEBUG - 
+5254168 Thread-27 2017-01-17 16:08:54,461 - tcp_giant_auth - ReqEndSession(191) DEBUG - ReqEndSession
+5254168 Thread-27 2017-01-17 16:08:54,461 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_END_SESSION","params":{"uid":"ssn_719"}}
+5254180 Thread-27 2017-01-17 16:08:54,473 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+5254181 Thread-27 2017-01-17 16:08:54,474 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_END_SESSION","params":{"result":"OK","error":""},"crc16":""}
+5254181 Thread-27 2017-01-17 16:08:54,474 - tcp_giant_auth - worker(356) DEBUG - END CLIENT HANDLER
+5254184 Thread-28 2017-01-17 16:08:54,477 - tcp_giant_auth - RunClient(245) DEBUG - 
+5254184 Thread-28 2017-01-17 16:08:54,477 - tcp_giant_auth - ReqEndSession(191) DEBUG - ReqEndSession
+5254184 Thread-28 2017-01-17 16:08:54,477 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_END_SESSION","params":{"uid":"ssn_718"}}
+5254198 Thread-28 2017-01-17 16:08:54,491 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+5254199 Thread-28 2017-01-17 16:08:54,492 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_END_SESSION","params":{"result":"OK","error":""},"crc16":""}
+5254199 Thread-28 2017-01-17 16:08:54,492 - tcp_giant_auth - worker(356) DEBUG - END CLIENT HANDLER
+5254211 Thread-24 2017-01-17 16:08:54,504 - tcp_giant_auth - RunClient(245) DEBUG - 
+5254211 Thread-24 2017-01-17 16:08:54,504 - tcp_giant_auth - ReqEndSession(191) DEBUG - ReqEndSession
+5254211 Thread-24 2017-01-17 16:08:54,504 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_END_SESSION","params":{"uid":"ssn_723"}}
+5254224 Thread-24 2017-01-17 16:08:54,517 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+5254224 Thread-24 2017-01-17 16:08:54,517 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_END_SESSION","params":{"result":"OK","error":""},"crc16":""}
+5254225 Thread-24 2017-01-17 16:08:54,518 - tcp_giant_auth - worker(356) DEBUG - END CLIENT HANDLER
+5254233 Thread-21 2017-01-17 16:08:54,526 - tcp_giant_auth - RunClient(245) DEBUG - 
+5254233 Thread-21 2017-01-17 16:08:54,526 - tcp_giant_auth - ReqEndSession(191) DEBUG - ReqEndSession
+5254233 Thread-21 2017-01-17 16:08:54,526 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_END_SESSION","params":{"uid":"ssn_722"}}
+5254247 Thread-21 2017-01-17 16:08:54,540 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+5254247 Thread-21 2017-01-17 16:08:54,540 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_END_SESSION","params":{"result":"OK","error":""},"crc16":""}
+5254247 Thread-21 2017-01-17 16:08:54,540 - tcp_giant_auth - worker(356) DEBUG - END CLIENT HANDLER
+5254249 Thread-22 2017-01-17 16:08:54,542 - tcp_giant_auth - RunClient(245) DEBUG - 
+5254249 Thread-22 2017-01-17 16:08:54,542 - tcp_giant_auth - ReqEndSession(191) DEBUG - ReqEndSession
+5254249 Thread-22 2017-01-17 16:08:54,542 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_END_SESSION","params":{"uid":"ssn_721"}}
+5254262 Thread-22 2017-01-17 16:08:54,555 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+5254263 Thread-22 2017-01-17 16:08:54,556 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_END_SESSION","params":{"result":"OK","error":""},"crc16":""}
+5254263 Thread-22 2017-01-17 16:08:54,556 - tcp_giant_auth - worker(356) DEBUG - END CLIENT HANDLER
+    17 MainThread 2017-01-17 17:33:12,902 - tcp_giant_auth - __init__(305) DEBUG - HandleServer __init__
+    20 MainThread 2017-01-17 17:33:12,905 - tcp_giant_auth - RunServer(381) DEBUG - LISTENING to CLIENT
+  5235 MainThread 2017-01-17 17:33:18,120 - tcp_giant_auth - RunServer(384) DEBUG - Got a connection from ('127.0.0.1', 10202) , thread num:1
+  5236 MainThread 2017-01-17 17:33:18,121 - tcp_giant_auth - RunServer(387) DEBUG - <Thread(Thread-1, initial)>
+  5236 Thread-1 2017-01-17 17:33:18,121 - tcp_giant_auth - worker(343) DEBUG - START CLIENT HANDLER
+  5236 MainThread 2017-01-17 17:33:18,121 - tcp_giant_auth - RunServer(381) DEBUG - LISTENING to CLIENT
+  5237 Thread-1 2017-01-17 17:33:18,122 - tcp_giant_auth - RunClient(245) DEBUG - 02000A104C47150000000000470340
+  5237 MainThread 2017-01-17 17:33:18,122 - tcp_giant_auth - RunServer(384) DEBUG - Got a connection from ('127.0.0.1', 10203) , thread num:2
+  5237 MainThread 2017-01-17 17:33:18,122 - tcp_giant_auth - RunServer(387) DEBUG - <Thread(Thread-2, initial)>
+  5237 Thread-1 2017-01-17 17:33:18,122 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',16,b'\x03',b'@',
+  5238 Thread-2 2017-01-17 17:33:18,123 - tcp_giant_auth - worker(343) DEBUG - START CLIENT HANDLER
+  5238 MainThread 2017-01-17 17:33:18,123 - tcp_giant_auth - RunServer(381) DEBUG - LISTENING to CLIENT
+  5238 Thread-1 2017-01-17 17:33:18,123 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:4C4715000000000047
+  5238 Thread-2 2017-01-17 17:33:18,123 - tcp_giant_auth - RunClient(245) DEBUG - 02000A104C47150000000000470340
+  5238 MainThread 2017-01-17 17:33:18,123 - tcp_giant_auth - RunServer(384) DEBUG - Got a connection from ('127.0.0.1', 10201) , thread num:3
+  5238 Thread-1 2017-01-17 17:33:18,123 - tcp_giant_auth - ReqStartSession(114) DEBUG - ReqStartSession
+  5239 Thread-2 2017-01-17 17:33:18,124 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',16,b'\x03',b'@',
+  5239 MainThread 2017-01-17 17:33:18,124 - tcp_giant_auth - RunServer(387) DEBUG - <Thread(Thread-3, initial)>
+  5239 Thread-1 2017-01-17 17:33:18,124 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_START_SESSION","params":{"sn":"4C4715000000000047"}}
+  5239 Thread-2 2017-01-17 17:33:18,124 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:4C4715000000000047
+  5240 Thread-3 2017-01-17 17:33:18,125 - tcp_giant_auth - worker(343) DEBUG - START CLIENT HANDLER
+  5240 MainThread 2017-01-17 17:33:18,125 - tcp_giant_auth - RunServer(381) DEBUG - LISTENING to CLIENT
+  5240 Thread-2 2017-01-17 17:33:18,125 - tcp_giant_auth - ReqStartSession(114) DEBUG - ReqStartSession
+  5240 Thread-3 2017-01-17 17:33:18,125 - tcp_giant_auth - RunClient(245) DEBUG - 02000A104C47150000000000470340
+  5240 MainThread 2017-01-17 17:33:18,125 - tcp_giant_auth - RunServer(384) DEBUG - Got a connection from ('127.0.0.1', 10204) , thread num:4
+  5240 Thread-2 2017-01-17 17:33:18,125 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_START_SESSION","params":{"sn":"4C4715000000000047"}}
+  5241 Thread-3 2017-01-17 17:33:18,126 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',16,b'\x03',b'@',
+  5241 MainThread 2017-01-17 17:33:18,126 - tcp_giant_auth - RunServer(387) DEBUG - <Thread(Thread-4, initial)>
+  5241 Thread-3 2017-01-17 17:33:18,126 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:4C4715000000000047
+  5242 Thread-3 2017-01-17 17:33:18,127 - tcp_giant_auth - ReqStartSession(114) DEBUG - ReqStartSession
+  5242 Thread-3 2017-01-17 17:33:18,127 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_START_SESSION","params":{"sn":"4C4715000000000047"}}
+  5242 Thread-4 2017-01-17 17:33:18,127 - tcp_giant_auth - worker(343) DEBUG - START CLIENT HANDLER
+  5243 MainThread 2017-01-17 17:33:18,128 - tcp_giant_auth - RunServer(381) DEBUG - LISTENING to CLIENT
+  5243 Thread-4 2017-01-17 17:33:18,128 - tcp_giant_auth - RunClient(245) DEBUG - 02000A104C47150000000000470340
+  5243 MainThread 2017-01-17 17:33:18,128 - tcp_giant_auth - RunServer(384) DEBUG - Got a connection from ('127.0.0.1', 10205) , thread num:5
+  5244 MainThread 2017-01-17 17:33:18,129 - tcp_giant_auth - RunServer(387) DEBUG - <Thread(Thread-5, initial)>
+  5244 Thread-4 2017-01-17 17:33:18,129 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',16,b'\x03',b'@',
+  5244 Thread-5 2017-01-17 17:33:18,129 - tcp_giant_auth - worker(343) DEBUG - START CLIENT HANDLER
+  5244 MainThread 2017-01-17 17:33:18,129 - tcp_giant_auth - RunServer(381) DEBUG - LISTENING to CLIENT
+  5244 Thread-4 2017-01-17 17:33:18,129 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:4C4715000000000047
+  5245 Thread-5 2017-01-17 17:33:18,130 - tcp_giant_auth - RunClient(245) DEBUG - 02000A104C47150000000000470340
+  5245 MainThread 2017-01-17 17:33:18,130 - tcp_giant_auth - RunServer(384) DEBUG - Got a connection from ('127.0.0.1', 10206) , thread num:6
+  5245 Thread-4 2017-01-17 17:33:18,130 - tcp_giant_auth - ReqStartSession(114) DEBUG - ReqStartSession
+  5246 MainThread 2017-01-17 17:33:18,131 - tcp_giant_auth - RunServer(387) DEBUG - <Thread(Thread-6, initial)>
+  5246 Thread-5 2017-01-17 17:33:18,131 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',16,b'\x03',b'@',
+  5246 Thread-4 2017-01-17 17:33:18,131 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_START_SESSION","params":{"sn":"4C4715000000000047"}}
+  5246 Thread-6 2017-01-17 17:33:18,131 - tcp_giant_auth - worker(343) DEBUG - START CLIENT HANDLER
+  5246 MainThread 2017-01-17 17:33:18,131 - tcp_giant_auth - RunServer(381) DEBUG - LISTENING to CLIENT
+  5246 Thread-5 2017-01-17 17:33:18,131 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:4C4715000000000047
+  5247 Thread-6 2017-01-17 17:33:18,132 - tcp_giant_auth - RunClient(245) DEBUG - 02000A104C47150000000000470340
+  5247 Thread-5 2017-01-17 17:33:18,132 - tcp_giant_auth - ReqStartSession(114) DEBUG - ReqStartSession
+  5248 Thread-5 2017-01-17 17:33:18,133 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_START_SESSION","params":{"sn":"4C4715000000000047"}}
+  5248 Thread-6 2017-01-17 17:33:18,133 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',16,b'\x03',b'@',
+  5248 Thread-6 2017-01-17 17:33:18,133 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:4C4715000000000047
+  5251 Thread-6 2017-01-17 17:33:18,136 - tcp_giant_auth - ReqStartSession(114) DEBUG - ReqStartSession
+  5251 Thread-6 2017-01-17 17:33:18,136 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_START_SESSION","params":{"sn":"4C4715000000000047"}}
+  5329 MainThread 2017-01-17 17:33:18,214 - tcp_giant_auth - RunServer(384) DEBUG - Got a connection from ('127.0.0.1', 10213) , thread num:7
+  5329 MainThread 2017-01-17 17:33:18,214 - tcp_giant_auth - RunServer(387) DEBUG - <Thread(Thread-7, initial)>
+  5329 Thread-7 2017-01-17 17:33:18,214 - tcp_giant_auth - worker(343) DEBUG - START CLIENT HANDLER
+  5329 MainThread 2017-01-17 17:33:18,214 - tcp_giant_auth - RunServer(381) DEBUG - LISTENING to CLIENT
+  5330 Thread-7 2017-01-17 17:33:18,215 - tcp_giant_auth - RunClient(245) DEBUG - 02000A104C47150000000000470340
+  5330 MainThread 2017-01-17 17:33:18,215 - tcp_giant_auth - RunServer(384) DEBUG - Got a connection from ('127.0.0.1', 10214) , thread num:8
+  5330 MainThread 2017-01-17 17:33:18,215 - tcp_giant_auth - RunServer(387) DEBUG - <Thread(Thread-8, initial)>
+  5330 Thread-7 2017-01-17 17:33:18,215 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',16,b'\x03',b'@',
+  5330 Thread-8 2017-01-17 17:33:18,215 - tcp_giant_auth - worker(343) DEBUG - START CLIENT HANDLER
+  5331 Thread-7 2017-01-17 17:33:18,216 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:4C4715000000000047
+  5331 MainThread 2017-01-17 17:33:18,216 - tcp_giant_auth - RunServer(381) DEBUG - LISTENING to CLIENT
+  5331 Thread-8 2017-01-17 17:33:18,216 - tcp_giant_auth - RunClient(245) DEBUG - 02000A104C47150000000000470340
+  5331 Thread-7 2017-01-17 17:33:18,216 - tcp_giant_auth - ReqStartSession(114) DEBUG - ReqStartSession
+  5331 MainThread 2017-01-17 17:33:18,216 - tcp_giant_auth - RunServer(384) DEBUG - Got a connection from ('127.0.0.1', 10215) , thread num:9
+  5331 Thread-8 2017-01-17 17:33:18,216 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',16,b'\x03',b'@',
+  5331 Thread-7 2017-01-17 17:33:18,216 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_START_SESSION","params":{"sn":"4C4715000000000047"}}
+  5331 MainThread 2017-01-17 17:33:18,216 - tcp_giant_auth - RunServer(387) DEBUG - <Thread(Thread-9, initial)>
+  5332 Thread-8 2017-01-17 17:33:18,217 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:4C4715000000000047
+  5332 Thread-9 2017-01-17 17:33:18,217 - tcp_giant_auth - worker(343) DEBUG - START CLIENT HANDLER
+  5332 MainThread 2017-01-17 17:33:18,217 - tcp_giant_auth - RunServer(381) DEBUG - LISTENING to CLIENT
+  5332 Thread-8 2017-01-17 17:33:18,217 - tcp_giant_auth - ReqStartSession(114) DEBUG - ReqStartSession
+  5332 Thread-9 2017-01-17 17:33:18,217 - tcp_giant_auth - RunClient(245) DEBUG - 02000A104C47150000000000470340
+  5333 MainThread 2017-01-17 17:33:18,218 - tcp_giant_auth - RunServer(384) DEBUG - Got a connection from ('127.0.0.1', 10216) , thread num:10
+  5333 Thread-8 2017-01-17 17:33:18,218 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_START_SESSION","params":{"sn":"4C4715000000000047"}}
+  5333 Thread-9 2017-01-17 17:33:18,218 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',16,b'\x03',b'@',
+  5333 MainThread 2017-01-17 17:33:18,218 - tcp_giant_auth - RunServer(387) DEBUG - <Thread(Thread-10, initial)>
+  5334 Thread-9 2017-01-17 17:33:18,219 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:4C4715000000000047
+  5334 Thread-10 2017-01-17 17:33:18,219 - tcp_giant_auth - worker(343) DEBUG - START CLIENT HANDLER
+  5334 MainThread 2017-01-17 17:33:18,219 - tcp_giant_auth - RunServer(381) DEBUG - LISTENING to CLIENT
+  5334 Thread-9 2017-01-17 17:33:18,219 - tcp_giant_auth - ReqStartSession(114) DEBUG - ReqStartSession
+  5335 Thread-10 2017-01-17 17:33:18,220 - tcp_giant_auth - RunClient(245) DEBUG - 02000A104C47150000000000470340
+  5335 Thread-9 2017-01-17 17:33:18,220 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_START_SESSION","params":{"sn":"4C4715000000000047"}}
+  5335 Thread-10 2017-01-17 17:33:18,220 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',16,b'\x03',b'@',
+  5335 Thread-10 2017-01-17 17:33:18,220 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:4C4715000000000047
+  5336 Thread-10 2017-01-17 17:33:18,221 - tcp_giant_auth - ReqStartSession(114) DEBUG - ReqStartSession
+  5336 Thread-10 2017-01-17 17:33:18,221 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_START_SESSION","params":{"sn":"4C4715000000000047"}}
+  5600 Thread-5 2017-01-17 17:33:18,485 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+  5601 Thread-5 2017-01-17 17:33:18,486 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_START_SESSION","params":{"result":"OK","error":"","challenge":"2E7E3B6457CE4523151936E75324F6E4F06EC4D54FF54185B6F05021BA63F944","uid":"ssn_724"},"crc16":""}
+  5601 Thread-5 2017-01-17 17:33:18,486 - tcp_giant_auth - RunClient(252) DEBUG - 02002210002E7E3B6457CE4523151936E75324F6E4F06EC4D54FF54185B6F05021BA63F94403DB
+  5611 Thread-10 2017-01-17 17:33:18,496 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+  5612 Thread-10 2017-01-17 17:33:18,497 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_START_SESSION","params":{"result":"OK","error":"","challenge":"E9CF00FB66541E149324C36A31B9B8E88150AFAC17F00F08D635287B07488586","uid":"ssn_725"},"crc16":""}
+  5612 Thread-10 2017-01-17 17:33:18,497 - tcp_giant_auth - RunClient(252) DEBUG - 0200221000E9CF00FB66541E149324C36A31B9B8E88150AFAC17F00F08D635287B0748858603DC
+  5619 Thread-9 2017-01-17 17:33:18,504 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+  5619 Thread-9 2017-01-17 17:33:18,504 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_START_SESSION","params":{"result":"OK","error":"","challenge":"291ADB8628DF60FAC82476CE7F9AE389D69D9C730CFD0D31623D98B1D6B4B175","uid":"ssn_726"},"crc16":""}
+  5619 Thread-9 2017-01-17 17:33:18,504 - tcp_giant_auth - RunClient(252) DEBUG - 0200221000291ADB8628DF60FAC82476CE7F9AE389D69D9C730CFD0D31623D98B1D6B4B1750350
+  5626 Thread-8 2017-01-17 17:33:18,511 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+  5626 Thread-8 2017-01-17 17:33:18,511 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_START_SESSION","params":{"result":"OK","error":"","challenge":"AB4415AA87DEA24E2499118083D46CAAF8F7A80E98ECCDE7256A65E6C05F7DEE","uid":"ssn_727"},"crc16":""}
+  5627 Thread-8 2017-01-17 17:33:18,512 - tcp_giant_auth - RunClient(252) DEBUG - 0200221000AB4415AA87DEA24E2499118083D46CAAF8F7A80E98ECCDE7256A65E6C05F7DEE035E
+  5634 Thread-7 2017-01-17 17:33:18,519 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+  5634 Thread-7 2017-01-17 17:33:18,519 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_START_SESSION","params":{"result":"OK","error":"","challenge":"63B433BA92C960036B63503249C9D32F649C284F8B640FDE7CD2BFEE636C89D9","uid":"ssn_728"},"crc16":""}
+  5634 Thread-7 2017-01-17 17:33:18,519 - tcp_giant_auth - RunClient(252) DEBUG - 020022100063B433BA92C960036B63503249C9D32F649C284F8B640FDE7CD2BFEE636C89D90340
+  5644 Thread-1 2017-01-17 17:33:18,529 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+  5645 Thread-1 2017-01-17 17:33:18,530 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_START_SESSION","params":{"result":"OK","error":"","challenge":"F63D6B40FA5E82A3343E28231FA5E4E18AFF8ACD9BA87740D99EA685DFA84F05","uid":"ssn_729"},"crc16":""}
+  5645 Thread-1 2017-01-17 17:33:18,530 - tcp_giant_auth - RunClient(252) DEBUG - 0200221000F63D6B40FA5E82A3343E28231FA5E4E18AFF8ACD9BA87740D99EA685DFA84F050385
+  5653 Thread-6 2017-01-17 17:33:18,538 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+  5653 Thread-6 2017-01-17 17:33:18,538 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_START_SESSION","params":{"result":"OK","error":"","challenge":"3FE813F69675F6376C83741219E3C5DD50372731DFF2491E41B8E8AA5ADA3314","uid":"ssn_730"},"crc16":""}
+  5654 Thread-6 2017-01-17 17:33:18,539 - tcp_giant_auth - RunClient(252) DEBUG - 02002210003FE813F69675F6376C83741219E3C5DD50372731DFF2491E41B8E8AA5ADA3314035D
+  5660 Thread-4 2017-01-17 17:33:18,545 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+  5660 Thread-4 2017-01-17 17:33:18,545 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_START_SESSION","params":{"result":"OK","error":"","challenge":"CE7EC132DF5CC849D142C34F8EE181768E353B4C545CA291CFC61C077E19C279","uid":"ssn_731"},"crc16":""}
+  5661 Thread-4 2017-01-17 17:33:18,546 - tcp_giant_auth - RunClient(252) DEBUG - 0200221000CE7EC132DF5CC849D142C34F8EE181768E353B4C545CA291CFC61C077E19C27903CE
+  5666 Thread-2 2017-01-17 17:33:18,551 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+  5667 Thread-2 2017-01-17 17:33:18,552 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_START_SESSION","params":{"result":"OK","error":"","challenge":"64F4EB0C75CD50E078A83EA399867E9090D2A7315855F59F2F802A1EF63EACB9","uid":"ssn_732"},"crc16":""}
+  5667 Thread-2 2017-01-17 17:33:18,552 - tcp_giant_auth - RunClient(252) DEBUG - 020022100064F4EB0C75CD50E078A83EA399867E9090D2A7315855F59F2F802A1EF63EACB90307
+  5673 Thread-3 2017-01-17 17:33:18,558 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+  5673 Thread-3 2017-01-17 17:33:18,558 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_START_SESSION","params":{"result":"OK","error":"","challenge":"789551E1986964ED48B3EC9A99F4940197A733D132AED54023463FF3F45F581B","uid":"ssn_733"},"crc16":""}
+  5673 Thread-3 2017-01-17 17:33:18,558 - tcp_giant_auth - RunClient(252) DEBUG - 0200221000789551E1986964ED48B3EC9A99F4940197A733D132AED54023463FF3F45F581B03FB
+  5801 Thread-5 2017-01-17 17:33:18,686 - tcp_giant_auth - RunClient(245) DEBUG - 0200211114A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E50385
+  5801 Thread-5 2017-01-17 17:33:18,686 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',17,b'\x03',b'\x85',
+  5801 Thread-5 2017-01-17 17:33:18,686 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5
+  5801 Thread-5 2017-01-17 17:33:18,686 - tcp_giant_auth - Authentication(127) DEBUG - Authentication
+  5802 Thread-5 2017-01-17 17:33:18,687 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"AUTHENTICATION","params":{"mac":"14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5","uid":"ssn_724"}}
+  5812 Thread-10 2017-01-17 17:33:18,697 - tcp_giant_auth - RunClient(245) DEBUG - 0200211114A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E50385
+  5812 Thread-10 2017-01-17 17:33:18,697 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',17,b'\x03',b'\x85',
+  5812 Thread-10 2017-01-17 17:33:18,697 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5
+  5812 Thread-10 2017-01-17 17:33:18,697 - tcp_giant_auth - Authentication(127) DEBUG - Authentication
+  5812 Thread-10 2017-01-17 17:33:18,697 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"AUTHENTICATION","params":{"mac":"14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5","uid":"ssn_725"}}
+  5817 Thread-5 2017-01-17 17:33:18,702 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+  5817 Thread-5 2017-01-17 17:33:18,702 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"AUTHENTICATION","params":{"result":"FAIL","error":"NOT_MATCH_MAC","update":""},"crc16":""}
+  5817 Thread-5 2017-01-17 17:33:18,702 - tcp_giant_auth - RunClient(252) DEBUG - 02000311F10003E0
+  5819 Thread-9 2017-01-17 17:33:18,704 - tcp_giant_auth - RunClient(245) DEBUG - 0200211114A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E50385
+  5819 Thread-9 2017-01-17 17:33:18,704 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',17,b'\x03',b'\x85',
+  5819 Thread-9 2017-01-17 17:33:18,704 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5
+  5819 Thread-9 2017-01-17 17:33:18,704 - tcp_giant_auth - Authentication(127) DEBUG - Authentication
+  5820 Thread-9 2017-01-17 17:33:18,705 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"AUTHENTICATION","params":{"mac":"14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5","uid":"ssn_726"}}
+  5827 Thread-8 2017-01-17 17:33:18,712 - tcp_giant_auth - RunClient(245) DEBUG - 0200211114A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E50385
+  5827 Thread-8 2017-01-17 17:33:18,712 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',17,b'\x03',b'\x85',
+  5827 Thread-8 2017-01-17 17:33:18,712 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5
+  5828 Thread-8 2017-01-17 17:33:18,713 - tcp_giant_auth - Authentication(127) DEBUG - Authentication
+  5828 Thread-8 2017-01-17 17:33:18,713 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"AUTHENTICATION","params":{"mac":"14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5","uid":"ssn_727"}}
+  5828 Thread-10 2017-01-17 17:33:18,713 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+  5829 Thread-10 2017-01-17 17:33:18,714 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"AUTHENTICATION","params":{"result":"FAIL","error":"NOT_MATCH_MAC","update":""},"crc16":""}
+  5829 Thread-10 2017-01-17 17:33:18,714 - tcp_giant_auth - RunClient(252) DEBUG - 02000311F10003E0
+  5835 Thread-7 2017-01-17 17:33:18,720 - tcp_giant_auth - RunClient(245) DEBUG - 0200211114A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E50385
+  5835 Thread-7 2017-01-17 17:33:18,720 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',17,b'\x03',b'\x85',
+  5835 Thread-7 2017-01-17 17:33:18,720 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5
+  5835 Thread-7 2017-01-17 17:33:18,720 - tcp_giant_auth - Authentication(127) DEBUG - Authentication
+  5836 Thread-7 2017-01-17 17:33:18,721 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"AUTHENTICATION","params":{"mac":"14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5","uid":"ssn_728"}}
+  5842 Thread-9 2017-01-17 17:33:18,727 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+  5842 Thread-9 2017-01-17 17:33:18,727 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"AUTHENTICATION","params":{"result":"FAIL","error":"NOT_MATCH_MAC","update":""},"crc16":""}
+  5843 Thread-9 2017-01-17 17:33:18,728 - tcp_giant_auth - RunClient(252) DEBUG - 02000311F10003E0
+  5845 Thread-1 2017-01-17 17:33:18,730 - tcp_giant_auth - RunClient(245) DEBUG - 0200211114A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E50385
+  5845 Thread-1 2017-01-17 17:33:18,730 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',17,b'\x03',b'\x85',
+  5845 Thread-1 2017-01-17 17:33:18,730 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5
+  5846 Thread-1 2017-01-17 17:33:18,731 - tcp_giant_auth - Authentication(127) DEBUG - Authentication
+  5846 Thread-1 2017-01-17 17:33:18,731 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"AUTHENTICATION","params":{"mac":"14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5","uid":"ssn_729"}}
+  5854 Thread-6 2017-01-17 17:33:18,739 - tcp_giant_auth - RunClient(245) DEBUG - 0200211114A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E50385
+  5854 Thread-6 2017-01-17 17:33:18,739 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',17,b'\x03',b'\x85',
+  5854 Thread-6 2017-01-17 17:33:18,739 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5
+  5854 Thread-6 2017-01-17 17:33:18,739 - tcp_giant_auth - Authentication(127) DEBUG - Authentication
+  5854 Thread-6 2017-01-17 17:33:18,739 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"AUTHENTICATION","params":{"mac":"14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5","uid":"ssn_730"}}
+  5855 Thread-7 2017-01-17 17:33:18,740 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+  5855 Thread-7 2017-01-17 17:33:18,740 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"AUTHENTICATION","params":{"result":"FAIL","error":"NOT_MATCH_MAC","update":""},"crc16":""}
+  5856 Thread-7 2017-01-17 17:33:18,741 - tcp_giant_auth - RunClient(252) DEBUG - 02000311F10003E0
+  5861 Thread-4 2017-01-17 17:33:18,746 - tcp_giant_auth - RunClient(245) DEBUG - 0200211114A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E50385
+  5861 Thread-4 2017-01-17 17:33:18,746 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',17,b'\x03',b'\x85',
+  5861 Thread-4 2017-01-17 17:33:18,746 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5
+  5861 Thread-4 2017-01-17 17:33:18,746 - tcp_giant_auth - Authentication(127) DEBUG - Authentication
+  5862 Thread-4 2017-01-17 17:33:18,747 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"AUTHENTICATION","params":{"mac":"14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5","uid":"ssn_731"}}
+  5867 Thread-2 2017-01-17 17:33:18,752 - tcp_giant_auth - RunClient(245) DEBUG - 0200211114A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E50385
+  5867 Thread-8 2017-01-17 17:33:18,752 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+  5867 Thread-2 2017-01-17 17:33:18,752 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',17,b'\x03',b'\x85',
+  5868 Thread-2 2017-01-17 17:33:18,753 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5
+  5868 Thread-8 2017-01-17 17:33:18,753 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"AUTHENTICATION","params":{"result":"FAIL","error":"NOT_MATCH_MAC","update":""},"crc16":""}
+  5868 Thread-2 2017-01-17 17:33:18,753 - tcp_giant_auth - Authentication(127) DEBUG - Authentication
+  5868 Thread-8 2017-01-17 17:33:18,753 - tcp_giant_auth - RunClient(252) DEBUG - 02000311F10003E0
+  5868 Thread-2 2017-01-17 17:33:18,753 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"AUTHENTICATION","params":{"mac":"14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5","uid":"ssn_732"}}
+  5873 Thread-3 2017-01-17 17:33:18,758 - tcp_giant_auth - RunClient(245) DEBUG - 0200211114A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E50385
+  5873 Thread-3 2017-01-17 17:33:18,758 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',17,b'\x03',b'\x85',
+  5873 Thread-3 2017-01-17 17:33:18,758 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5
+  5873 Thread-3 2017-01-17 17:33:18,758 - tcp_giant_auth - Authentication(127) DEBUG - Authentication
+  5874 Thread-3 2017-01-17 17:33:18,759 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"AUTHENTICATION","params":{"mac":"14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5","uid":"ssn_733"}}
+  5878 Thread-4 2017-01-17 17:33:18,763 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+  5878 Thread-4 2017-01-17 17:33:18,763 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"AUTHENTICATION","params":{"result":"FAIL","error":"NOT_MATCH_MAC","update":""},"crc16":""}
+  5879 Thread-4 2017-01-17 17:33:18,764 - tcp_giant_auth - RunClient(252) DEBUG - 02000311F10003E0
+  5888 Thread-6 2017-01-17 17:33:18,773 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+  5888 Thread-6 2017-01-17 17:33:18,773 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"AUTHENTICATION","params":{"result":"FAIL","error":"NOT_MATCH_MAC","update":""},"crc16":""}
+  5889 Thread-6 2017-01-17 17:33:18,774 - tcp_giant_auth - RunClient(252) DEBUG - 02000311F10003E0
+  5901 Thread-1 2017-01-17 17:33:18,786 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+  5902 Thread-1 2017-01-17 17:33:18,787 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"AUTHENTICATION","params":{"result":"FAIL","error":"NOT_MATCH_MAC","update":""},"crc16":""}
+  5902 Thread-1 2017-01-17 17:33:18,787 - tcp_giant_auth - RunClient(252) DEBUG - 02000311F10003E0
+  5934 Thread-3 2017-01-17 17:33:18,819 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+  5934 Thread-3 2017-01-17 17:33:18,819 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"AUTHENTICATION","params":{"result":"FAIL","error":"NOT_MATCH_MAC","update":""},"crc16":""}
+  5935 Thread-3 2017-01-17 17:33:18,820 - tcp_giant_auth - RunClient(252) DEBUG - 02000311F10003E0
+  5953 Thread-2 2017-01-17 17:33:18,838 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+  5954 Thread-2 2017-01-17 17:33:18,839 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"AUTHENTICATION","params":{"result":"FAIL","error":"NOT_MATCH_MAC","update":""},"crc16":""}
+  5954 Thread-2 2017-01-17 17:33:18,839 - tcp_giant_auth - RunClient(252) DEBUG - 02000311F10003E0
+  6017 Thread-5 2017-01-17 17:33:18,902 - tcp_giant_auth - RunClient(245) DEBUG - 
+  6017 Thread-5 2017-01-17 17:33:18,902 - tcp_giant_auth - ReqEndSession(191) DEBUG - ReqEndSession
+  6017 Thread-5 2017-01-17 17:33:18,902 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_END_SESSION","params":{"uid":"ssn_724"}}
+  6028 Thread-5 2017-01-17 17:33:18,913 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+  6029 Thread-10 2017-01-17 17:33:18,914 - tcp_giant_auth - RunClient(245) DEBUG - 
+  6029 Thread-5 2017-01-17 17:33:18,914 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_END_SESSION","params":{"result":"OK","error":""},"crc16":""}
+  6029 Thread-10 2017-01-17 17:33:18,914 - tcp_giant_auth - ReqEndSession(191) DEBUG - ReqEndSession
+  6029 Thread-5 2017-01-17 17:33:18,914 - tcp_giant_auth - worker(356) DEBUG - END CLIENT HANDLER
+  6029 Thread-10 2017-01-17 17:33:18,914 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_END_SESSION","params":{"uid":"ssn_725"}}
+  6041 Thread-10 2017-01-17 17:33:18,926 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+  6041 Thread-10 2017-01-17 17:33:18,926 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_END_SESSION","params":{"result":"OK","error":""},"crc16":""}
+  6041 Thread-10 2017-01-17 17:33:18,926 - tcp_giant_auth - worker(356) DEBUG - END CLIENT HANDLER
+  6043 Thread-9 2017-01-17 17:33:18,928 - tcp_giant_auth - RunClient(245) DEBUG - 
+  6043 Thread-9 2017-01-17 17:33:18,928 - tcp_giant_auth - ReqEndSession(191) DEBUG - ReqEndSession
+  6043 Thread-9 2017-01-17 17:33:18,928 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_END_SESSION","params":{"uid":"ssn_726"}}
+  6053 Thread-9 2017-01-17 17:33:18,938 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+  6053 Thread-9 2017-01-17 17:33:18,938 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_END_SESSION","params":{"result":"OK","error":""},"crc16":""}
+  6053 Thread-9 2017-01-17 17:33:18,938 - tcp_giant_auth - worker(356) DEBUG - END CLIENT HANDLER
+  6056 Thread-7 2017-01-17 17:33:18,941 - tcp_giant_auth - RunClient(245) DEBUG - 
+  6056 Thread-7 2017-01-17 17:33:18,941 - tcp_giant_auth - ReqEndSession(191) DEBUG - ReqEndSession
+  6056 Thread-7 2017-01-17 17:33:18,941 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_END_SESSION","params":{"uid":"ssn_728"}}
+  6067 Thread-7 2017-01-17 17:33:18,952 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+  6067 Thread-7 2017-01-17 17:33:18,952 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_END_SESSION","params":{"result":"OK","error":""},"crc16":""}
+  6067 Thread-7 2017-01-17 17:33:18,952 - tcp_giant_auth - worker(356) DEBUG - END CLIENT HANDLER
+  6068 Thread-8 2017-01-17 17:33:18,953 - tcp_giant_auth - RunClient(245) DEBUG - 
+  6068 Thread-8 2017-01-17 17:33:18,953 - tcp_giant_auth - ReqEndSession(191) DEBUG - ReqEndSession
+  6068 Thread-8 2017-01-17 17:33:18,953 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_END_SESSION","params":{"uid":"ssn_727"}}
+  6079 Thread-4 2017-01-17 17:33:18,964 - tcp_giant_auth - RunClient(245) DEBUG - 
+  6079 Thread-4 2017-01-17 17:33:18,964 - tcp_giant_auth - ReqEndSession(191) DEBUG - ReqEndSession
+  6079 Thread-4 2017-01-17 17:33:18,964 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_END_SESSION","params":{"uid":"ssn_731"}}
+  6080 Thread-8 2017-01-17 17:33:18,965 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+  6080 Thread-8 2017-01-17 17:33:18,965 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_END_SESSION","params":{"result":"OK","error":""},"crc16":""}
+  6080 Thread-8 2017-01-17 17:33:18,965 - tcp_giant_auth - worker(356) DEBUG - END CLIENT HANDLER
+  6089 Thread-6 2017-01-17 17:33:18,974 - tcp_giant_auth - RunClient(245) DEBUG - 
+  6089 Thread-6 2017-01-17 17:33:18,974 - tcp_giant_auth - ReqEndSession(191) DEBUG - ReqEndSession
+  6089 Thread-6 2017-01-17 17:33:18,974 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_END_SESSION","params":{"uid":"ssn_730"}}
+  6090 Thread-4 2017-01-17 17:33:18,975 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+  6090 Thread-4 2017-01-17 17:33:18,975 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_END_SESSION","params":{"result":"OK","error":""},"crc16":""}
+  6091 Thread-4 2017-01-17 17:33:18,976 - tcp_giant_auth - worker(356) DEBUG - END CLIENT HANDLER
+  6100 Thread-6 2017-01-17 17:33:18,985 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+  6100 Thread-6 2017-01-17 17:33:18,985 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_END_SESSION","params":{"result":"OK","error":""},"crc16":""}
+  6100 Thread-6 2017-01-17 17:33:18,985 - tcp_giant_auth - worker(356) DEBUG - END CLIENT HANDLER
+  6102 Thread-1 2017-01-17 17:33:18,987 - tcp_giant_auth - RunClient(245) DEBUG - 
+  6102 Thread-1 2017-01-17 17:33:18,987 - tcp_giant_auth - ReqEndSession(191) DEBUG - ReqEndSession
+  6102 Thread-1 2017-01-17 17:33:18,987 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_END_SESSION","params":{"uid":"ssn_729"}}
+  6112 Thread-1 2017-01-17 17:33:18,997 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+  6112 Thread-1 2017-01-17 17:33:18,997 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_END_SESSION","params":{"result":"OK","error":""},"crc16":""}
+  6112 Thread-1 2017-01-17 17:33:18,997 - tcp_giant_auth - worker(356) DEBUG - END CLIENT HANDLER
+  6135 Thread-3 2017-01-17 17:33:19,020 - tcp_giant_auth - RunClient(245) DEBUG - 
+  6135 Thread-3 2017-01-17 17:33:19,020 - tcp_giant_auth - ReqEndSession(191) DEBUG - ReqEndSession
+  6135 Thread-3 2017-01-17 17:33:19,020 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_END_SESSION","params":{"uid":"ssn_733"}}
+  6144 Thread-3 2017-01-17 17:33:19,029 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+  6144 Thread-3 2017-01-17 17:33:19,029 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_END_SESSION","params":{"result":"OK","error":""},"crc16":""}
+  6144 Thread-3 2017-01-17 17:33:19,029 - tcp_giant_auth - worker(356) DEBUG - END CLIENT HANDLER
+  6154 Thread-2 2017-01-17 17:33:19,039 - tcp_giant_auth - RunClient(245) DEBUG - 
+  6154 Thread-2 2017-01-17 17:33:19,039 - tcp_giant_auth - ReqEndSession(191) DEBUG - ReqEndSession
+  6154 Thread-2 2017-01-17 17:33:19,039 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_END_SESSION","params":{"uid":"ssn_732"}}
+  6163 Thread-2 2017-01-17 17:33:19,048 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+  6164 Thread-2 2017-01-17 17:33:19,049 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_END_SESSION","params":{"result":"OK","error":""},"crc16":""}
+  6164 Thread-2 2017-01-17 17:33:19,049 - tcp_giant_auth - worker(356) DEBUG - END CLIENT HANDLER
+195411 MainThread 2017-01-17 17:36:28,296 - tcp_giant_auth - RunServer(384) DEBUG - Got a connection from ('127.0.0.1', 10284) , thread num:1
+195411 MainThread 2017-01-17 17:36:28,296 - tcp_giant_auth - RunServer(387) DEBUG - <Thread(Thread-11, initial)>
+195411 Thread-11 2017-01-17 17:36:28,296 - tcp_giant_auth - worker(343) DEBUG - START CLIENT HANDLER
+195411 MainThread 2017-01-17 17:36:28,296 - tcp_giant_auth - RunServer(381) DEBUG - LISTENING to CLIENT
+195412 Thread-11 2017-01-17 17:36:28,297 - tcp_giant_auth - RunClient(245) DEBUG - 02000A104C47150000000000470340
+195412 Thread-11 2017-01-17 17:36:28,297 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',16,b'\x03',b'@',
+195412 MainThread 2017-01-17 17:36:28,297 - tcp_giant_auth - RunServer(384) DEBUG - Got a connection from ('127.0.0.1', 10285) , thread num:2
+195412 MainThread 2017-01-17 17:36:28,297 - tcp_giant_auth - RunServer(387) DEBUG - <Thread(Thread-12, initial)>
+195412 Thread-11 2017-01-17 17:36:28,297 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:4C4715000000000047
+195413 Thread-11 2017-01-17 17:36:28,298 - tcp_giant_auth - ReqStartSession(114) DEBUG - ReqStartSession
+195413 Thread-12 2017-01-17 17:36:28,298 - tcp_giant_auth - worker(343) DEBUG - START CLIENT HANDLER
+195413 MainThread 2017-01-17 17:36:28,298 - tcp_giant_auth - RunServer(381) DEBUG - LISTENING to CLIENT
+195413 Thread-11 2017-01-17 17:36:28,298 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_START_SESSION","params":{"sn":"4C4715000000000047"}}
+195413 MainThread 2017-01-17 17:36:28,298 - tcp_giant_auth - RunServer(384) DEBUG - Got a connection from ('127.0.0.1', 10286) , thread num:3
+195413 MainThread 2017-01-17 17:36:28,298 - tcp_giant_auth - RunServer(387) DEBUG - <Thread(Thread-13, initial)>
+195414 Thread-12 2017-01-17 17:36:28,299 - tcp_giant_auth - RunClient(245) DEBUG - 02000A104C47150000000000470340
+195414 Thread-13 2017-01-17 17:36:28,299 - tcp_giant_auth - worker(343) DEBUG - START CLIENT HANDLER
+195414 MainThread 2017-01-17 17:36:28,299 - tcp_giant_auth - RunServer(381) DEBUG - LISTENING to CLIENT
+195414 MainThread 2017-01-17 17:36:28,299 - tcp_giant_auth - RunServer(384) DEBUG - Got a connection from ('127.0.0.1', 10287) , thread num:4
+195414 Thread-12 2017-01-17 17:36:28,299 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',16,b'\x03',b'@',
+195415 MainThread 2017-01-17 17:36:28,300 - tcp_giant_auth - RunServer(387) DEBUG - <Thread(Thread-14, initial)>
+195415 Thread-13 2017-01-17 17:36:28,300 - tcp_giant_auth - RunClient(245) DEBUG - 02000A104C47150000000000470340
+195415 Thread-12 2017-01-17 17:36:28,300 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:4C4715000000000047
+195415 Thread-14 2017-01-17 17:36:28,300 - tcp_giant_auth - worker(343) DEBUG - START CLIENT HANDLER
+195415 Thread-13 2017-01-17 17:36:28,300 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',16,b'\x03',b'@',
+195415 MainThread 2017-01-17 17:36:28,300 - tcp_giant_auth - RunServer(381) DEBUG - LISTENING to CLIENT
+195416 Thread-13 2017-01-17 17:36:28,301 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:4C4715000000000047
+195416 MainThread 2017-01-17 17:36:28,301 - tcp_giant_auth - RunServer(384) DEBUG - Got a connection from ('127.0.0.1', 10288) , thread num:5
+195416 Thread-12 2017-01-17 17:36:28,301 - tcp_giant_auth - ReqStartSession(114) DEBUG - ReqStartSession
+195416 Thread-13 2017-01-17 17:36:28,301 - tcp_giant_auth - ReqStartSession(114) DEBUG - ReqStartSession
+195416 Thread-14 2017-01-17 17:36:28,301 - tcp_giant_auth - RunClient(245) DEBUG - 02000A104C47150000000000470340
+195417 MainThread 2017-01-17 17:36:28,302 - tcp_giant_auth - RunServer(387) DEBUG - <Thread(Thread-15, initial)>
+195417 Thread-12 2017-01-17 17:36:28,302 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_START_SESSION","params":{"sn":"4C4715000000000047"}}
+195417 Thread-13 2017-01-17 17:36:28,302 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_START_SESSION","params":{"sn":"4C4715000000000047"}}
+195417 Thread-14 2017-01-17 17:36:28,302 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',16,b'\x03',b'@',
+195418 MainThread 2017-01-17 17:36:28,303 - tcp_giant_auth - RunServer(381) DEBUG - LISTENING to CLIENT
+195418 Thread-15 2017-01-17 17:36:28,303 - tcp_giant_auth - worker(343) DEBUG - START CLIENT HANDLER
+195418 Thread-14 2017-01-17 17:36:28,303 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:4C4715000000000047
+195418 MainThread 2017-01-17 17:36:28,303 - tcp_giant_auth - RunServer(384) DEBUG - Got a connection from ('127.0.0.1', 10289) , thread num:6
+195419 Thread-15 2017-01-17 17:36:28,304 - tcp_giant_auth - RunClient(245) DEBUG - 02000A104C47150000000000470340
+195419 Thread-14 2017-01-17 17:36:28,304 - tcp_giant_auth - ReqStartSession(114) DEBUG - ReqStartSession
+195419 MainThread 2017-01-17 17:36:28,304 - tcp_giant_auth - RunServer(387) DEBUG - <Thread(Thread-16, initial)>
+195419 Thread-15 2017-01-17 17:36:28,304 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',16,b'\x03',b'@',
+195419 Thread-14 2017-01-17 17:36:28,304 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_START_SESSION","params":{"sn":"4C4715000000000047"}}
+195420 Thread-15 2017-01-17 17:36:28,305 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:4C4715000000000047
+195420 Thread-15 2017-01-17 17:36:28,305 - tcp_giant_auth - ReqStartSession(114) DEBUG - ReqStartSession
+195420 Thread-16 2017-01-17 17:36:28,305 - tcp_giant_auth - worker(343) DEBUG - START CLIENT HANDLER
+195420 Thread-15 2017-01-17 17:36:28,305 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_START_SESSION","params":{"sn":"4C4715000000000047"}}
+195420 MainThread 2017-01-17 17:36:28,305 - tcp_giant_auth - RunServer(381) DEBUG - LISTENING to CLIENT
+195421 MainThread 2017-01-17 17:36:28,306 - tcp_giant_auth - RunServer(384) DEBUG - Got a connection from ('127.0.0.1', 10290) , thread num:7
+195421 MainThread 2017-01-17 17:36:28,306 - tcp_giant_auth - RunServer(387) DEBUG - <Thread(Thread-17, initial)>
+195422 Thread-17 2017-01-17 17:36:28,307 - tcp_giant_auth - worker(343) DEBUG - START CLIENT HANDLER
+195422 MainThread 2017-01-17 17:36:28,307 - tcp_giant_auth - RunServer(381) DEBUG - LISTENING to CLIENT
+195421 Thread-16 2017-01-17 17:36:28,306 - tcp_giant_auth - RunClient(245) DEBUG - 02000A104C47150000000000470340
+195423 Thread-16 2017-01-17 17:36:28,308 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',16,b'\x03',b'@',
+195423 Thread-16 2017-01-17 17:36:28,308 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:4C4715000000000047
+195423 Thread-16 2017-01-17 17:36:28,308 - tcp_giant_auth - ReqStartSession(114) DEBUG - ReqStartSession
+195423 Thread-16 2017-01-17 17:36:28,308 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_START_SESSION","params":{"sn":"4C4715000000000047"}}
+195422 Thread-17 2017-01-17 17:36:28,307 - tcp_giant_auth - RunClient(245) DEBUG - 02000A104C47150000000000470340
+195424 Thread-17 2017-01-17 17:36:28,309 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',16,b'\x03',b'@',
+195424 Thread-17 2017-01-17 17:36:28,309 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:4C4715000000000047
+195424 Thread-17 2017-01-17 17:36:28,309 - tcp_giant_auth - ReqStartSession(114) DEBUG - ReqStartSession
+195424 Thread-17 2017-01-17 17:36:28,309 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_START_SESSION","params":{"sn":"4C4715000000000047"}}
+195505 MainThread 2017-01-17 17:36:28,390 - tcp_giant_auth - RunServer(384) DEBUG - Got a connection from ('127.0.0.1', 10298) , thread num:8
+195505 MainThread 2017-01-17 17:36:28,390 - tcp_giant_auth - RunServer(387) DEBUG - <Thread(Thread-18, initial)>
+195506 Thread-18 2017-01-17 17:36:28,391 - tcp_giant_auth - worker(343) DEBUG - START CLIENT HANDLER
+195506 MainThread 2017-01-17 17:36:28,391 - tcp_giant_auth - RunServer(381) DEBUG - LISTENING to CLIENT
+195506 Thread-18 2017-01-17 17:36:28,391 - tcp_giant_auth - RunClient(245) DEBUG - 02000A104C47150000000000470340
+195506 MainThread 2017-01-17 17:36:28,391 - tcp_giant_auth - RunServer(384) DEBUG - Got a connection from ('127.0.0.1', 10299) , thread num:9
+195506 Thread-18 2017-01-17 17:36:28,391 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',16,b'\x03',b'@',
+195506 MainThread 2017-01-17 17:36:28,391 - tcp_giant_auth - RunServer(387) DEBUG - <Thread(Thread-19, initial)>
+195506 Thread-18 2017-01-17 17:36:28,391 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:4C4715000000000047
+195507 Thread-19 2017-01-17 17:36:28,392 - tcp_giant_auth - worker(343) DEBUG - START CLIENT HANDLER
+195507 MainThread 2017-01-17 17:36:28,392 - tcp_giant_auth - RunServer(381) DEBUG - LISTENING to CLIENT
+195507 Thread-18 2017-01-17 17:36:28,392 - tcp_giant_auth - ReqStartSession(114) DEBUG - ReqStartSession
+195507 Thread-19 2017-01-17 17:36:28,392 - tcp_giant_auth - RunClient(245) DEBUG - 02000A104C47150000000000470340
+195508 Thread-19 2017-01-17 17:36:28,393 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',16,b'\x03',b'@',
+195508 Thread-19 2017-01-17 17:36:28,393 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:4C4715000000000047
+195508 Thread-19 2017-01-17 17:36:28,393 - tcp_giant_auth - ReqStartSession(114) DEBUG - ReqStartSession
+195508 Thread-19 2017-01-17 17:36:28,393 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_START_SESSION","params":{"sn":"4C4715000000000047"}}
+195507 MainThread 2017-01-17 17:36:28,392 - tcp_giant_auth - RunServer(384) DEBUG - Got a connection from ('127.0.0.1', 10300) , thread num:10
+195508 Thread-18 2017-01-17 17:36:28,393 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_START_SESSION","params":{"sn":"4C4715000000000047"}}
+195508 MainThread 2017-01-17 17:36:28,393 - tcp_giant_auth - RunServer(387) DEBUG - <Thread(Thread-20, initial)>
+195509 Thread-20 2017-01-17 17:36:28,394 - tcp_giant_auth - worker(343) DEBUG - START CLIENT HANDLER
+195509 MainThread 2017-01-17 17:36:28,394 - tcp_giant_auth - RunServer(381) DEBUG - LISTENING to CLIENT
+195509 Thread-20 2017-01-17 17:36:28,394 - tcp_giant_auth - RunClient(245) DEBUG - 02000A104C47150000000000470340
+195509 Thread-20 2017-01-17 17:36:28,394 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',16,b'\x03',b'@',
+195509 Thread-20 2017-01-17 17:36:28,394 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:4C4715000000000047
+195509 Thread-20 2017-01-17 17:36:28,394 - tcp_giant_auth - ReqStartSession(114) DEBUG - ReqStartSession
+195510 Thread-20 2017-01-17 17:36:28,395 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_START_SESSION","params":{"sn":"4C4715000000000047"}}
+195817 Thread-11 2017-01-17 17:36:28,702 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+195817 Thread-11 2017-01-17 17:36:28,702 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_START_SESSION","params":{"result":"OK","error":"","challenge":"4E0924D2586CF19466A994900982ED4D15E1D8A2FBFC258379C32320C96699A1","uid":"ssn_734"},"crc16":""}
+195817 Thread-11 2017-01-17 17:36:28,702 - tcp_giant_auth - RunClient(252) DEBUG - 02002210004E0924D2586CF19466A994900982ED4D15E1D8A2FBFC258379C32320C96699A10330
+195825 Thread-20 2017-01-17 17:36:28,710 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+195826 Thread-20 2017-01-17 17:36:28,711 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_START_SESSION","params":{"result":"OK","error":"","challenge":"D13C2824586F148CAD2146D306E1D38CE5303999678AE70FFC83F0D92CB4311A","uid":"ssn_735"},"crc16":""}
+195826 Thread-20 2017-01-17 17:36:28,711 - tcp_giant_auth - RunClient(252) DEBUG - 0200221000D13C2824586F148CAD2146D306E1D38CE5303999678AE70FFC83F0D92CB4311A034B
+195833 Thread-19 2017-01-17 17:36:28,718 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+195833 Thread-19 2017-01-17 17:36:28,718 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_START_SESSION","params":{"result":"OK","error":"","challenge":"E8B5ABE7DE30F5284D4E2F11997DC33FAB4F91DEE7155BB91A3129476FDAEAE6","uid":"ssn_736"},"crc16":""}
+195833 Thread-19 2017-01-17 17:36:28,718 - tcp_giant_auth - RunClient(252) DEBUG - 0200221000E8B5ABE7DE30F5284D4E2F11997DC33FAB4F91DEE7155BB91A3129476FDAEAE60371
+195839 Thread-18 2017-01-17 17:36:28,724 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+195839 Thread-18 2017-01-17 17:36:28,724 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_START_SESSION","params":{"result":"OK","error":"","challenge":"7BA09AC313896534523811F4AB96FB96A26C74888D8D029E7F64F0E07639D8FD","uid":"ssn_737"},"crc16":""}
+195840 Thread-18 2017-01-17 17:36:28,725 - tcp_giant_auth - RunClient(252) DEBUG - 02002210007BA09AC313896534523811F4AB96FB96A26C74888D8D029E7F64F0E07639D8FD0368
+195847 Thread-16 2017-01-17 17:36:28,732 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+195847 Thread-16 2017-01-17 17:36:28,732 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_START_SESSION","params":{"result":"OK","error":"","challenge":"34D2F2D092B0F25F2B320D19BB82DA4407B9511720538C5980B3391EF9AD4D5C","uid":"ssn_738"},"crc16":""}
+195848 Thread-16 2017-01-17 17:36:28,733 - tcp_giant_auth - RunClient(252) DEBUG - 020022100034D2F2D092B0F25F2B320D19BB82DA4407B9511720538C5980B3391EF9AD4D5C03DF
+195854 Thread-17 2017-01-17 17:36:28,739 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+195854 Thread-17 2017-01-17 17:36:28,739 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_START_SESSION","params":{"result":"OK","error":"","challenge":"02BFBD1AED5AFDBA2E20B701598EC9659A24C93D9A7E42CB91FFE73402D81AB3","uid":"ssn_739"},"crc16":""}
+195855 Thread-17 2017-01-17 17:36:28,740 - tcp_giant_auth - RunClient(252) DEBUG - 020022100002BFBD1AED5AFDBA2E20B701598EC9659A24C93D9A7E42CB91FFE73402D81AB303F1
+195861 Thread-14 2017-01-17 17:36:28,746 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+195861 Thread-14 2017-01-17 17:36:28,746 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_START_SESSION","params":{"result":"OK","error":"","challenge":"9A7DA43228A1CA171151F87CAC2A568D222A2BF2ABF02FE1CC5635F573B1781B","uid":"ssn_740"},"crc16":""}
+195861 Thread-14 2017-01-17 17:36:28,746 - tcp_giant_auth - RunClient(252) DEBUG - 02002210009A7DA43228A1CA171151F87CAC2A568D222A2BF2ABF02FE1CC5635F573B1781B0332
+195866 Thread-15 2017-01-17 17:36:28,751 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+195866 Thread-15 2017-01-17 17:36:28,751 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_START_SESSION","params":{"result":"OK","error":"","challenge":"F1DB4F6D3CBCD7F872E644DBED6BD252E6AB751E3335E5FA716406897E74A33A","uid":"ssn_741"},"crc16":""}
+195867 Thread-15 2017-01-17 17:36:28,752 - tcp_giant_auth - RunClient(252) DEBUG - 0200221000F1DB4F6D3CBCD7F872E644DBED6BD252E6AB751E3335E5FA716406897E74A33A03AD
+195872 Thread-13 2017-01-17 17:36:28,757 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+195872 Thread-13 2017-01-17 17:36:28,757 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_START_SESSION","params":{"result":"OK","error":"","challenge":"C38306CE968FFA9D51CDE56FEAD716E934E05FBBCB35072A60710BB32BD25A3F","uid":"ssn_742"},"crc16":""}
+195873 Thread-13 2017-01-17 17:36:28,758 - tcp_giant_auth - RunClient(252) DEBUG - 0200221000C38306CE968FFA9D51CDE56FEAD716E934E05FBBCB35072A60710BB32BD25A3F03C5
+195879 Thread-12 2017-01-17 17:36:28,764 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+195879 Thread-12 2017-01-17 17:36:28,764 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_START_SESSION","params":{"result":"OK","error":"","challenge":"0F2F3B65950319709146599784843F66DD4D47633DBC1172A1F4D003D578C291","uid":"ssn_743"},"crc16":""}
+195880 Thread-12 2017-01-17 17:36:28,765 - tcp_giant_auth - RunClient(252) DEBUG - 02002210000F2F3B65950319709146599784843F66DD4D47633DBC1172A1F4D003D578C29103DE
+196017 Thread-11 2017-01-17 17:36:28,902 - tcp_giant_auth - RunClient(245) DEBUG - 0200211114A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E50385
+196017 Thread-11 2017-01-17 17:36:28,902 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',17,b'\x03',b'\x85',
+196017 Thread-11 2017-01-17 17:36:28,902 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5
+196017 Thread-11 2017-01-17 17:36:28,902 - tcp_giant_auth - Authentication(127) DEBUG - Authentication
+196018 Thread-11 2017-01-17 17:36:28,903 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"AUTHENTICATION","params":{"mac":"14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5","uid":"ssn_734"}}
+196026 Thread-20 2017-01-17 17:36:28,911 - tcp_giant_auth - RunClient(245) DEBUG - 0200211114A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E50385
+196026 Thread-20 2017-01-17 17:36:28,911 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',17,b'\x03',b'\x85',
+196026 Thread-20 2017-01-17 17:36:28,911 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5
+196026 Thread-20 2017-01-17 17:36:28,911 - tcp_giant_auth - Authentication(127) DEBUG - Authentication
+196026 Thread-20 2017-01-17 17:36:28,911 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"AUTHENTICATION","params":{"mac":"14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5","uid":"ssn_735"}}
+196033 Thread-19 2017-01-17 17:36:28,918 - tcp_giant_auth - RunClient(245) DEBUG - 0200211114A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E50385
+196033 Thread-19 2017-01-17 17:36:28,918 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',17,b'\x03',b'\x85',
+196033 Thread-19 2017-01-17 17:36:28,918 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5
+196035 Thread-11 2017-01-17 17:36:28,920 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+196035 Thread-19 2017-01-17 17:36:28,920 - tcp_giant_auth - Authentication(127) DEBUG - Authentication
+196035 Thread-19 2017-01-17 17:36:28,920 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"AUTHENTICATION","params":{"mac":"14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5","uid":"ssn_736"}}
+196036 Thread-11 2017-01-17 17:36:28,921 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"AUTHENTICATION","params":{"result":"FAIL","error":"NOT_MATCH_MAC","update":""},"crc16":""}
+196036 Thread-11 2017-01-17 17:36:28,921 - tcp_giant_auth - RunClient(252) DEBUG - 02000311F10003E0
+196040 Thread-18 2017-01-17 17:36:28,925 - tcp_giant_auth - RunClient(245) DEBUG - 0200211114A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E50385
+196040 Thread-18 2017-01-17 17:36:28,925 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',17,b'\x03',b'\x85',
+196040 Thread-18 2017-01-17 17:36:28,925 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5
+196041 Thread-18 2017-01-17 17:36:28,926 - tcp_giant_auth - Authentication(127) DEBUG - Authentication
+196041 Thread-18 2017-01-17 17:36:28,926 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"AUTHENTICATION","params":{"mac":"14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5","uid":"ssn_737"}}
+196048 Thread-20 2017-01-17 17:36:28,933 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+196048 Thread-16 2017-01-17 17:36:28,933 - tcp_giant_auth - RunClient(245) DEBUG - 0200211114A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E50385
+196048 Thread-20 2017-01-17 17:36:28,933 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"AUTHENTICATION","params":{"result":"FAIL","error":"NOT_MATCH_MAC","update":""},"crc16":""}
+196048 Thread-16 2017-01-17 17:36:28,933 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',17,b'\x03',b'\x85',
+196049 Thread-20 2017-01-17 17:36:28,934 - tcp_giant_auth - RunClient(252) DEBUG - 02000311F10003E0
+196049 Thread-16 2017-01-17 17:36:28,934 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5
+196049 Thread-16 2017-01-17 17:36:28,934 - tcp_giant_auth - Authentication(127) DEBUG - Authentication
+196049 Thread-16 2017-01-17 17:36:28,934 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"AUTHENTICATION","params":{"mac":"14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5","uid":"ssn_738"}}
+196055 Thread-17 2017-01-17 17:36:28,940 - tcp_giant_auth - RunClient(245) DEBUG - 0200211114A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E50385
+196055 Thread-17 2017-01-17 17:36:28,940 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',17,b'\x03',b'\x85',
+196055 Thread-17 2017-01-17 17:36:28,940 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5
+196055 Thread-17 2017-01-17 17:36:28,940 - tcp_giant_auth - Authentication(127) DEBUG - Authentication
+196056 Thread-17 2017-01-17 17:36:28,941 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"AUTHENTICATION","params":{"mac":"14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5","uid":"ssn_739"}}
+196060 Thread-18 2017-01-17 17:36:28,945 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+196060 Thread-18 2017-01-17 17:36:28,945 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"AUTHENTICATION","params":{"result":"FAIL","error":"NOT_MATCH_MAC","update":""},"crc16":""}
+196060 Thread-18 2017-01-17 17:36:28,945 - tcp_giant_auth - RunClient(252) DEBUG - 02000311F10003E0
+196061 Thread-14 2017-01-17 17:36:28,946 - tcp_giant_auth - RunClient(245) DEBUG - 0200211114A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E50385
+196061 Thread-14 2017-01-17 17:36:28,946 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',17,b'\x03',b'\x85',
+196061 Thread-14 2017-01-17 17:36:28,946 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5
+196061 Thread-14 2017-01-17 17:36:28,946 - tcp_giant_auth - Authentication(127) DEBUG - Authentication
+196062 Thread-14 2017-01-17 17:36:28,947 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"AUTHENTICATION","params":{"mac":"14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5","uid":"ssn_740"}}
+196067 Thread-15 2017-01-17 17:36:28,952 - tcp_giant_auth - RunClient(245) DEBUG - 0200211114A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E50385
+196067 Thread-15 2017-01-17 17:36:28,952 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',17,b'\x03',b'\x85',
+196067 Thread-15 2017-01-17 17:36:28,952 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5
+196067 Thread-15 2017-01-17 17:36:28,952 - tcp_giant_auth - Authentication(127) DEBUG - Authentication
+196068 Thread-15 2017-01-17 17:36:28,953 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"AUTHENTICATION","params":{"mac":"14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5","uid":"ssn_741"}}
+196072 Thread-19 2017-01-17 17:36:28,957 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+196072 Thread-19 2017-01-17 17:36:28,957 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"AUTHENTICATION","params":{"result":"FAIL","error":"NOT_MATCH_MAC","update":""},"crc16":""}
+196072 Thread-19 2017-01-17 17:36:28,957 - tcp_giant_auth - RunClient(252) DEBUG - 02000311F10003E0
+196073 Thread-13 2017-01-17 17:36:28,958 - tcp_giant_auth - RunClient(245) DEBUG - 0200211114A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E50385
+196073 Thread-13 2017-01-17 17:36:28,958 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',17,b'\x03',b'\x85',
+196073 Thread-13 2017-01-17 17:36:28,958 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5
+196073 Thread-13 2017-01-17 17:36:28,958 - tcp_giant_auth - Authentication(127) DEBUG - Authentication
+196073 Thread-13 2017-01-17 17:36:28,958 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"AUTHENTICATION","params":{"mac":"14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5","uid":"ssn_742"}}
+196080 Thread-12 2017-01-17 17:36:28,965 - tcp_giant_auth - RunClient(245) DEBUG - 0200211114A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E50385
+196080 Thread-12 2017-01-17 17:36:28,965 - tcp_giant_auth - parseFromBuff(92) DEBUG - b'\x02',17,b'\x03',b'\x85',
+196080 Thread-12 2017-01-17 17:36:28,965 - tcp_giant_auth - parseFromBuff(93) DEBUG - DATA:14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5
+196080 Thread-12 2017-01-17 17:36:28,965 - tcp_giant_auth - Authentication(127) DEBUG - Authentication
+196081 Thread-12 2017-01-17 17:36:28,966 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"AUTHENTICATION","params":{"mac":"14A148EF48A7863A930BEF984C6411E3EF3540954ED55F6F10C5173CB6EC27E5","uid":"ssn_743"}}
+196083 Thread-15 2017-01-17 17:36:28,968 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+196084 Thread-15 2017-01-17 17:36:28,969 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"AUTHENTICATION","params":{"result":"FAIL","error":"NOT_MATCH_MAC","update":""},"crc16":""}
+196084 Thread-15 2017-01-17 17:36:28,969 - tcp_giant_auth - RunClient(252) DEBUG - 02000311F10003E0
+196095 Thread-14 2017-01-17 17:36:28,980 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+196096 Thread-14 2017-01-17 17:36:28,981 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"AUTHENTICATION","params":{"result":"FAIL","error":"NOT_MATCH_MAC","update":""},"crc16":""}
+196096 Thread-14 2017-01-17 17:36:28,981 - tcp_giant_auth - RunClient(252) DEBUG - 02000311F10003E0
+196107 Thread-17 2017-01-17 17:36:28,992 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+196107 Thread-17 2017-01-17 17:36:28,992 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"AUTHENTICATION","params":{"result":"FAIL","error":"NOT_MATCH_MAC","update":""},"crc16":""}
+196107 Thread-17 2017-01-17 17:36:28,992 - tcp_giant_auth - RunClient(252) DEBUG - 02000311F10003E0
+196119 Thread-16 2017-01-17 17:36:29,004 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+196119 Thread-16 2017-01-17 17:36:29,004 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"AUTHENTICATION","params":{"result":"FAIL","error":"NOT_MATCH_MAC","update":""},"crc16":""}
+196119 Thread-16 2017-01-17 17:36:29,004 - tcp_giant_auth - RunClient(252) DEBUG - 02000311F10003E0
+196132 Thread-12 2017-01-17 17:36:29,017 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+196132 Thread-12 2017-01-17 17:36:29,017 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"AUTHENTICATION","params":{"result":"FAIL","error":"NOT_MATCH_MAC","update":""},"crc16":""}
+196133 Thread-12 2017-01-17 17:36:29,018 - tcp_giant_auth - RunClient(252) DEBUG - 02000311F10003E0
+196144 Thread-13 2017-01-17 17:36:29,029 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+196145 Thread-13 2017-01-17 17:36:29,030 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"AUTHENTICATION","params":{"result":"FAIL","error":"NOT_MATCH_MAC","update":""},"crc16":""}
+196145 Thread-13 2017-01-17 17:36:29,030 - tcp_giant_auth - RunClient(252) DEBUG - 02000311F10003E0
+196236 Thread-11 2017-01-17 17:36:29,121 - tcp_giant_auth - RunClient(245) DEBUG - 
+196236 Thread-11 2017-01-17 17:36:29,121 - tcp_giant_auth - ReqEndSession(191) DEBUG - ReqEndSession
+196236 Thread-11 2017-01-17 17:36:29,121 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_END_SESSION","params":{"uid":"ssn_734"}}
+196249 Thread-11 2017-01-17 17:36:29,134 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+196249 Thread-20 2017-01-17 17:36:29,134 - tcp_giant_auth - RunClient(245) DEBUG - 
+196249 Thread-11 2017-01-17 17:36:29,134 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_END_SESSION","params":{"result":"OK","error":""},"crc16":""}
+196249 Thread-20 2017-01-17 17:36:29,134 - tcp_giant_auth - ReqEndSession(191) DEBUG - ReqEndSession
+196250 Thread-11 2017-01-17 17:36:29,135 - tcp_giant_auth - worker(356) DEBUG - END CLIENT HANDLER
+196250 Thread-20 2017-01-17 17:36:29,135 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_END_SESSION","params":{"uid":"ssn_735"}}
+196261 Thread-18 2017-01-17 17:36:29,146 - tcp_giant_auth - RunClient(245) DEBUG - 
+196262 Thread-20 2017-01-17 17:36:29,147 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+196262 Thread-18 2017-01-17 17:36:29,147 - tcp_giant_auth - ReqEndSession(191) DEBUG - ReqEndSession
+196262 Thread-20 2017-01-17 17:36:29,147 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_END_SESSION","params":{"result":"OK","error":""},"crc16":""}
+196262 Thread-18 2017-01-17 17:36:29,147 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_END_SESSION","params":{"uid":"ssn_737"}}
+196263 Thread-20 2017-01-17 17:36:29,148 - tcp_giant_auth - worker(356) DEBUG - END CLIENT HANDLER
+196272 Thread-19 2017-01-17 17:36:29,157 - tcp_giant_auth - RunClient(245) DEBUG - 
+196272 Thread-19 2017-01-17 17:36:29,157 - tcp_giant_auth - ReqEndSession(191) DEBUG - ReqEndSession
+196272 Thread-19 2017-01-17 17:36:29,157 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_END_SESSION","params":{"uid":"ssn_736"}}
+196273 Thread-18 2017-01-17 17:36:29,158 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+196273 Thread-18 2017-01-17 17:36:29,158 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_END_SESSION","params":{"result":"OK","error":""},"crc16":""}
+196273 Thread-18 2017-01-17 17:36:29,158 - tcp_giant_auth - worker(356) DEBUG - END CLIENT HANDLER
+196283 Thread-19 2017-01-17 17:36:29,168 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+196283 Thread-19 2017-01-17 17:36:29,168 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_END_SESSION","params":{"result":"OK","error":""},"crc16":""}
+196284 Thread-19 2017-01-17 17:36:29,169 - tcp_giant_auth - worker(356) DEBUG - END CLIENT HANDLER
+196284 Thread-15 2017-01-17 17:36:29,169 - tcp_giant_auth - RunClient(245) DEBUG - 
+196284 Thread-15 2017-01-17 17:36:29,169 - tcp_giant_auth - ReqEndSession(191) DEBUG - ReqEndSession
+196284 Thread-15 2017-01-17 17:36:29,169 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_END_SESSION","params":{"uid":"ssn_741"}}
+196295 Thread-15 2017-01-17 17:36:29,180 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+196296 Thread-15 2017-01-17 17:36:29,181 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_END_SESSION","params":{"result":"OK","error":""},"crc16":""}
+196296 Thread-14 2017-01-17 17:36:29,181 - tcp_giant_auth - RunClient(245) DEBUG - 
+196296 Thread-15 2017-01-17 17:36:29,181 - tcp_giant_auth - worker(356) DEBUG - END CLIENT HANDLER
+196296 Thread-14 2017-01-17 17:36:29,181 - tcp_giant_auth - ReqEndSession(191) DEBUG - ReqEndSession
+196296 Thread-14 2017-01-17 17:36:29,181 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_END_SESSION","params":{"uid":"ssn_740"}}
+196305 Thread-14 2017-01-17 17:36:29,190 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+196306 Thread-14 2017-01-17 17:36:29,191 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_END_SESSION","params":{"result":"OK","error":""},"crc16":""}
+196306 Thread-14 2017-01-17 17:36:29,191 - tcp_giant_auth - worker(356) DEBUG - END CLIENT HANDLER
+196307 Thread-17 2017-01-17 17:36:29,192 - tcp_giant_auth - RunClient(245) DEBUG - 
+196307 Thread-17 2017-01-17 17:36:29,192 - tcp_giant_auth - ReqEndSession(191) DEBUG - ReqEndSession
+196307 Thread-17 2017-01-17 17:36:29,192 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_END_SESSION","params":{"uid":"ssn_739"}}
+196317 Thread-17 2017-01-17 17:36:29,202 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+196318 Thread-17 2017-01-17 17:36:29,203 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_END_SESSION","params":{"result":"OK","error":""},"crc16":""}
+196318 Thread-17 2017-01-17 17:36:29,203 - tcp_giant_auth - worker(356) DEBUG - END CLIENT HANDLER
+196324 Thread-16 2017-01-17 17:36:29,209 - tcp_giant_auth - RunClient(245) DEBUG - 
+196324 Thread-16 2017-01-17 17:36:29,209 - tcp_giant_auth - ReqEndSession(191) DEBUG - ReqEndSession
+196324 Thread-16 2017-01-17 17:36:29,209 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_END_SESSION","params":{"uid":"ssn_738"}}
+196333 Thread-12 2017-01-17 17:36:29,218 - tcp_giant_auth - RunClient(245) DEBUG - 
+196333 Thread-12 2017-01-17 17:36:29,218 - tcp_giant_auth - ReqEndSession(191) DEBUG - ReqEndSession
+196333 Thread-12 2017-01-17 17:36:29,218 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_END_SESSION","params":{"uid":"ssn_743"}}
+196334 Thread-16 2017-01-17 17:36:29,219 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+196335 Thread-16 2017-01-17 17:36:29,220 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_END_SESSION","params":{"result":"OK","error":""},"crc16":""}
+196335 Thread-16 2017-01-17 17:36:29,220 - tcp_giant_auth - worker(356) DEBUG - END CLIENT HANDLER
+196343 Thread-12 2017-01-17 17:36:29,228 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+196343 Thread-12 2017-01-17 17:36:29,228 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_END_SESSION","params":{"result":"OK","error":""},"crc16":""}
+196343 Thread-12 2017-01-17 17:36:29,228 - tcp_giant_auth - worker(356) DEBUG - END CLIENT HANDLER
+196345 Thread-13 2017-01-17 17:36:29,230 - tcp_giant_auth - RunClient(245) DEBUG - 
+196345 Thread-13 2017-01-17 17:36:29,230 - tcp_giant_auth - ReqEndSession(191) DEBUG - ReqEndSession
+196345 Thread-13 2017-01-17 17:36:29,230 - tcp_giant_auth - reqGet(44) DEBUG - strrequest:/giant_auth/auth?json={"cmd":"REQ_END_SESSION","params":{"uid":"ssn_742"}}
+196353 Thread-13 2017-01-17 17:36:29,238 - tcp_giant_auth - reqGet(49) DEBUG - 200 OK
+196353 Thread-13 2017-01-17 17:36:29,238 - tcp_giant_auth - reqGet(52) DEBUG - res:{"cmd":"REQ_END_SESSION","params":{"result":"OK","error":""},"crc16":""}
+196354 Thread-13 2017-01-17 17:36:29,239 - tcp_giant_auth - worker(356) DEBUG - END CLIENT HANDLER

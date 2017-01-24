@@ -14,8 +14,23 @@ import javax.servlet.http.HttpServletResponse;
 import com.neolib.Util.NeoHexString;
 
 /**
- * Servlet implementation class NFCServlet
- */
+* @FileName : authServlet.java
+* @Project : giant_auth
+* @Date : 2017. 1. 17.
+* @작성자 : neo1seok
+* @프로그램 설명 :
+* 인증을 실행하는 서블릿 클래스 
+* http://address:port/giant_auth?auth 형태의 url을 통해 실행할 수 있다.
+* 파라메터에 대한 자세한 설명은 문서 참조 하길 바람 
+* 
+* 
+* * Servlet class to perform authentication
+* Http: // address: port / giant_auth? It can be executed via url of type auth.
+* Please refer to the document for details of the parameters
+*  
+*/
+
+
 public class authServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -30,19 +45,18 @@ public class authServlet extends HttpServlet {
     }
     boolean isDebug = false;
     
-//    private static final String KALIMAH2 = "\u0644\u064e\u0622 \u0625\u0650\u0644\u0670\u0647\u064e \u0625\u0650\u0644\u0651\u064e\u0627 \u0627\u0644\u0644\u0647\u064f \u0645\u064f\u062d\u064e\u0645\u0651\u064e\u062f\u064c \u0631\u0651\u064e\u0633\u064f\u0648\u0652\u0644\u064f \u0627\u0644\u0644\u0647\u0650";
-//    private static final String KALIMAH = "테스트";
-
-//    protected void printGreeting (HttpServletResponse res) throws IOException {
-//    	res.setContentType("text/html;charset=utf-8"); //한글깨짐방지
-//        res.setCharacterEncoding( "utf-8" );
-//        PrintWriter out = res.getWriter();
-//        
-//        
-//          
-//        //out.write( KALIMAH );
-//        out.close();
-//    }
+    
+    /**
+    * @Name : doAuth
+    * @작성일 : 2017. 1. 17.
+    * @작성자 : neo1seok
+    * @설명 :
+    * doGet이나 doPost 모두 실행 되는 기본함수 
+    * 
+    * Basic functions that do both doGet and doPost
+    * 
+    */
+    
     
     synchronized void doAuth(HttpServletRequest request, HttpServletResponse response) throws Exception{
     	String ipAddress =  request.getRemoteAddr();

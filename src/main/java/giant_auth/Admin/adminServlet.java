@@ -21,9 +21,19 @@ import org.apache.commons.lang3.EnumUtils;
 
 import com.neolib.db.IDbHanling;
 
+
 /**
- * Servlet implementation class AdminServlet
- */
+* @FileName : adminServlet.java
+* @Project : giant_auth
+* @Date : 2017. 1. 17.
+* @작성자 : neo1seok
+* @프로그램 설명 :
+* 인증에 필요한 값을 간단하게 수정할 수 있는 서블릿 클래스 
+* http://address:port/giant_auth?admin 형태의 url을 통해 실행할 수 있다.
+* 파라메터에 대한 자세한 설명은 문서 참조 하길 바람 
+*/
+
+
 public class adminServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -77,7 +87,22 @@ public class adminServlet extends HttpServlet {
 		}
 		out.println("<a href=\"javascript:history.back()\">Go Back</a>");
 	}
-	protected String Process(HttpServletRequest request, HttpServletResponse response) throws Exception{
+	
+	
+	
+	/**
+	* @Name : Process
+	* @작성일 : 2017. 1. 17.
+	* @작성자 : neo1seok
+	* @설명 :
+	* doGet이나 doPost 모두 실행 되는 기본함수 synchronized 를 통해 비동기화를 시킬 수 있다.
+	* 
+	*  Basic functions that do both doGet and doPost
+	*  
+	*/
+	
+	
+	synchronized protected String Process(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		adminHandler adminHanlder = new adminHandler();
 		adminHanlder.Open();
 		PrintWriter out = response.getWriter();

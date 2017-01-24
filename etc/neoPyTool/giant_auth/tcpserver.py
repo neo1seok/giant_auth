@@ -165,7 +165,7 @@ class HandleClient:
 	def ReqAppKey(self,data):
 		self.logger.debug('ReqAppKey')
 		appid = data[0:16]
-		self.mapSrv = self.reqGet({"uid":self.uid,"appid": neolib.ByteArray2HexString(appid)})
+		self.mapSrv = self.reqGet({"uid":self.uid,"app_id": neolib.ByteArray2HexString(appid)})
 		bdata = b''
 		bdata += neolib.HexString2ByteArray(self.mapSrv['app_id'])
 		bdata += neolib.HexString2ByteArray(self.mapSrv['IV'])

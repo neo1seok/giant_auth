@@ -1,5 +1,7 @@
 package giant_auth.comm;
 
+import giant_auth.auth.AUTH_CMD;
+
 import java.sql.SQLException;
 import java.text.MessageFormat;
 import java.util.LinkedHashMap;
@@ -66,20 +68,15 @@ public class BaseHandler<T> {
 		}
 	}
 	
+	protected T convertCmd(String strcmd){
+		return null;
+	}
+	
 	public Protocol doProcess(Protocol input) throws Exception{
 		Log("doProcess");
 		
 		 
-		NLoger.debug("tewst");
-		NLoger.info("test");
-		NLoger.debug("tewst");
-		NLoger.info("test");
-		NLoger.debug("tewst");
-		NLoger.info("test");
-		NLoger.debug("tewst");
-		NLoger.info("test");
-		
-		
+	
 		this.rcvProto = input;
 		this.sndProto =new Protocol(); 
 		sndProto.cmd = rcvProto.cmd;
@@ -87,8 +84,9 @@ public class BaseHandler<T> {
 		sndProto.params.clear();
 		sndProto.params.put("Result","OK");
 		
+		T cmd = convertCmd(rcvProto.cmd);
 		
-		mapInvoke.get(input.cmd).run();
+		mapInvoke.get(cmd).run();
 		
 		
 	
